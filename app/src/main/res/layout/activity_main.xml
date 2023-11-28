@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp"
+    tools:context=".MainActivity"
+    android:background="@drawable/bluewallpaper">
+
+    <ImageView
+        android:id="@+id/profileImageView"
+        android:layout_width="156dp"
+        android:layout_height="115dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="24dp"
+        android:contentDescription="@string/profile_image_description"
+        android:src="@drawable/default_profile_image" />
+
+
+    <Button
+        android:id="@+id/buttonImageChange"
+        android:layout_width="44dp"
+        android:layout_height="33dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="110dp"
+        android:layout_marginEnd="72dp"
+        android:background="@android:drawable/ic_popup_sync"
+        android:tint="#ffffff" />
+
+    <TextView
+        android:id="@+id/textViewEmail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="E-POSTA ADRESİ"
+        android:textSize="18sp"
+        android:textColor="#000000"
+        android:layout_below="@id/profileImageView"
+        android:layout_marginTop="16dp"/>
+
+    <EditText
+        android:id="@+id/editTextEmail"
+        android:layout_width="match_parent"
+        android:layout_height="57dp"
+        android:layout_below="@id/textViewEmail"
+        android:layout_marginTop="8dp"
+        android:hint="E-Posta Adresinizi Giriniz"
+        android:inputType="textEmailAddress" />
+
+    <TextView
+        android:id="@+id/textViewPassword"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="ŞİFRE"
+        android:textSize="18sp"
+        android:textColor="#000000"
+        android:layout_below="@id/editTextEmail"
+        android:layout_marginTop="16dp"/>
+
+    <EditText
+        android:id="@+id/editTextPassword"
+        android:layout_width="match_parent"
+        android:layout_height="65dp"
+        android:layout_below="@id/textViewPassword"
+        android:layout_marginTop="8dp"
+        android:hint="Şifrenizi Giriniz"
+        android:inputType="textPassword" />
+
+    <Button
+        android:id="@+id/buttonLogin"
+        android:layout_width="165dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/editTextPassword"
+        android:layout_alignParentStart="true"
+        android:layout_centerVertical="true"
+        android:layout_marginStart="11dp"
+        android:layout_marginTop="18dp"
+        android:backgroundTint="#000000"
+        android:text="GİRİŞ YAP" />
+
+    <Button
+        android:id="@+id/buttonLoginRegister"
+        android:layout_width="165dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/editTextPassword"
+        android:layout_alignParentEnd="true"
+        android:layout_centerVertical="true"
+        android:layout_marginTop="18dp"
+        android:layout_marginEnd="11dp"
+        android:backgroundTint="#000000"
+        android:text="KAYIT OL" />
+
+</RelativeLayout>
+
