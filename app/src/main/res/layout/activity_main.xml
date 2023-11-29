@@ -15,7 +15,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="24dp"
         android:contentDescription="@string/profile_image_description"
-        android:src="@drawable/default_profile_image" />
+        android:src="@drawable/facee" />
 
 
     <Button
@@ -27,7 +27,7 @@
         android:layout_marginTop="110dp"
         android:layout_marginEnd="72dp"
         android:background="@android:drawable/ic_popup_sync"
-        android:tint="#ffffff" />
+        android:tint="#000000" />
 
     <TextView
         android:id="@+id/textViewEmail"
@@ -46,7 +46,8 @@
         android:layout_below="@id/textViewEmail"
         android:layout_marginTop="8dp"
         android:hint="E-Posta Adresinizi Giriniz"
-        android:inputType="textEmailAddress" />
+        android:inputType="textEmailAddress"
+        android:background="@drawable/edittextbackground"/>
 
     <TextView
         android:id="@+id/textViewPassword"
@@ -61,11 +62,12 @@
     <EditText
         android:id="@+id/editTextPassword"
         android:layout_width="match_parent"
-        android:layout_height="65dp"
+        android:layout_height="57dp"
         android:layout_below="@id/textViewPassword"
         android:layout_marginTop="8dp"
         android:hint="Şifrenizi Giriniz"
-        android:inputType="textPassword" />
+        android:inputType="textPassword"
+        android:background="@drawable/edittextbackground"/>
 
     <Button
         android:id="@+id/buttonLogin"
@@ -77,7 +79,9 @@
         android:layout_marginStart="11dp"
         android:layout_marginTop="18dp"
         android:backgroundTint="#000000"
-        android:text="GİRİŞ YAP" />
+        android:text="GİRİŞ YAP"
+        android:background="@drawable/buttonbackground"
+        android:textColor="#000000"/>
 
     <Button
         android:id="@+id/buttonLoginRegister"
@@ -89,7 +93,9 @@
         android:layout_marginTop="18dp"
         android:layout_marginEnd="11dp"
         android:backgroundTint="#000000"
-        android:text="KAYIT OL" />
+        android:text="KAYIT OL"
+        android:background="@drawable/buttonbackground"
+        android:textColor="#000000"/>
 
 </RelativeLayout>
 

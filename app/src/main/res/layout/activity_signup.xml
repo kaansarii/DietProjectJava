@@ -20,10 +20,12 @@
 
     <EditText
         android:id="@+id/editTextFirstName"
-        android:layout_width="369dp"
-        android:layout_height="58dp"
+        android:layout_width="381dp"
+        android:layout_height="57dp"
         android:layout_below="@id/textViewFirstName"
-        android:layout_marginTop="8dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="5dp"
+        android:background="@drawable/edittextbackground"
         android:hint="Adınızı Giriniz" />
 
     <TextView
@@ -42,6 +44,7 @@
         android:layout_height="57dp"
         android:layout_below="@id/textViewLastName"
         android:layout_marginTop="8dp"
+        android:background="@drawable/edittextbackground"
         android:hint="Soyadınızı Giriniz" />
 
     <TextView
@@ -61,7 +64,8 @@
         android:layout_below="@id/textViewEmail"
         android:layout_marginTop="8dp"
         android:hint="E-Posta Adresinizi Giriniz"
-        android:inputType="textEmailAddress" />
+        android:inputType="textEmailAddress"
+        android:background="@drawable/edittextbackground"/>
 
     <TextView
         android:id="@+id/textViewPassword"
@@ -80,7 +84,8 @@
         android:layout_below="@id/textViewPassword"
         android:layout_marginTop="8dp"
         android:hint="Şifrenizi Giriniz"
-        android:inputType="textPassword" />
+        android:inputType="textPassword"
+        android:background="@drawable/edittextbackground"/>
 
     <TextView
         android:id="@+id/textViewRepeatPassword"
@@ -99,7 +104,8 @@
         android:layout_below="@id/textViewRepeatPassword"
         android:layout_marginTop="8dp"
         android:hint="Şifrenizi Tekrar Giriniz"
-        android:inputType="textPassword" />
+        android:inputType="textPassword"
+        android:background="@drawable/edittextbackground"/>
 
 
     <Button
@@ -112,6 +118,8 @@
         android:layout_marginTop="18dp"
         android:backgroundTint="#000000"
         android:text="KAYIT OL"
+        android:background="@drawable/buttonbackground"
+        android:textColor="#000000"
         />
 
     <Button
@@ -120,8 +128,10 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/editTextRepeatPassword"
         android:layout_alignParentEnd="true"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="18dp"
         android:layout_marginEnd="18dp"
         android:backgroundTint="#000000"
-        android:text="GİRİŞ EKRANINA DÖN" />
+        android:text="GİRİŞ EKRANINA DÖN"
+        android:background="@drawable/buttonbackground"
+        android:textColor="#000000"/>
 </RelativeLayout>

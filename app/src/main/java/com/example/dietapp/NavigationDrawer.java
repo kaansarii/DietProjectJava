@@ -67,6 +67,12 @@ public class NavigationDrawer extends AppCompatActivity implements NavigationVie
         else if (itemId == R.id.nav_about) {
             getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new AboutFragment()).commit();
         }
+        //BMI SAYFASINA GİTMEYİ SAĞLIYOR
+        else if (itemId == R.id.nav_bmi) {
+            Intent intent = new Intent(this, BmiCalculator.class);
+            startActivity(intent);
+
+        }
         // Eğer Çıkış yaparsa MainActivity'ye geçiş yap
         else if (itemId == R.id.nav_logout) {
             Intent intent = new Intent(NavigationDrawer.this, MainActivity.class);

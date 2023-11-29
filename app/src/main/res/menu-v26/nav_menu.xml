@@ -31,6 +31,10 @@
     </group>
 
     <item
+        android:id="@+id/nav_bmi"
+        android:icon="@drawable/nav_calc"
+        android:title="Bmi And Kcal Calculate"/>
+    <item
         android:title="">
 
         <menu>
