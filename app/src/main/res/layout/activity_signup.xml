@@ -7,7 +7,7 @@
     android:padding="16dp"
     tools:context=".SignUpActivity"
     tools:ignore="MissingDefaultResource"
-    android:background="@drawable/bluewallpaper">
+    android:background="@drawable/backgroundcolorblue">
 
     <TextView
         android:id="@+id/textViewFirstName"

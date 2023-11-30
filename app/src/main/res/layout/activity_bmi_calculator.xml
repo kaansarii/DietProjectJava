@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".BmiCalculator"
-    android:background="@drawable/bluewallpaper"
+    android:background="@drawable/backgroundcolorblue"
     android:orientation="vertical">
 
 
