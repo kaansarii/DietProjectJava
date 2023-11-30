@@ -55,12 +55,14 @@ public class BmiCalculator extends AppCompatActivity {
 
                 if (kg.length() > 0 && cm.length() > 0 && age.length() > 0) {
 
+                    //değerleri float türüne çevirdik
                     float weight = Float.parseFloat(kg);
                     float height = Float.parseFloat(cm);
                     float ageYear = Float.parseFloat(age);
 
                     float bmiIndex = weight / (height * height);
 
+                    //bmi oranına göre sonuç verecek
                     if (bmiIndex > 24) {
                         textBmi.setText("Overweight : " + bmiIndex);
                     } else if (bmiIndex > 18) {
@@ -84,14 +86,14 @@ public class BmiCalculator extends AppCompatActivity {
                         calorieMultiplier = 1.0;
                     }
 
-                    //Burda kalori hesaplaması yapıyorz
+                    //Burda kalori hesaplaması yapıyorz, formülü internetten aldım
                     int selectedGenderId = radioGroupGender.getCheckedRadioButtonId();
                     double bmrMale = ((10 * weight) + (625 * height) - (5 * ageYear) + 5)*calorieMultiplier;
                     double bmrFemale = ((10 * weight) + (625 * height) - (5 * ageYear) - 161)*calorieMultiplier;
 
 
+                    //cinsiyet durumuna göre alınması gereken kcal değişiyor
                     if (selectedGenderId == radioButtonMale.getId()) {
-                        Toast.makeText(getApplicationContext(), "Erkek seçildi", Toast.LENGTH_SHORT).show();
                         textCal.setText("Calories " + bmrMale);
                     } else if (selectedGenderId == radioButtonFemale.getId()) {
                         textCal.setText("Calories " + bmrFemale);
