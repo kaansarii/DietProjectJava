@@ -36,77 +36,105 @@
         android:textSize="18sp"
         android:textColor="#000000"
         android:layout_below="@id/editTextFirstName"
-        android:layout_marginTop="16dp"/>
+        android:layout_marginTop="30dp"/>
+
+    <EditText
+        android:id="@+id/editTextUserName"
+        android:layout_width="381dp"
+        android:layout_height="57dp"
+        android:layout_below="@+id/editTextFirstName"
+        android:layout_marginTop="54dp"
+        android:background="@drawable/edittextbackground"
+        android:hint="Soyadınızı Giriniz" />
+
+
+    <TextView
+        android:id="@+id/textViewUserName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/editTextUserName"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="30dp"
+        android:text="KULLANICI ADI"
+
+        android:textColor="#000000"
+        android:textSize="18sp" />
 
     <EditText
         android:id="@+id/editTextLastName"
         android:layout_width="381dp"
         android:layout_height="57dp"
-        android:layout_below="@id/textViewLastName"
-        android:layout_marginTop="8dp"
+        android:layout_below="@+id/editTextUserName"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="54dp"
         android:background="@drawable/edittextbackground"
-        android:hint="Soyadınızı Giriniz" />
+        android:hint="Kullanıcı Adınızı Giriniz" />
 
     <TextView
         android:id="@+id/textViewEmail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/editTextLastName"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="30dp"
         android:text="E-POSTA ADRESİ"
-        android:textSize="18sp"
         android:textColor="#000000"
-        android:layout_below="@id/editTextLastName"
-        android:layout_marginTop="16dp"/>
+        android:textSize="18sp" />
 
     <EditText
         android:id="@+id/editTextEmail"
         android:layout_width="382dp"
         android:layout_height="58dp"
-        android:layout_below="@id/textViewEmail"
-        android:layout_marginTop="8dp"
+        android:layout_below="@+id/editTextLastName"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="54dp"
+        android:background="@drawable/edittextbackground"
         android:hint="E-Posta Adresinizi Giriniz"
-        android:inputType="textEmailAddress"
-        android:background="@drawable/edittextbackground"/>
+        android:inputType="textEmailAddress" />
 
     <TextView
         android:id="@+id/textViewPassword"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/editTextEmail"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="30dp"
         android:text="ŞİFRE"
-        android:textSize="18sp"
         android:textColor="#000000"
-        android:layout_below="@id/editTextEmail"
-        android:layout_marginTop="16dp"/>
+        android:textSize="18sp" />
 
     <EditText
         android:id="@+id/editTextPassword"
         android:layout_width="376dp"
         android:layout_height="57dp"
-        android:layout_below="@id/textViewPassword"
-        android:layout_marginTop="8dp"
+        android:layout_below="@+id/editTextEmail"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="54dp"
+        android:background="@drawable/edittextbackground"
         android:hint="Şifrenizi Giriniz"
-        android:inputType="textPassword"
-        android:background="@drawable/edittextbackground"/>
+        android:inputType="textPassword" />
 
     <TextView
         android:id="@+id/textViewRepeatPassword"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="ŞİFRE TEKRAR"
-        android:textSize="18sp"
-        android:textColor="#000000"
         android:layout_below="@id/editTextPassword"
-        android:layout_marginTop="16dp"/>
+        android:layout_marginTop="30dp"
+        android:text="ŞİFRE TEKRAR"
+        android:textColor="#000000"
+        android:textSize="18sp" />
 
     <EditText
         android:id="@+id/editTextRepeatPassword"
         android:layout_width="382dp"
         android:layout_height="61dp"
-        android:layout_below="@id/textViewRepeatPassword"
-        android:layout_marginTop="8dp"
+        android:layout_below="@+id/editTextPassword"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="54dp"
+        android:background="@drawable/edittextbackground"
         android:hint="Şifrenizi Tekrar Giriniz"
-        android:inputType="textPassword"
-        android:background="@drawable/edittextbackground"/>
-
+        android:inputType="textPassword" />
 
     <Button
         android:id="@+id/buttonRegister"
@@ -114,13 +142,11 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/editTextRepeatPassword"
         android:layout_alignParentStart="true"
-        android:layout_marginStart="18dp"
-        android:layout_marginTop="18dp"
+        android:layout_marginTop="50dp"
+        android:background="@drawable/buttonbackground"
         android:backgroundTint="#000000"
         android:text="KAYIT OL"
-        android:background="@drawable/buttonbackground"
-        android:textColor="#000000"
-        />
+        android:textColor="#000000" />
 
     <Button
         android:id="@+id/buttonComeBack"
@@ -128,10 +154,9 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/editTextRepeatPassword"
         android:layout_alignParentEnd="true"
-        android:layout_marginTop="18dp"
-        android:layout_marginEnd="18dp"
+        android:layout_marginTop="50dp"
+        android:background="@drawable/buttonbackground"
         android:backgroundTint="#000000"
         android:text="GİRİŞ EKRANINA DÖN"
-        android:background="@drawable/buttonbackground"
-        android:textColor="#000000"/>
+        android:textColor="#000000" />
 </RelativeLayout>

@@ -55,8 +55,71 @@
                     android:textSize="28sp" />
 
 
+            </LinearLayout>
 
 
+        </androidx.cardview.widget.CardView>
+
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            app:cardCornerRadius="12dp"
+            app:cardElevation="2dp"
+            android:layout_margin="12dp"
+            android:layout_height="110dp">
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:textSize="16sp"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="10dp"
+                    android:textStyle="bold"
+                    android:layout_width="wrap_content"
+                    android:text="Gender"
+                    android:textColor="@color/black"
+                    android:layout_height="wrap_content"/>
+
+                     <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal">
+
+                            <RadioGroup
+                                android:id="@+id/radioGroupGender"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal">
+
+                                <RadioButton
+                                    android:id="@+id/radioButtonMale"
+                                 android:layout_width="65dp"
+                                 android:layout_height="70dp"
+                                    android:button="@android:color/transparent"
+                                 android:background="@drawable/male"
+                                    android:visibility="visible"
+                                    android:layout_marginLeft="10dp"
+                                    android:layout_marginRight="35dp"
+
+
+                                 />
+
+                                 <RadioButton
+                                     android:id="@+id/radioButtonFemale"
+                                     android:layout_width="65dp"
+                                     android:layout_height="70dp"
+                                     android:button="@android:color/transparent"
+                                     android:background="@drawable/female"
+                                     android:visibility="visible"/>
+                                <!--radiobuttondaki tik işareti gözükmesin diye transparent yaptım -->
+
+                            </RadioGroup>
+
+                </LinearLayout>
 
 
             </LinearLayout>
@@ -64,6 +127,65 @@
 
 
 
+
+
+        </androidx.cardview.widget.CardView>
+
+
+
+
+
+    </LinearLayout>
+
+
+
+    <LinearLayout
+        android:layout_marginBottom="7dp"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:weightSum="2"
+        android:layout_height="wrap_content">
+
+        <androidx.cardview.widget.CardView
+
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            app:cardCornerRadius="12dp"
+            app:cardElevation="2dp"
+            android:layout_margin="12dp"
+            android:layout_height="110dp">
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:textSize="16sp"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="10dp"
+                    android:textStyle="bold"
+                    android:layout_width="wrap_content"
+                    android:text="Height"
+                    android:textColor="@color/black"
+                    android:layout_height="wrap_content"/>
+
+
+                <EditText
+                    android:id="@+id/edCm"
+                    android:layout_width="110dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="10dp"
+                    android:ems="3"
+                    android:gravity="center"
+                    android:hint="1.93cm"
+                    android:inputType="numberDecimal"
+                    android:textSize="28sp" />
+
+
+            </LinearLayout>
 
 
         </androidx.cardview.widget.CardView>
@@ -123,105 +245,11 @@
 
 
 
-    </LinearLayout>
-
-
-
-    <androidx.cardview.widget.CardView
-        android:layout_margin="12dp"
-        app:cardCornerRadius="12dp"
-        app:cardElevation="2dp"
-        android:layout_width="match_parent"
-        android:layout_height="110dp">
-
-        <TextView
-            android:layout_marginTop="10dp"
-            android:layout_width="match_parent"
-            android:text="Height"
-            android:textSize="18sp"
-            android:gravity="center"
-            android:textStyle="bold"
-            android:textColor="@color/black"
-            android:layout_height="wrap_content"/>
 
 
 
 
-
-        <LinearLayout
-            android:layout_marginTop="10dp"
-            android:padding="10dp"
-            android:layout_gravity="center"
-            android:gravity="center"
-            android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-
-            <LinearLayout
-                android:layout_margin="5dp"
-                android:layout_gravity="center"
-                android:layout_width="wrap_content"
-                android:orientation="horizontal"
-                android:layout_height="wrap_content">
-
-
-                <TextView
-                    android:layout_width="60dp"
-                    android:text="Ft"
-                    android:textSize="18sp"
-                    android:layout_height="wrap_content"/>
-
-                <EditText
-                    android:gravity="center"
-                    android:hint="6"
-                    android:textSize="28sp"
-                    android:layout_width="wrap_content"
-                    android:ems="3"
-                    android:inputType="numberDecimal"
-                    android:id="@+id/edFeet"
-                    android:layout_height="wrap_content"/>
-
-
-
-
-
-
-            </LinearLayout>
-
-
-            <LinearLayout
-                android:layout_margin="5dp"
-                android:layout_gravity="center"
-                android:layout_width="wrap_content"
-                android:orientation="horizontal"
-                android:layout_height="wrap_content">
-
-
-                <TextView
-                    android:layout_width="60dp"
-                    android:text="In"
-                    android:textSize="18sp"
-                    android:layout_height="wrap_content"/>
-
-                <EditText
-                    android:hint="4"
-                    android:gravity="center"
-                    android:layout_width="wrap_content"
-                    android:ems="3"
-                    android:textSize="28sp"
-                    android:inputType="numberDecimal"
-                    android:id="@+id/edIns"
-                    android:layout_height="wrap_content"/>
-
-            </LinearLayout>
-
-
-        </LinearLayout>
-
-
-    </androidx.cardview.widget.CardView>
-
+</LinearLayout>
 
     <androidx.cardview.widget.CardView
         android:layout_width="wrap_content"
@@ -231,8 +259,10 @@
         app:cardCornerRadius="12dp"
         app:cardElevation="2dp">
 
+
+
         <LinearLayout
-            android:layout_width="300dp"
+            android:layout_width="310dp"
             android:layout_height="match_parent"
             android:orientation="vertical">
 
@@ -241,47 +271,57 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginTop="10dp"
+                android:background="@color/lavender"
                 android:text="What is your purpose?"
-                android:textSize="18sp"
                 android:textColor="@color/black"
+                android:textSize="18sp"
                 android:textStyle="bold" />
 
-
-            <RadioGroup
-                android:id="@+id/radioGroupOption"
+            <ScrollView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:fillViewport="true">
 
-                <RadioButton
-                    android:id="@+id/radioOne"
-                    android:layout_width="300dp"
-                    android:layout_height="48dp"
-                    android:layout_marginTop="7dp"
-                    android:gravity="center"
-                    android:text="Lose weight"
-                    android:textSize="18sp"/>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
 
-                <RadioButton
-                    android:id="@+id/radioTwo"
-                    android:layout_width="300dp"
-                    android:layout_height="48dp"
-                    android:layout_marginTop="7dp"
-                    android:gravity="center"
-                    android:text="Maintaining weight"
-                    android:textSize="18sp"/>
+                    <RadioGroup
+                        android:id="@+id/radioGroupPurpose"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
 
-                <RadioButton
-                    android:id="@+id/radioThree"
-                    android:layout_width="300dp"
-                    android:layout_height="48dp"
-                    android:layout_marginTop="7dp"
-                    android:gravity="center"
-                    android:text="Gaining weight"
-                    android:textSize="18sp"/>
-            </RadioGroup>
+                        <RadioButton
+                            android:id="@+id/radioLoseWeight"
+                            android:layout_width="300dp"
+                            android:layout_height="50dp"
+                            android:layout_marginTop="7dp"
+                            android:gravity="center"
+                            android:text="Lose weight"
+                            android:textSize="18sp" />
 
+                        <RadioButton
+                            android:id="@+id/radioMaintainWeight"
+                            android:layout_width="300dp"
+                            android:layout_height="50dp"
+                            android:layout_marginTop="7dp"
+                            android:gravity="center"
+                            android:text="Maintaining weight"
+                            android:textSize="18sp" />
 
+                        <RadioButton
+                            android:id="@+id/radioGainWeight"
+                            android:layout_width="300dp"
+                            android:layout_height="50dp"
+                            android:layout_marginTop="7dp"
+                            android:gravity="center"
+                            android:text="Gaining weight"
+                            android:textSize="18sp" />
+                    </RadioGroup>
+
+                </LinearLayout>
+            </ScrollView>
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 
@@ -333,7 +373,7 @@
                 android:layout_weight="0" />
 
             <TextView
-                android:id="@+id/textMak"
+                android:id="@+id/textMakro"
                 android:layout_width="0dp"
                 android:layout_height="100dp"
                 android:layout_weight="1"
