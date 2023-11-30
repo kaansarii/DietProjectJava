@@ -11,6 +11,7 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
+import java.text.DecimalFormat; //virgülden sonra basamak ayarlamak için dahil edildi
 
 public class BmiCalculator extends AppCompatActivity {
 
@@ -62,13 +63,19 @@ public class BmiCalculator extends AppCompatActivity {
 
                     float bmiIndex = weight / (height * height);
 
+
+                    //virgülden sonra en fazla iki rakam olsun diye yaptım
+                    DecimalFormat df2 = new DecimalFormat("#.##");
+                    String endBmiIndex=df2.format(bmiIndex);
+
+
                     //bmi oranına göre sonuç verecek
                     if (bmiIndex > 24) {
-                        textBmi.setText("Overweight : " + bmiIndex);
+                        textBmi.setText("Overweight : " + endBmiIndex);
                     } else if (bmiIndex > 18) {
-                        textBmi.setText("Normal weight : " + bmiIndex);
+                        textBmi.setText("Normal weight : " + endBmiIndex);
                     } else {
-                        textBmi.setText("Underweight : " + bmiIndex);
+                        textBmi.setText("Underweight : " + endBmiIndex);
                     }
 
                     //burda hedef seçiyoruz; kilo al,koru,ver
@@ -86,17 +93,46 @@ public class BmiCalculator extends AppCompatActivity {
                         calorieMultiplier = 1.0;
                     }
 
+
+
                     //Burda kalori hesaplaması yapıyorz, formülü internetten aldım
                     int selectedGenderId = radioGroupGender.getCheckedRadioButtonId();
                     double bmrMale = ((10 * weight) + (625 * height) - (5 * ageYear) + 5)*calorieMultiplier;
                     double bmrFemale = ((10 * weight) + (625 * height) - (5 * ageYear) - 161)*calorieMultiplier;
 
 
+
+                    //Protein Hedefi (gram): 1.6-2.2 gram/kg * kilo    1.9 aldım
+                    //Yağ Hedefi (gram): 0.25-0.35 gram/kg * kilo      0.30 aldım
+                    //Kalan Kaloriler Karbonhidratlardan gelecek.
+
+                    //1g protein: 4 kalori
+                    //1g karbonhidrat: 4 kalori
+                    //1g yağ: 9 kalori
+                    double protein =weight*1.9;
+                    double fat=weight*0.30;
+                    double carbohydrateMale=(bmrMale-(protein+fat))/9 ;    //kcal'in kalan kısmını karbonhidrat alacağımız için böyle bir işlem yaptım alınması gereken kaloriden diğer iki makronun gramını çıkarıp böldüm böylece karbonhidratında makrosunu elde ettim
+                    double carbohydrateFemale=(bmrMale-(protein+fat))/9;    //kcal'in kalan kısmını karbonhidrat alacağımız için böyle bir işlem yaptım
+
+                    //virgülden sonra en fazla iki rakam olsun diye yaptım
+                    DecimalFormat df = new DecimalFormat("#.##");
+                    String endProtein = df.format(protein);
+                    String endFat = df.format(fat);
+                    String endCarbohydrateMale = df.format(carbohydrateMale);
+                    String endCarbohydrateFemale =df.format(carbohydrateFemale);
+                    String endBmrFemale =df.format(bmrFemale);
+                    String endBmrMale=df.format(bmrMale);
+
+
+
                     //cinsiyet durumuna göre alınması gereken kcal değişiyor
                     if (selectedGenderId == radioButtonMale.getId()) {
-                        textCal.setText("Calories " + bmrMale);
-                    } else if (selectedGenderId == radioButtonFemale.getId()) {
-                        textCal.setText("Calories " + bmrFemale);
+                        textCal.setText("Calorie's\n " + endBmrMale);
+                        textMakro.setText("Carb: "+endCarbohydrateMale+"\nProtein: "+endProtein + "\nFat: "+endFat);
+                    }
+                    else if (selectedGenderId == radioButtonFemale.getId()) {
+                        textCal.setText("Calories " + endBmrFemale);
+                        textMakro.setText("Carb: "+endCarbohydrateFemale+"\nProtein: "+endProtein + "\nFat: "+endFat);
                     }
 
                 } else {
