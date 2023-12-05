@@ -54,6 +54,9 @@ public class BmiCalculator extends AppCompatActivity {
                 String cm = edCm.getText().toString();
                 String age = edAge.getText().toString();
 
+
+
+
                 if (kg.length() > 0 && cm.length() > 0 && age.length() > 0) {
 
                     //değerleri float türüne çevirdik
@@ -81,6 +84,10 @@ public class BmiCalculator extends AppCompatActivity {
                     //burda hedef seçiyoruz; kilo al,koru,ver
                     int selectedPurposeId = radioGroupPurpose.getCheckedRadioButtonId();
                     double calorieMultiplier = 0;
+                    if (selectedPurposeId == -1) {
+                        Toast.makeText(BmiCalculator.this, "Kalorinizin hesaplanabilmesi için Lütfen bir hedef seçin", Toast.LENGTH_SHORT).show();
+                        return;
+                    }
 
                     if (selectedPurposeId == radioLoseWeight.getId()) {
                         // Kilo verme durumu
@@ -100,6 +107,11 @@ public class BmiCalculator extends AppCompatActivity {
                     double bmrMale = ((10 * weight) + (625 * height) - (5 * ageYear) + 5)*calorieMultiplier;
                     double bmrFemale = ((10 * weight) + (625 * height) - (5 * ageYear) - 161)*calorieMultiplier;
 
+
+                    if (selectedGenderId == -1) {
+                        Toast.makeText(BmiCalculator.this, "Lütfen kcal ve makroların hesaplanabilmesi için bir cinsiyet seçin", Toast.LENGTH_SHORT).show();
+                        return;
+                    }
 
 
                     //Protein Hedefi (gram): 1.6-2.2 gram/kg * kilo    1.9 aldım
@@ -131,14 +143,21 @@ public class BmiCalculator extends AppCompatActivity {
                         textMakro.setText("Carb: "+endCarbohydrateMale+"\nProtein: "+endProtein + "\nFat: "+endFat);
                     }
                     else if (selectedGenderId == radioButtonFemale.getId()) {
-                        textCal.setText("Calories " + endBmrFemale);
+                        textCal.setText("Calorie's " + endBmrFemale);
                         textMakro.setText("Carb: "+endCarbohydrateFemale+"\nProtein: "+endProtein + "\nFat: "+endFat);
                     }
 
                 } else {
                     textBmi.setText("Please Input All Box");
                 }
+
+
+
+
             }
+
+
+
 
 
 
