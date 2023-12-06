@@ -21,6 +21,15 @@ import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 
+import com.example.dietapp.dtos.LoginDto;
+import com.example.dietapp.interfaces.ILogin;
+
+import java.io.IOException;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
 public class MainActivity extends AppCompatActivity {
 
     private EditText editTextEmail, editTextPassword;
@@ -52,16 +61,38 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 String email = editTextEmail.getText().toString();
                 String password = editTextPassword.getText().toString();
+                ILogin iLogin = RetrofitClient.getRetrofitInstance().create(ILogin.class);
+                LoginDto loginDto = new LoginDto(email,password);
+                Call<Void> call = iLogin.loginUser(loginDto);
+                call.enqueue(new Callback<Void>() {
+                    @Override
+                    public void onResponse(Call<Void> call, Response<Void> response) {
+                        if (response.isSuccessful()) {
+                            // Başarılı bir şekilde cevap alındı, başarı mesajını göster
+                            Toast.makeText(MainActivity.this, "Kayıt Başarılı", Toast.LENGTH_LONG).show();
+                            Intent intent = new Intent(MainActivity.this, NavigationDrawer.class);
+                            MainActivity.this.startActivity(intent);
+                            MainActivity.this.finish();
+                        } else {
+                            // Başarısız cevap alındı, hata durumunu göster
+                            String errorMessage = "Error: " + response.code() + " " + response.message();
+                            Toast.makeText(MainActivity.this, errorMessage, Toast.LENGTH_LONG).show();
 
-                //BURASI GEÇİÇİ,  NAVİGATİON'U DENEMEK İÇİN YAPTIM
-                if (email.equals("kaan@mail") && password.equals("123")) {
-                    Intent intent = new Intent(MainActivity.this, NavigationDrawer.class);
-                    startActivity(intent);
-                    finish();
-                } else {
+                            // Server tarafından dönen detaylı hata mesajını almak için:
+                            try {
+                                String errorBody = response.errorBody().string();
+                                // errorBody içinde server tarafından dönen JSON formatında hata mesajını kullanabilirsiniz.
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                            }
+                        }
+                    }
 
-                    Toast.makeText(MainActivity.this, "Giriş başarısız. Lütfen doğru email ve şifreyi girin.", Toast.LENGTH_SHORT).show();
-                }
+                    @Override
+                    public void onFailure(Call<Void> call, Throwable t) {
+
+                    }
+                });
 
             }
         });

@@ -23,7 +23,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class SignUpActivity extends AppCompatActivity {
 
     private Button buttonRegister, buttonComeBack;
-    private EditText editTextFirstName,editTextLastName, editTextEmail,editTextPassword,editTextRepeatPassword;
+    private EditText editTextFirstName,editTextLastName, editTextEmail,editTextPassword,editTextRepeatPassword,editTextUserName;
     private  IRegister iRegister;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +35,7 @@ public class SignUpActivity extends AppCompatActivity {
         EditText editTextEmail = (EditText) findViewById(R.id.editTextEmail);
         EditText editTextPassword = (EditText) findViewById(R.id.editTextPassword);
         EditText editTextRepeatPassword = (EditText) findViewById(R.id.editTextRepeatPassword);
+        EditText editTextUserName = (EditText) findViewById(R.id.editTextUserName);
         Button buttonRegister = (Button) findViewById(R.id.buttonRegister);
         Button buttonComeBack = (Button) findViewById(R.id.buttonComeBack);
         buttonRegister.setOnClickListener(new View.OnClickListener() {
@@ -42,6 +43,7 @@ public class SignUpActivity extends AppCompatActivity {
             public void onClick(View v) {
                 String firstName = editTextFirstName.getText().toString();
                 String lastName = editTextLastName.getText().toString();
+                String userName = editTextUserName.getText().toString();
                 String email = editTextEmail.getText().toString();
                 String password = editTextPassword.getText().toString();
                 String repeatPassword = editTextRepeatPassword.getText().toString();
@@ -51,7 +53,7 @@ public class SignUpActivity extends AppCompatActivity {
                     return;
                 }
                 IRegister iRegister = RetrofitClient.getRetrofitInstance().create(IRegister.class);
-                RegisterDto registerDto = new RegisterDto(firstName,lastName,email,email,password);
+                RegisterDto registerDto = new RegisterDto(firstName,lastName,userName,email,password);
                 Call<Void> call = iRegister.registerUser(registerDto);
                 call.enqueue(new Callback<Void>() {
                     @Override
