@@ -34,12 +34,11 @@ public class NavigationDrawer extends AppCompatActivity implements NavigationVie
         drawerLayout =findViewById(R.id.drawer_layout);
         NavigationView navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
-
-            // ActionBarDrawerToggle'ı oluştur ve DrawerLayout ile bağla
-            ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this,drawerLayout,toolbar,R.string.open_nav,
+        // ActionBarDrawerToggle'ı oluştur ve DrawerLayout ile bağla
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this,drawerLayout,toolbar,R.string.open_nav,
                 R.string.close_nav);
-            drawerLayout.addDrawerListener(toggle);
-            toggle.syncState();
+        drawerLayout.addDrawerListener(toggle);
+        toggle.syncState();
 
         // Uygulama ilk başladığında HomeFragment'ı yükle
         if (savedInstanceState == null){

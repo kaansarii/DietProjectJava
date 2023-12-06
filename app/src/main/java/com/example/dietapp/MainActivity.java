@@ -70,9 +70,9 @@ public class MainActivity extends AppCompatActivity {
                         if (response.isSuccessful()) {
                             // Başarılı bir şekilde cevap alındı, başarı mesajını göster
                             Toast.makeText(MainActivity.this, "Kayıt Başarılı", Toast.LENGTH_LONG).show();
-                            Intent intent = new Intent(MainActivity.this, NavigationDrawer.class);
-                            MainActivity.this.startActivity(intent);
-                            MainActivity.this.finish();
+                            Intent intent = new Intent(MainActivity.this, BmiCalculator.class);
+                            startActivity(intent);
+                            finish();
                         } else {
                             // Başarısız cevap alındı, hata durumunu göster
                             String errorMessage = "Error: " + response.code() + " " + response.message();
@@ -90,7 +90,7 @@ public class MainActivity extends AppCompatActivity {
 
                     @Override
                     public void onFailure(Call<Void> call, Throwable t) {
-
+                        Toast.makeText(MainActivity.this, t.getMessage(), Toast.LENGTH_LONG).show();
                     }
                 });
 
