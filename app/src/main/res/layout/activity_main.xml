@@ -50,34 +50,12 @@
 
 
     <TextView
-        android:id="@+id/textViewUserName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/editTextEmail"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="25dp"
-        android:text="KULLANICI ADI"
-
-        android:textColor="#000000"
-        android:textSize="18sp" />
-
-    <EditText
-        android:id="@+id/editTextUserName"
-        android:layout_width="381dp"
-        android:layout_height="57dp"
-        android:layout_below="@+id/editTextEmail"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="54dp"
-        android:background="@drawable/edittextbackground"
-        android:hint="Kullanıcı Adınızı Giriniz" />
-
-    <TextView
         android:id="@+id/textViewPassword"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/editTextUserName"
+        android:layout_below="@+id/textViewEmail"
         android:layout_alignParentStart="true"
-        android:layout_marginTop="25dp"
+        android:layout_marginTop="100dp"
         android:text="ŞİFRE"
         android:textColor="#000000"
         android:textSize="18sp" />
@@ -86,9 +64,10 @@
         android:id="@+id/editTextPassword"
         android:layout_width="match_parent"
         android:layout_height="57dp"
-        android:layout_below="@+id/editTextUserName"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="54dp"
+        android:layout_below="@+id/textViewEmail"
+        android:layout_alignParentStart="true"
+        android:layout_centerVertical="true"
+        android:layout_marginTop="128dp"
         android:background="@drawable/edittextbackground"
         android:hint="Şifrenizi Giriniz"
         android:inputType="textPassword" />
@@ -99,7 +78,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/editTextPassword"
         android:layout_alignParentStart="true"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="70dp"
         android:background="@drawable/buttonbackground"
         android:backgroundTint="#000000"
         android:text="GİRİŞ YAP"
@@ -111,7 +90,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/editTextPassword"
         android:layout_alignParentEnd="true"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="70dp"
         android:background="@drawable/buttonbackground"
         android:backgroundTint="#000000"
         android:text="KAYIT OL"
