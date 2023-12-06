@@ -23,7 +23,7 @@ import androidx.core.content.ContextCompat;
 
 public class MainActivity extends AppCompatActivity {
 
-    private EditText editTextEmail, editTextPassword,editTextUserName;
+    private EditText editTextEmail, editTextPassword;
     private Button buttonLogin, buttonLoginRegister, buttonImageChange;
     private TextView textViewEmail,textViewPassword;
     private ImageView profileImageView;
@@ -39,7 +39,6 @@ public class MainActivity extends AppCompatActivity {
 
         EditText editTextEmail = (EditText) findViewById(R.id.editTextEmail);
         EditText editTextPassword = (EditText) findViewById(R.id.editTextPassword);
-        EditText editTextUserName =(EditText) findViewById(R.id.editTextUserName);
         TextView textViewEmail = (TextView) findViewById(R.id.textViewEmail);
         TextView textViewPassword = (TextView) findViewById(R.id.textViewPassword);
         ImageView profileImageView = findViewById(R.id.profileImageView);
@@ -53,10 +52,9 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 String email = editTextEmail.getText().toString();
                 String password = editTextPassword.getText().toString();
-                String userName = editTextUserName.getText().toString();
 
                 //BURASI GEÇİÇİ,  NAVİGATİON'U DENEMEK İÇİN YAPTIM
-                if (email.equals("kaan@mail") && password.equals("123") && userName.equals("umutcan")) {
+                if (email.equals("kaan@mail") && password.equals("123")) {
                     Intent intent = new Intent(MainActivity.this, NavigationDrawer.class);
                     startActivity(intent);
                     finish();
