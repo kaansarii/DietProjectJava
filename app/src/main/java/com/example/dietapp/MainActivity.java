@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -70,9 +71,15 @@ public class MainActivity extends AppCompatActivity {
                         if (response.isSuccessful()) {
                             // Başarılı bir şekilde cevap alındı, başarı mesajını göster
                             Toast.makeText(MainActivity.this, "Kayıt Başarılı", Toast.LENGTH_LONG).show();
-                            Intent intent = new Intent(MainActivity.this, BmiCalculator.class);
-                            startActivity(intent);
-                            finish();
+                            try {
+                                Intent intent = new Intent(MainActivity.this,NavigationDrawer.class);
+                                startActivity(intent);
+
+                            }catch (Exception e){
+                                e.printStackTrace();
+                                Log.e("TAG", "Exception: " + e.getMessage());
+                            }
+
                         } else {
                             // Başarısız cevap alındı, hata durumunu göster
                             String errorMessage = "Error: " + response.code() + " " + response.message();
