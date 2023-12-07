@@ -11,9 +11,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.widget.Toast;
-import android.annotation.SuppressLint;
-
-
 import com.google.android.material.navigation.NavigationView;
 
 public class NavigationDrawer extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
@@ -60,18 +57,14 @@ public class NavigationDrawer extends AppCompatActivity implements NavigationVie
         else if (itemId == R.id.nav_settings) {
             getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new SettingsFragment()).commit();
         }
-        else if (itemId == R.id.nav_share) {
-            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new ShareFragment()).commit();
+        else if (itemId == R.id.nav_bmi) {
+            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new BmiFragment()).commit();
         }
         else if (itemId == R.id.nav_about) {
             getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new AboutFragment()).commit();
         }
-        //BMI SAYFASINA GİTMEYİ SAĞLIYOR
-        else if (itemId == R.id.nav_bmi) {
-            Intent intent = new Intent(this, BmiCalculator.class);
-            startActivity(intent);
 
-        }
+
         // Eğer Çıkış yaparsa MainActivity'ye geçiş yap
         else if (itemId == R.id.nav_logout) {
             Intent intent = new Intent(NavigationDrawer.this, MainActivity.class);

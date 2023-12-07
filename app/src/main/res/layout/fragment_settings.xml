@@ -4,19 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".SettingsFragment">
+    tools:context=".SettingsFragment"
+    android:background="@drawable/backgroundcolorblue">
 
     <!-- TODO: Update blank fragment layout -->
 
-    <Button
-        android:id="@+id/changeThemeButton"
-        android:layout_width="372dp"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginStart="23dp"
-        android:layout_marginTop="90dp"
-        android:text="Change Theme" />
 
 </RelativeLayout>
