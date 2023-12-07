@@ -34,7 +34,7 @@ import retrofit2.Response;
 public class MainActivity extends AppCompatActivity {
 
     private EditText editTextEmail, editTextPassword;
-    private Button buttonLogin, buttonLoginRegister, buttonImageChange;
+    private Button buttonLogin, buttonLoginRegister, buttonImageChange, geciciGiris;
     private TextView textViewEmail,textViewPassword;
     private ImageView profileImageView;
     static final int SELECT_IMAGE=12; //görsel değişimi için yaptım
@@ -53,7 +53,7 @@ public class MainActivity extends AppCompatActivity {
         TextView textViewPassword = (TextView) findViewById(R.id.textViewPassword);
         ImageView profileImageView = findViewById(R.id.profileImageView);
         Button buttonImageChange = (Button) findViewById(R.id.buttonImageChange);
-
+        Button geciciGiris = (Button) findViewById(R.id.geciciGiris);
 
 
         Button buttonLogin = (Button) findViewById(R.id.buttonLogin);
@@ -101,6 +101,13 @@ public class MainActivity extends AppCompatActivity {
                     }
                 });
 
+            }
+        });
+        geciciGiris.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this,NavigationDrawer.class);
+                startActivity(intent);
             }
         });
         Button buttonLoginRegister = (Button) findViewById(R.id.buttonLoginRegister);
