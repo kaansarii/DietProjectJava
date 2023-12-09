@@ -69,6 +69,20 @@ public class BmiFragment extends Fragment {
 
                     float bmiIndex = weight / (height * height);
 
+                    if (height % 1 == 0) {
+                        Toast.makeText(getContext(), "Lütfen boyunuzu ondalık bir sayı olarak girin (örn. 1.90).", Toast.LENGTH_SHORT).show();
+                        return;
+                    }
+                    //yaş sınırı koydum
+                    if (ageYear < 0 || ageYear > 100) {
+                        Toast.makeText(getContext(), "Lütfen geçerli bir yaş girin.", Toast.LENGTH_SHORT).show();
+                        return;
+                    }
+                    //kilo sınır koydum
+                    if (weight <= 45) {
+                        Toast.makeText(getContext(), "Lütfen kilonuzu doğru girin.", Toast.LENGTH_SHORT).show();
+                        return;
+                    }
 
                     //virgülden sonra en fazla iki rakam olsun diye yaptım
                     DecimalFormat df2 = new DecimalFormat("#.##");
@@ -87,6 +101,7 @@ public class BmiFragment extends Fragment {
                     //burda hedef seçiyoruz; kilo al,koru,ver
                     int selectedPurposeId = radioGroupPurpose.getCheckedRadioButtonId();
                     double calorieMultiplier = 0;
+
                     if (selectedPurposeId == -1) {
                         Toast.makeText(getContext(), "Kalorinizin hesaplanabilmesi için Lütfen bir hedef seçin", Toast.LENGTH_SHORT).show();
                     }
@@ -95,6 +110,7 @@ public class BmiFragment extends Fragment {
                     if (selectedPurposeId == radioLoseWeight.getId()) {
                         // Kilo verme durumu
                         calorieMultiplier = 0.72;
+
                     } else if (selectedPurposeId == radioGainWeight.getId()) {
                         // Kilo alma durumu
                         calorieMultiplier = 1.28;
@@ -112,8 +128,8 @@ public class BmiFragment extends Fragment {
 
                     if (selectedGenderId == -1) {
                         Toast.makeText(getContext(), "Lütfen kcal ve makroların hesaplanabilmesi için bir cinsiyet seçin", Toast.LENGTH_SHORT).show();
+                        return;
                     }
-
 
 
                     //Protein Hedefi (gram): 1.6-2.2 gram/kg * kilo    1.9 aldım
@@ -123,29 +139,95 @@ public class BmiFragment extends Fragment {
                     //1g protein: 4 kalori
                     //1g karbonhidrat: 4 kalori
                     //1g yağ: 9 kalori
-                    double protein = weight * 1.9;
-                    double fat = weight * 0.30;
-                    double carbohydrateMale = (bmrMale - (protein + fat)) / 9;    //kcal'in kalan kısmını karbonhidrat alacağımız için böyle bir işlem yaptım alınması gereken kaloriden diğer iki makronun gramını çıkarıp böldüm böylece karbonhidratında makrosunu elde ettim
-                    double carbohydrateFemale = (bmrMale - (protein + fat)) / 9;    //kcal'in kalan kısmını karbonhidrat alacağımız için böyle bir işlem yaptım
+                    double proteinMaleLose = weight * 1.95;
+                    double proteinMaleGain = weight * 1.85;
+                    double proteinMaleMain = weight * 1.9;
+
+                    double proteinFemaleLose = weight * 1.72;
+                    double proteinFemaleGain = weight * 1.62;
+                    double proteinFemaleMain = weight * 1.7;
+
+                    double fatMaleLose = weight * 0.20;
+                    double fatMaleGain = weight * 0.35;
+                    double fatMaleMain = weight * 0.25;
+
+                    double fatFemaleLose = weight * 0.18;
+                    double fatFemaleGain = weight * 0.30;
+                    double fatFemaleMain = weight * 0.23;
+
+                    double carbohydrateMaleLose = (bmrMale - (proteinMaleLose + fatMaleLose)) / 9;    //kcal'in kalan kısmını karbonhidrat alacağımız için böyle bir işlem yaptım alınması gereken kaloriden diğer iki makronun gramını çıkarıp böldüm böylece karbonhidratında makrosunu elde ettim
+                    double carbohydrateMaleGain = (bmrMale - (proteinMaleGain + fatMaleGain)) / 9;    //kcal'in kalan kısmını karbonhidrat alacağımız için böyle bir işlem yaptım alınması gereken kaloriden diğer iki makronun gramını çıkarıp böldüm böylece karbonhidratında makrosunu elde ettim
+                    double carbohydrateMaleMain = (bmrMale - (proteinMaleMain + fatMaleMain)) / 9;    //kcal'in kalan kısmını karbonhidrat alacağımız için böyle bir işlem yaptım alınması gereken kaloriden diğer iki makronun gramını çıkarıp böldüm böylece karbonhidratında makrosunu elde ettim
+                    double carbohydrateFemaleLose = (bmrMale - (proteinFemaleLose + fatFemaleLose)) / 9;    //kcal'in kalan kısmını karbonhidrat alacağımız için böyle bir işlem yaptım
+                    double carbohydrateFemaleGain = (bmrMale - (proteinFemaleGain + fatFemaleGain)) / 9;    //kcal'in kalan kısmını karbonhidrat alacağımız için böyle bir işlem yaptım
+                    double carbohydrateFemaleMain = (bmrMale - (proteinFemaleMain + fatFemaleMain)) / 9;    //kcal'in kalan kısmını karbonhidrat alacağımız için böyle bir işlem yaptım
 
                     //virgülden sonra en fazla iki rakam olsun diye yaptım
                     DecimalFormat df = new DecimalFormat("#.##");
-                    String endProtein = df.format(protein);
-                    String endFat = df.format(fat);
-                    String endCarbohydrateMale = df.format(carbohydrateMale);
-                    String endCarbohydrateFemale = df.format(carbohydrateFemale);
+                    String endProteinMaleLose = df.format(proteinMaleLose);
+                    String endProteinMaleGain = df.format(proteinMaleGain);
+                    String endProteinMaleMain = df.format(proteinMaleMain);
+
+                    String endProteinFemaleLose = df.format(proteinFemaleLose);
+                    String endProteinFemaleGain = df.format(proteinFemaleGain);
+                    String endProteinFemaleMain = df.format(proteinFemaleMain);
+
+                    String endFatMaleLose = df.format(fatMaleLose);
+                    String endFatMaleGain = df.format(fatMaleGain);
+                    String endFatMaleMain = df.format(fatMaleMain);
+
+                    String endFatFemaleLose = df.format(fatFemaleLose);
+                    String endFatFemaleGain = df.format(fatFemaleGain);
+                    String endFatFemaleMain = df.format(fatFemaleMain);
+
+                    String endCarbohydrateMaleLose = df.format(carbohydrateMaleLose);
+                    String endCarbohydrateMaleGain = df.format(carbohydrateMaleGain);
+                    String endCarbohydrateMaleMain = df.format(carbohydrateMaleMain);
+
+                    String endCarbohydrateFemaleLose = df.format(carbohydrateFemaleLose);
+                    String endCarbohydrateFemaleGain = df.format(carbohydrateFemaleGain);
+                    String endCarbohydrateFemaleMain = df.format(carbohydrateFemaleMain);
                     String endBmrFemale = df.format(bmrFemale);
                     String endBmrMale = df.format(bmrMale);
 
 
-                    //cinsiyet durumuna göre alınması gereken kcal değişiyor
-                    if (selectedGenderId == radioButtonMale.getId()) {
-                        textCal.setText("Calorie's\n " + endBmrMale);
-                        textMakro.setText("Carb: " + endCarbohydrateMale + "\nProtein: " + endProtein + "\nFat: " + endFat);
-                    } else if (selectedGenderId == radioButtonFemale.getId()) {
+                    if (selectedPurposeId == radioLoseWeight.getId()) {
+                        //Kilo verme durumu
+                        //cinsiyet durumuna göre alınması gereken kcal değişiyor
+                        if (selectedGenderId == radioButtonMale.getId()) {
+                            textCal.setText("Calorie's\n " + endBmrMale);
+                            textMakro.setText("Carb: " + endCarbohydrateMaleLose + "\nProtein: " + endProteinMaleLose + "\nFat: " + endFatMaleLose);
+                        }
+                     else if (selectedGenderId == radioButtonFemale.getId()) {
                         textCal.setText("Calorie's " + endBmrFemale);
-                        textMakro.setText("Carb: " + endCarbohydrateFemale + "\nProtein: " + endProtein + "\nFat: " + endFat);
+                        textMakro.setText("Carb: " + endCarbohydrateFemaleLose + "\nProtein: " + endProteinFemaleLose + "\nFat: " + endFatFemaleLose);
                     }
+
+
+                    } else if (selectedPurposeId == radioGainWeight.getId()) {
+                        // Kilo alma durumu
+                        //cinsiyet durumuna göre alınması gereken kcal değişiyor
+                        if (selectedGenderId == radioButtonMale.getId()) {
+                            textCal.setText("Calorie's\n " + endBmrMale);
+                            textMakro.setText("Carb: " + endCarbohydrateMaleGain + "\nProtein: " + endProteinMaleGain + "\nFat: " + endFatMaleGain);
+                        } else if (selectedGenderId == radioButtonFemale.getId()) {
+                            textCal.setText("Calorie's " + endBmrFemale);
+                            textMakro.setText("Carb: " + endCarbohydrateFemaleGain + "\nProtein: " + endProteinFemaleGain + "\nFat: " + endFatFemaleGain);
+                        }
+
+
+                    } else if (selectedPurposeId == radioMaintainWeight.getId()) {
+                        // Kilo koruma durumu
+                        //cinsiyet durumuna göre alınması gereken kcal değişiyor
+                        if (selectedGenderId == radioButtonMale.getId()) {
+                            textCal.setText("Calorie's\n " + endBmrMale);
+                            textMakro.setText("Carb: " + endCarbohydrateMaleMain + "\nProtein: " + endProteinMaleMain + "\nFat: " + endFatMaleMain);
+                        } else if (selectedGenderId == radioButtonFemale.getId()) {
+                            textCal.setText("Calorie's " + endBmrFemale);
+                            textMakro.setText("Carb: " + endCarbohydrateFemaleMain + "\nProtein: " + endProteinFemaleMain + "\nFat: " + endFatFemaleMain);
+                        }
+                    }
+
 
                 } else {
                     textBmi.setText("Please Input All Box");

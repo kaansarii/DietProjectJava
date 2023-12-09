@@ -101,7 +101,7 @@
                             android:layout_width="65dp"
                             android:layout_height="70dp"
                             android:button="@android:color/transparent"
-                            android:background="@drawable/male"
+                            android:background="@drawable/malegenderbody"
                             android:visibility="visible"
                             android:layout_marginLeft="10dp"
                             android:layout_marginRight="35dp"
@@ -113,7 +113,7 @@
                             android:layout_width="65dp"
                             android:layout_height="70dp"
                             android:button="@android:color/transparent"
-                            android:background="@drawable/female"
+                            android:background="@drawable/femalegenderbody"
                             android:visibility="visible"
                             />
                         <!--radiobuttondaki tik işareti gözükmesin diye transparent yaptım -->

@@ -128,7 +128,7 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void onActivityResult(Uri uri) {
                         profileImageView.setImageURI(uri);
-                    }
+                        }
                 });
 
         //. Bu buton tıklandığında galeriye gitmek için bir Intent oluşturulur ve galleryLauncher.launch("image/*") ile galeri başlatılır.
