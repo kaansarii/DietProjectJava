@@ -54,8 +54,8 @@ public class NavigationDrawer extends AppCompatActivity implements NavigationVie
         if (itemId == R.id.nav_home) {
             getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new HomeFragment()).commit();
         }
-        else if (itemId == R.id.nav_settings) {
-            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new SettingsFragment()).commit();
+        else if (itemId == R.id.nav_nutrients) {
+            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new NutrientsFragment()).commit();
         }
         else if (itemId == R.id.nav_bmi) {
             getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new BmiFragment()).commit();

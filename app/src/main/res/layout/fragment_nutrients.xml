@@ -1,0 +1,275 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".NutrientsFragment"
+    android:background="@drawable/backgroundcolorblue">
+
+
+    <!-- Üst kısımdaki dört ayrılmış tablo -->
+    <LinearLayout
+        android:id="@+id/macrosLayout"
+        android:layout_marginTop="45dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:orientation="horizontal"
+        android:padding="20dp"
+        android:background="#ffffff"
+        android:elevation="4dp">
+
+        <!-- Karbonhidrat -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:gravity="center_horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Karbonhidrat"
+                android:textStyle="bold"
+                android:textColor="#333333" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="200gr"
+                android:textStyle="bold"
+                android:layout_marginTop="14dp"
+                android:textColor="#333333" />
+        </LinearLayout>
+
+        <!-- Protein -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:gravity="center_horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Protein"
+                android:textStyle="bold"
+                android:textColor="#333333" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="200gr"
+                android:textStyle="bold"
+                android:layout_marginTop="14dp"
+
+                android:textColor="#333333" />
+
+        </LinearLayout>
+
+        <!-- Yağ -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:gravity="center_horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Yağ"
+                android:textStyle="bold"
+                android:textColor="#333333" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="200gr"
+                android:textStyle="bold"
+                android:layout_marginTop="14dp"
+
+                android:textColor="#333333" />
+        </LinearLayout>
+
+        <!-- Kalori -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:gravity="center_horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Kalori"
+                android:textStyle="bold"
+                android:textColor="#333333" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="2500kcal"
+                android:textStyle="bold"
+                android:layout_marginTop="14dp"
+                android:textColor="#333333" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <!-- Alt kısımdaki günün öğünleri ve toplam sonuçlar -->
+    <LinearLayout
+        android:id="@+id/mealsLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/macrosLayout"
+        android:orientation="vertical"
+        android:padding="16dp"
+        android:background="#ffffff"
+        android:elevation="4dp"
+        android:layout_marginTop="46dp">
+
+        <!-- Sabah Öğünü -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center_vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Sabah Öğünü"
+                android:textStyle="bold"
+                android:textColor="#333333"
+                android:layout_marginBottom="8dp" />
+
+            <!-- Besinleri göstermek için bir liste -->
+            <ListView
+                android:id="@+id/listBreakfast"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:divider="@android:color/darker_gray"
+                android:dividerHeight="1dp"
+                android:background="#ffffff"
+                android:layout_marginBottom="16dp"/>
+
+            <!-- Toplam Sonuçlar -->
+            <TextView
+                android:id="@+id/totalBreakfast"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Toplam: 0 Kalori"
+                android:textStyle="bold"
+                android:textColor="#333333" />
+
+            <!-- Besin eklemek için buton -->
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="+"
+                android:backgroundTint="#009688"
+                android:background="@drawable/backgroundcolorblue"
+                android:textColor="#ffffff"
+                android:layout_gravity="end"
+                android:layout_marginTop="8dp" />
+        </LinearLayout>
+
+        <!-- Öğle Öğünü -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center_vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Öğle Öğünü"
+                android:textStyle="bold"
+                android:textColor="#333333"
+                android:layout_marginBottom="8dp" />
+
+            <!-- Besinleri göstermek için bir liste -->
+            <ListView
+                android:id="@+id/listLunch"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:divider="@android:color/darker_gray"
+                android:dividerHeight="1dp"
+                android:background="#ffffff"
+                android:layout_marginBottom="16dp"/>
+
+            <!-- Toplam Sonuçlar -->
+            <TextView
+                android:id="@+id/totalLunch"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Toplam: 0 Kalori"
+                android:textStyle="bold"
+                android:textColor="#333333" />
+
+            <!-- Besin eklemek için buton -->
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="+"
+                android:backgroundTint="#009688"
+                android:textColor="#ffffff"
+                android:layout_gravity="end"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/backgroundcolorblue"
+                />
+        </LinearLayout>
+
+        <!-- Akşam Öğünü -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center_vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Akşam Öğünü"
+                android:textStyle="bold"
+                android:textColor="#333333"
+                android:layout_marginBottom="8dp" />
+
+            <!-- Besinleri göstermek için bir liste -->
+            <ListView
+                android:id="@+id/listDinner"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:divider="@android:color/darker_gray"
+                android:dividerHeight="1dp"
+                android:background="#ffffff"
+                android:layout_marginBottom="16dp"/>
+
+            <!-- Toplam Sonuçlar -->
+            <TextView
+                android:id="@+id/totalDinner"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Toplam: 0 Kalori"
+                android:textStyle="bold"
+                android:textColor="#333333" />
+
+            <!-- Besin eklemek için buton -->
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="+"
+                android:backgroundTint="#009688"
+                android:textColor="#ffffff"
+                android:layout_gravity="end"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/backgroundcolorblue"
+                />
+        </LinearLayout>
+    </LinearLayout>
+
+</RelativeLayout>

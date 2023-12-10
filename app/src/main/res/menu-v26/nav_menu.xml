@@ -13,9 +13,9 @@
             android:title="Home"/>
 
         <item
-            android:id="@+id/nav_settings"
-            android:icon="@drawable/nav_settings"
-            android:title="Settings"/>
+            android:id="@+id/nav_nutrients"
+            android:icon="@drawable/baseline_food_bank_24"
+            android:title="Nutrients"/>
 
         <item
             android:id="@+id/nav_bmi"
