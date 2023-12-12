@@ -48,7 +48,11 @@ public class BmiFragment extends Fragment {
         radioLoseWeight = rootView.findViewById(R.id.radioLoseWeight);
         radioMaintainWeight = rootView.findViewById(R.id.radioMaintainWeight);
         radioGainWeight = rootView.findViewById(R.id.radioGainWeight);
+        Bundle bundle = getArguments();
 
+            int userId = bundle.getInt("UserId");
+
+            System.out.println(userId);
 
         calculateButton.setOnClickListener(new View.OnClickListener() {
             @SuppressLint("SetTextI18n")

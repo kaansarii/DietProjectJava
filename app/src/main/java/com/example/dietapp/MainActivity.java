@@ -23,6 +23,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 
 import com.example.dietapp.dtos.LoginDto;
+import com.example.dietapp.dtos.LoginResponse;
+import com.example.dietapp.dtos.UserIdDto;
 import com.example.dietapp.interfaces.ILogin;
 
 import java.io.IOException;
@@ -64,15 +66,24 @@ public class MainActivity extends AppCompatActivity {
                 String password = editTextPassword.getText().toString();
                 ILogin iLogin = RetrofitClient.getRetrofitInstance().create(ILogin.class);
                 LoginDto loginDto = new LoginDto(email,password);
-                Call<Void> call = iLogin.loginUser(loginDto);
-                call.enqueue(new Callback<Void>() {
+                Call<LoginResponse> call = iLogin.loginUser(loginDto);
+                call.enqueue(new Callback<LoginResponse>() {
                     @Override
-                    public void onResponse(Call<Void> call, Response<Void> response) {
+                    public void onResponse(Call<LoginResponse> call, Response<LoginResponse> response) {
                         if (response.isSuccessful()) {
                             // Başarılı bir şekilde cevap alındı, başarı mesajını göster
                             Toast.makeText(MainActivity.this, "Kayıt Başarılı", Toast.LENGTH_LONG).show();
                             try {
                                 Intent intent = new Intent(MainActivity.this,NavigationDrawer.class);
+                                //İd verisini api'dan almak için ilgili veriyi LoginResponse Modeline attım
+                                LoginResponse loginResponse = response.body();
+                                int id = loginResponse.getUserId(); //ilgili veriyi id değişkenine attım
+                                //
+                                Bundle bundle = new Bundle(); //aktiviteden fragment'e veri taşımak için kullanacağım
+                                bundle.putInt("UserId",id);
+                                BmiFragment bmiFragment = new BmiFragment();
+                                bmiFragment.setArguments(bundle);
+                               // getSupportFragmentManager().beginTransaction().replace(R.id.bmi_layout,bmiFragment).commit();
                                 startActivity(intent);
 
                             }catch (Exception e){
@@ -96,7 +107,7 @@ public class MainActivity extends AppCompatActivity {
                     }
 
                     @Override
-                    public void onFailure(Call<Void> call, Throwable t) {
+                    public void onFailure(Call<LoginResponse> call, Throwable t) {
                         Toast.makeText(MainActivity.this, t.getMessage(), Toast.LENGTH_LONG).show();
                     }
                 });
@@ -107,6 +118,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(MainActivity.this,NavigationDrawer.class);
+                intent.putExtra("userId",1);
                 startActivity(intent);
             }
         });

@@ -1,6 +1,7 @@
 package com.example.dietapp;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -24,12 +25,10 @@ public class HomeFragment extends Fragment {
     CardView calculateButton;
     RadioGroup radioGroupGender;
     RadioButton radioButtonMale, radioButtonFemale;
-
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_home, container, false);
-
         edCm = rootView.findViewById(R.id.edCm);
         edKg = rootView.findViewById(R.id.edKg);
         edAge = rootView.findViewById(R.id.edAge);
