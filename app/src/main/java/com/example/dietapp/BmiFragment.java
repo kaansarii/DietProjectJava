@@ -145,6 +145,7 @@ public class BmiFragment extends Fragment {
                     //1g protein: 4 kalori
                     //1g karbonhidrat: 4 kalori
                     //1g yağ: 9 kalori
+                    //hedeflere göre oranlar kişinin hedefine göre değişiyor
                     double proteinMaleLose = weight * 1.95;
                     double proteinMaleGain = weight * 1.85;
                     double proteinMaleMain = weight * 1.9;

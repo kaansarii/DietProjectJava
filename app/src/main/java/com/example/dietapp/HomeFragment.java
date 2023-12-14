@@ -362,24 +362,45 @@ public class HomeFragment extends Fragment {
                 }
 
             }
-            if (fark>=-10 && fark <=0){
-                double calorieMultiplier = 1.4;
-                double calculatedCalories = bmr * calorieMultiplier;
+            if (fark>=-10 && fark <=0) {
+                if (radioButtonMale.isChecked()) {
+                    double calorieMultiplier = 1.4;
+                    double calculatedCalories = bmr * calorieMultiplier;
 
-                double proteinRatio = 2.4;
-                double carbohydrateRatio = 3.9;
-                double fatRatio = 1.4;
+                    double proteinRatio = 2.4;
+                    double carbohydrateRatio = 3.9;
+                    double fatRatio = 1.4;
 
-                double calculatedProtein = destWeight * proteinRatio;
-                double calculatedCarbohydrate = destWeight * carbohydrateRatio;
-                double calculatedFat = destWeight * fatRatio;
+                    double calculatedProtein = destWeight * proteinRatio;
+                    double calculatedCarbohydrate = destWeight * carbohydrateRatio;
+                    double calculatedFat = destWeight * fatRatio;
 
-                DecimalFormat decimalFormat = new DecimalFormat("#.##");
+                    DecimalFormat decimalFormat = new DecimalFormat("#.##");
 
-                textCal.setText("Günlük Kalori: " + decimalFormat.format(calculatedCalories) + " kcal");
-                textProtein.setText("Protein: " + decimalFormat.format(calculatedProtein) + " g");
-                textCarbohydrate.setText("Karbonhidrat: " + decimalFormat.format(calculatedCarbohydrate) + " g");
-                textFat.setText("Yağ: " + decimalFormat.format(calculatedFat) + " g");
+                    textCal.setText("Günlük Kalori: " + decimalFormat.format(calculatedCalories) + " kcal");
+                    textProtein.setText("Protein: " + decimalFormat.format(calculatedProtein) + " g");
+                    textCarbohydrate.setText("Karbonhidrat: " + decimalFormat.format(calculatedCarbohydrate) + " g");
+                    textFat.setText("Yağ: " + decimalFormat.format(calculatedFat) + " g");
+                }
+                if (radioButtonFemale.isChecked()){
+                    double calorieMultiplier = 1.45;
+                    double calculatedCalories = bmr * calorieMultiplier;
+
+                    double proteinRatio = 2.35;
+                    double carbohydrateRatio = 3.85;
+                    double fatRatio = 1.3;
+
+                    double calculatedProtein = destWeight * proteinRatio;
+                    double calculatedCarbohydrate = destWeight * carbohydrateRatio;
+                    double calculatedFat = destWeight * fatRatio;
+
+                    DecimalFormat decimalFormat = new DecimalFormat("#.##");
+                    requestUserInformations(height,weight,destWeight,calculatedCalories,calculatedProtein,calculatedCarbohydrate,calculatedFat,"Kadın",age,appUserId);
+                    textCal.setText("Günlük Kalori: " + decimalFormat.format(calculatedCalories) + " kcal");
+                    textProtein.setText("Protein: " + decimalFormat.format(calculatedProtein) + " g");
+                    textCarbohydrate.setText("Karbonhidrat: " + decimalFormat.format(calculatedCarbohydrate) + " g");
+                    textFat.setText("Yağ: " + decimalFormat.format(calculatedFat) + " g");
+                }
             }
 
 

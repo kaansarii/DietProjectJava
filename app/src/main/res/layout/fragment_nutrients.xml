@@ -8,6 +8,8 @@
     android:background="@drawable/backgroundcolorblue">
 
 
+
+
     <!-- Üst kısımdaki dört ayrılmış tablo -->
     <LinearLayout
         android:id="@+id/macrosLayout"
@@ -135,6 +137,7 @@
         android:background="#ffffff"
         android:elevation="4dp"
         android:layout_marginTop="46dp">
+
 
         <!-- Sabah Öğünü -->
         <LinearLayout
