@@ -1,23 +1,24 @@
 package com.example.dietapp.dtos;
 
 public class UserInformationDto {
-    public double lengt;
+    public double length;
     public double weight;
     public double targetWeight;
     public double dailyCalorieRequirement;
     public double dailyProteinRequirement;
-    public double dailyCarbRequirement;
+    public double dailyCarbonhydrateRequirement
+;
     public double dailyFatRequirement;
     public String gender;
     public String age;
     public int appUserId;
 
-    public double getLengt() {
-        return lengt;
+    public double getlength() {
+        return length;
     }
 
-    public void setLengt(double lengt) {
-        this.lengt = lengt;
+    public void setlength(double length) {
+        this.length = length;
     }
 
     public double getWeight() {
@@ -52,12 +53,18 @@ public class UserInformationDto {
         this.dailyProteinRequirement = dailyProteinRequirement;
     }
 
-    public double getDailyCarbRequirement() {
-        return dailyCarbRequirement;
+    public double getdailyCarbonhydrateRequirement
+() {
+        return dailyCarbonhydrateRequirement
+;
     }
 
-    public void setDailyCarbRequirement(double dailyCarbRequirement) {
-        this.dailyCarbRequirement = dailyCarbRequirement;
+    public void setdailyCarbonhydrateRequirement
+(double dailyCarbonhydrateRequirement
+) {
+        this.dailyCarbonhydrateRequirement
+ = dailyCarbonhydrateRequirement
+;
     }
 
     public double getDailyFatRequirement() {
@@ -92,13 +99,16 @@ public class UserInformationDto {
         this.appUserId = appUserId;
     }
 
-    public UserInformationDto(double lengt, double weight, double targetWeight, double dailyCalorieRequirement, double dailyProteinRequirement, double dailyCarbRequirement, double dailyFatRequirement, String gender, String age, int appUserId) {
-        this.lengt = lengt;
+    public UserInformationDto(double length, double weight, double targetWeight, double dailyCalorieRequirement, double dailyProteinRequirement, double dailyCarbonhydrateRequirement
+, double dailyFatRequirement, String gender, String age, int appUserId) {
+        this.length = length;
         this.weight = weight;
         this.targetWeight = targetWeight;
         this.dailyCalorieRequirement = dailyCalorieRequirement;
         this.dailyProteinRequirement = dailyProteinRequirement;
-        this.dailyCarbRequirement = dailyCarbRequirement;
+        this.dailyCarbonhydrateRequirement
+ = dailyCarbonhydrateRequirement
+;
         this.dailyFatRequirement = dailyFatRequirement;
         this.gender = gender;
         this.age = age;

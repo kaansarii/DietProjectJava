@@ -376,7 +376,7 @@ public class HomeFragment extends Fragment {
                     double calculatedFat = destWeight * fatRatio;
 
                     DecimalFormat decimalFormat = new DecimalFormat("#.##");
-
+                    requestUserInformations(height,weight,destWeight,calculatedCalories,calculatedProtein,calculatedCarbohydrate,calculatedFat,"Erkek",age,appUserId);
                     textCal.setText("Günlük Kalori: " + decimalFormat.format(calculatedCalories) + " kcal");
                     textProtein.setText("Protein: " + decimalFormat.format(calculatedProtein) + " g");
                     textCarbohydrate.setText("Karbonhidrat: " + decimalFormat.format(calculatedCarbohydrate) + " g");
@@ -500,7 +500,12 @@ public class HomeFragment extends Fragment {
         call.enqueue(new Callback<Void>() {
             @Override
             public void onResponse(Call<Void> call, Response<Void> response) {
-                Toast.makeText(getContext(), "Veriler Başarıyla Gönderildi", Toast.LENGTH_LONG).show();
+              if(response.isSuccessful()){
+                  Toast.makeText(getContext(), "Kayıt Başarılı", Toast.LENGTH_LONG).show();
+              }else{
+                  String errorMessage = "Error: " + response.code() + " " + response.message();
+                  Toast.makeText(getContext(), errorMessage, Toast.LENGTH_LONG).show();
+              }
             }
 
             @Override
