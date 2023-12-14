@@ -15,5 +15,5 @@ public interface IRegister {
     @Headers("Content-Type:application/json; charset=UTF-8")
     @POST("api/Auth/register")
 
-     Call<Void> registerUser(@Body RegisterDto registerDto);
+    Call<Void> registerUser(@Body RegisterDto registerDto);
 }

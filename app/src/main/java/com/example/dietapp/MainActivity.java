@@ -76,7 +76,6 @@ public class MainActivity extends AppCompatActivity {
                                 SharedId sharedId = SharedId.getInstance();
                                 sharedId.setSharedData(id);
                                 Intent intent = new Intent(MainActivity.this,NavigationDrawer.class);
-                                intent.putExtra("UserId",id);
                                 startActivity(intent);
 
                             }catch (Exception e){

@@ -16,8 +16,14 @@ import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 
 import com.example.dietapp.dtos.SharedId;
+import com.example.dietapp.dtos.UserInformationDto;
+import com.example.dietapp.interfaces.IUserInformation;
 
 import java.text.DecimalFormat;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class HomeFragment extends Fragment {
 
@@ -26,6 +32,9 @@ public class HomeFragment extends Fragment {
     CardView calculateButton;
     RadioGroup radioGroupGender;
     RadioButton radioButtonMale, radioButtonFemale;
+    SharedId sharedId = SharedId.getInstance();
+    int appUserId = sharedId.getSharedData();
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -42,9 +51,6 @@ public class HomeFragment extends Fragment {
         radioGroupGender = rootView.findViewById(R.id.radioGroupGender);
         radioButtonMale = rootView.findViewById(R.id.radioButtonMale);
         radioButtonFemale = rootView.findViewById(R.id.radioButtonFemale);
-        SharedId sharedId = SharedId.getInstance();
-        int receiveData = sharedId.getSharedData();
-
         calculateButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -74,7 +80,7 @@ public class HomeFragment extends Fragment {
             double height = Double.parseDouble(cmStr);
             int ageYear = Integer.parseInt(ageStr);
             double destWeight = Double.parseDouble(kgDestStr);
-
+            String age = String.valueOf(ageYear);
 
             // Kullanıcıya boyunun ondalıklı bir sayı girmesini söyleyecek
             if (height%1==0){
@@ -102,7 +108,7 @@ public class HomeFragment extends Fragment {
             }
 
             //mevcut kilo ile hedefkilo farkı
-            double fark=weight - destWeight;
+            double fark = weight - destWeight;
 
             //aşağıdakiler hedefkilo ile şuanki kilo arasındaki farka göre kcal ve makrolar değişiyor ve cinsiyete göre
             if (fark<=10&&fark>=0){
@@ -119,7 +125,7 @@ public class HomeFragment extends Fragment {
                     double calculatedFat = destWeight * fatRatio;
 
                     DecimalFormat decimalFormat = new DecimalFormat("#.##");
-
+                    requestUserInformations(height,weight,destWeight,calculatedCalories,calculatedProtein,calculatedCarbohydrate,calculatedFat,"Erkek",age,appUserId); //api'a veri göndermemizi sağlayacak method
                     textCal.setText("Günlük Kalori: " + decimalFormat.format(calculatedCalories) + " kcal");
                     textProtein.setText("Protein: " + decimalFormat.format(calculatedProtein) + " g");
                     textCarbohydrate.setText("Karbonhidrat: " + decimalFormat.format(calculatedCarbohydrate) + " g");
@@ -138,7 +144,7 @@ public class HomeFragment extends Fragment {
                     double calculatedFat = destWeight * fatRatio;
 
                     DecimalFormat decimalFormat = new DecimalFormat("#.##");
-
+                    requestUserInformations(height,weight,destWeight,calculatedCalories,calculatedProtein,calculatedCarbohydrate,calculatedFat,"Kadın",age,appUserId);
                     textCal.setText("Günlük Kalori: " + decimalFormat.format(calculatedCalories) + " kcal");
                     textProtein.setText("Protein: " + decimalFormat.format(calculatedProtein) + " g");
                     textCarbohydrate.setText("Karbonhidrat: " + decimalFormat.format(calculatedCarbohydrate) + " g");
@@ -162,7 +168,7 @@ public class HomeFragment extends Fragment {
                     double calculatedFat = destWeight * fatRatio;
 
                     DecimalFormat decimalFormat = new DecimalFormat("#.##");
-
+                    requestUserInformations(height,weight,destWeight,calculatedCalories,calculatedProtein,calculatedCarbohydrate,calculatedFat,"Erkek",age,appUserId);
                     textCal.setText("Günlük Kalori: " + decimalFormat.format(calculatedCalories) + " kcal");
                     textProtein.setText("Protein: " + decimalFormat.format(calculatedProtein) + " g");
                     textCarbohydrate.setText("Karbonhidrat: " + decimalFormat.format(calculatedCarbohydrate) + " g");
@@ -181,7 +187,7 @@ public class HomeFragment extends Fragment {
                     double calculatedFat = destWeight * fatRatio;
 
                     DecimalFormat decimalFormat = new DecimalFormat("#.##");
-
+                    requestUserInformations(height,weight,destWeight,calculatedCalories,calculatedProtein,calculatedCarbohydrate,calculatedFat,"Kadın",age,appUserId);
                     textCal.setText("Günlük Kalori: " + decimalFormat.format(calculatedCalories) + " kcal");
                     textProtein.setText("Protein: " + decimalFormat.format(calculatedProtein) + " g");
                     textCarbohydrate.setText("Karbonhidrat: " + decimalFormat.format(calculatedCarbohydrate) + " g");
@@ -205,7 +211,7 @@ public class HomeFragment extends Fragment {
                     double calculatedFat = destWeight * fatRatio;
 
                     DecimalFormat decimalFormat = new DecimalFormat("#.##");
-
+                    requestUserInformations(height,weight,destWeight,calculatedCalories,calculatedProtein,calculatedCarbohydrate,calculatedFat,"Erkek",age,appUserId);
                     textCal.setText("Günlük Kalori: " + decimalFormat.format(calculatedCalories) + " kcal");
                     textProtein.setText("Protein: " + decimalFormat.format(calculatedProtein) + " g");
                     textCarbohydrate.setText("Karbonhidrat: " + decimalFormat.format(calculatedCarbohydrate) + " g");
@@ -224,7 +230,7 @@ public class HomeFragment extends Fragment {
                     double calculatedFat = destWeight * fatRatio;
 
                     DecimalFormat decimalFormat = new DecimalFormat("#.##");
-
+                    requestUserInformations(height,weight,destWeight,calculatedCalories,calculatedProtein,calculatedCarbohydrate,calculatedFat,"Kadın",age,appUserId);
                     textCal.setText("Günlük Kalori: " + decimalFormat.format(calculatedCalories) + " kcal");
                     textProtein.setText("Protein: " + decimalFormat.format(calculatedProtein) + " g");
                     textCarbohydrate.setText("Karbonhidrat: " + decimalFormat.format(calculatedCarbohydrate) + " g");
@@ -245,7 +251,7 @@ public class HomeFragment extends Fragment {
                     double calculatedFat = destWeight * fatRatio;
 
                     DecimalFormat decimalFormat = new DecimalFormat("#.##");
-
+                    requestUserInformations(height,weight,destWeight,calculatedCalories,calculatedProtein,calculatedCarbohydrate,calculatedFat,"Erkek",age,appUserId);
                     textCal.setText("Günlük Kalori: " + decimalFormat.format(calculatedCalories) + " kcal");
                     textProtein.setText("Protein: " + decimalFormat.format(calculatedProtein) + " g");
                     textCarbohydrate.setText("Karbonhidrat: " + decimalFormat.format(calculatedCarbohydrate) + " g");
@@ -264,7 +270,7 @@ public class HomeFragment extends Fragment {
                     double calculatedFat = destWeight * fatRatio;
 
                     DecimalFormat decimalFormat = new DecimalFormat("#.##");
-
+                    requestUserInformations(height,weight,destWeight,calculatedCalories,calculatedProtein,calculatedCarbohydrate,calculatedFat,"Kadın",age,appUserId);
                     textCal.setText("Günlük Kalori: " + decimalFormat.format(calculatedCalories) + " kcal");
                     textProtein.setText("Protein: " + decimalFormat.format(calculatedProtein) + " g");
                     textCarbohydrate.setText("Karbonhidrat: " + decimalFormat.format(calculatedCarbohydrate) + " g");
@@ -286,7 +292,7 @@ public class HomeFragment extends Fragment {
                     double calculatedFat = destWeight * fatRatio;
 
                     DecimalFormat decimalFormat = new DecimalFormat("#.##");
-
+                    requestUserInformations(height,weight,destWeight,calculatedCalories,calculatedProtein,calculatedCarbohydrate,calculatedFat,"Erkek",age,appUserId);
                     textCal.setText("Günlük Kalori: " + decimalFormat.format(calculatedCalories) + " kcal");
                     textProtein.setText("Protein: " + decimalFormat.format(calculatedProtein) + " g");
                     textCarbohydrate.setText("Karbonhidrat: " + decimalFormat.format(calculatedCarbohydrate) + " g");
@@ -306,7 +312,7 @@ public class HomeFragment extends Fragment {
                     double calculatedFat = destWeight * fatRatio;
 
                     DecimalFormat decimalFormat = new DecimalFormat("#.##");
-
+                    requestUserInformations(height,weight,destWeight,calculatedCalories,calculatedProtein,calculatedCarbohydrate,calculatedFat,"Kadın",age,appUserId);
                     textCal.setText("Günlük Kalori: " + decimalFormat.format(calculatedCalories) + " kcal");
                     textProtein.setText("Protein: " + decimalFormat.format(calculatedProtein) + " g");
                     textCarbohydrate.setText("Karbonhidrat: " + decimalFormat.format(calculatedCarbohydrate) + " g");
@@ -328,7 +334,7 @@ public class HomeFragment extends Fragment {
                     double calculatedFat = destWeight * fatRatio;
 
                     DecimalFormat decimalFormat = new DecimalFormat("#.##");
-
+                    requestUserInformations(height,weight,destWeight,calculatedCalories,calculatedProtein,calculatedCarbohydrate,calculatedFat,"Erkek",age,appUserId);
                     textCal.setText("Günlük Kalori: " + decimalFormat.format(calculatedCalories) + " kcal");
                     textProtein.setText("Protein: " + decimalFormat.format(calculatedProtein) + " g");
                     textCarbohydrate.setText("Karbonhidrat: " + decimalFormat.format(calculatedCarbohydrate) + " g");
@@ -348,7 +354,7 @@ public class HomeFragment extends Fragment {
                     double calculatedFat = destWeight * fatRatio;
 
                     DecimalFormat decimalFormat = new DecimalFormat("#.##");
-
+                    requestUserInformations(height,weight,destWeight,calculatedCalories,calculatedProtein,calculatedCarbohydrate,calculatedFat,"Kadın",age,appUserId);
                     textCal.setText("Günlük Kalori: " + decimalFormat.format(calculatedCalories) + " kcal");
                     textProtein.setText("Protein: " + decimalFormat.format(calculatedProtein) + " g");
                     textCarbohydrate.setText("Karbonhidrat: " + decimalFormat.format(calculatedCarbohydrate) + " g");
@@ -391,7 +397,7 @@ public class HomeFragment extends Fragment {
                     double calculatedFat = destWeight * fatRatio;
 
                     DecimalFormat decimalFormat = new DecimalFormat("#.##");
-
+                    requestUserInformations(height,weight,destWeight,calculatedCalories,calculatedProtein,calculatedCarbohydrate,calculatedFat,"Erkek",age,appUserId);
                     textCal.setText("Günlük Kalori: " + decimalFormat.format(calculatedCalories) + " kcal");
                     textProtein.setText("Protein: " + decimalFormat.format(calculatedProtein) + " g");
                     textCarbohydrate.setText("Karbonhidrat: " + decimalFormat.format(calculatedCarbohydrate) + " g");
@@ -410,7 +416,7 @@ public class HomeFragment extends Fragment {
                     double calculatedFat = destWeight * fatRatio;
 
                     DecimalFormat decimalFormat = new DecimalFormat("#.##");
-
+                    requestUserInformations(height,weight,destWeight,calculatedCalories,calculatedProtein,calculatedCarbohydrate,calculatedFat,"Kadın",age,appUserId);
                     textCal.setText("Günlük Kalori: " + decimalFormat.format(calculatedCalories) + " kcal");
                     textProtein.setText("Protein: " + decimalFormat.format(calculatedProtein) + " g");
                     textCarbohydrate.setText("Karbonhidrat: " + decimalFormat.format(calculatedCarbohydrate) + " g");
@@ -434,7 +440,7 @@ public class HomeFragment extends Fragment {
 
                     //virgülden sonra iki basamak olsun diye yaptım
                     DecimalFormat decimalFormat = new DecimalFormat("#.##");
-
+                    requestUserInformations(height,weight,destWeight,calculatedCalories,calculatedProtein,calculatedCarbohydrate,calculatedFat,"Erkek",age,appUserId);
                     textCal.setText("Günlük Kalori: " + decimalFormat.format(calculatedCalories) + " kcal");
                     textProtein.setText("Protein: " + decimalFormat.format(calculatedProtein) + " g");
                     textCarbohydrate.setText("Karbonhidrat: " + decimalFormat.format(calculatedCarbohydrate) + " g");
@@ -454,7 +460,7 @@ public class HomeFragment extends Fragment {
 
                     //virgülden sonra iki basamak olsun diye yaptım
                     DecimalFormat decimalFormat = new DecimalFormat("#.##");
-
+                    requestUserInformations(height,weight,destWeight,calculatedCalories,calculatedProtein,calculatedCarbohydrate,calculatedFat,"Kadın",age,appUserId);
                     textCal.setText("Günlük Kalori: " + decimalFormat.format(calculatedCalories) + " kcal");
                     textProtein.setText("Protein: " + decimalFormat.format(calculatedProtein) + " g");
                     textCarbohydrate.setText("Karbonhidrat: " + decimalFormat.format(calculatedCarbohydrate) + " g");
@@ -465,6 +471,22 @@ public class HomeFragment extends Fragment {
         } catch (NumberFormatException e) {
             Toast.makeText(getContext(), "Geçersiz giriş. Lütfen sayısal değerler girin.", Toast.LENGTH_SHORT).show();
         }
+    }
+    private void requestUserInformations(double length, double weight, double targetWeight, double dailyCalorieRequirement, double dailyProteinRequirement, double dailyCarbRequirement, double dailyFatRequirement, String gender, String age, int appUserId){
+        UserInformationDto userInformationDto = new UserInformationDto(length,weight,targetWeight,dailyCalorieRequirement,dailyProteinRequirement,dailyCarbRequirement,dailyFatRequirement,gender,age,appUserId);
+        IUserInformation iUserInformation = RetrofitClient.getRetrofitInstance().create(IUserInformation.class);
+        Call<Void> call = iUserInformation.postUserInformations(userInformationDto);
+        call.enqueue(new Callback<Void>() {
+            @Override
+            public void onResponse(Call<Void> call, Response<Void> response) {
+                Toast.makeText(getContext(), "Veriler Başarıyla Gönderildi", Toast.LENGTH_LONG).show();
+            }
+
+            @Override
+            public void onFailure(Call<Void> call, Throwable t) {
+
+            }
+        });
     }
 }
 
