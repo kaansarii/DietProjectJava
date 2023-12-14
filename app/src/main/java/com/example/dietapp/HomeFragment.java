@@ -1,7 +1,6 @@
 package com.example.dietapp;
 
 import android.annotation.SuppressLint;
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,6 +14,8 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
+
+import com.example.dietapp.dtos.SharedId;
 
 import java.text.DecimalFormat;
 
@@ -41,6 +42,8 @@ public class HomeFragment extends Fragment {
         radioGroupGender = rootView.findViewById(R.id.radioGroupGender);
         radioButtonMale = rootView.findViewById(R.id.radioButtonMale);
         radioButtonFemale = rootView.findViewById(R.id.radioButtonFemale);
+        SharedId sharedId = SharedId.getInstance();
+        int receiveData = sharedId.getSharedData();
 
         calculateButton.setOnClickListener(new View.OnClickListener() {
             @Override

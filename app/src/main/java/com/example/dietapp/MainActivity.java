@@ -1,30 +1,24 @@
 package com.example.dietapp;
 
-import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.provider.MediaStore;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.content.Intent;
-import android.provider.MediaStore;
 import android.widget.Toast;
 
 import androidx.activity.result.ActivityResultCallback;
 import androidx.activity.result.ActivityResultLauncher;
-import androidx.activity.result.contract.ActivityResultContract;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.content.ContextCompat;
 
+import com.example.dietapp.dtos.SharedId;
 import com.example.dietapp.dtos.LoginDto;
 import com.example.dietapp.dtos.LoginResponse;
-import com.example.dietapp.dtos.UserIdDto;
 import com.example.dietapp.interfaces.ILogin;
 
 import java.io.IOException;
@@ -40,6 +34,7 @@ public class MainActivity extends AppCompatActivity {
     private TextView textViewEmail,textViewPassword;
     private ImageView profileImageView;
     static final int SELECT_IMAGE=12; //görsel değişimi için yaptım
+    BmiFragment bmiFragment;
     Uri imageUri;
 
     ActivityResultLauncher<String> galleryLauncher;
@@ -74,16 +69,14 @@ public class MainActivity extends AppCompatActivity {
                             // Başarılı bir şekilde cevap alındı, başarı mesajını göster
                             Toast.makeText(MainActivity.this, "Kayıt Başarılı", Toast.LENGTH_LONG).show();
                             try {
-                                Intent intent = new Intent(MainActivity.this,NavigationDrawer.class);
+
                                 //İd verisini api'dan almak için ilgili veriyi LoginResponse Modeline attım
                                 LoginResponse loginResponse = response.body();
                                 int id = loginResponse.getUserId(); //ilgili veriyi id değişkenine attım
-                                //
-                                Bundle bundle = new Bundle(); //aktiviteden fragment'e veri taşımak için kullanacağım
-                                bundle.putInt("UserId",id);
-                                BmiFragment bmiFragment = new BmiFragment();
-                                bmiFragment.setArguments(bundle);
-                               // getSupportFragmentManager().beginTransaction().replace(R.id.bmi_layout,bmiFragment).commit();
+                                SharedId sharedId = SharedId.getInstance();
+                                sharedId.setSharedData(id);
+                                Intent intent = new Intent(MainActivity.this,NavigationDrawer.class);
+                                intent.putExtra("UserId",id);
                                 startActivity(intent);
 
                             }catch (Exception e){

@@ -17,6 +17,8 @@ import androidx.annotation.Nullable;
 import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 
+import com.example.dietapp.dtos.SharedId;
+
 import java.text.DecimalFormat;
 
 public class BmiFragment extends Fragment {
@@ -28,6 +30,7 @@ public class BmiFragment extends Fragment {
     RadioButton radioButtonMale, radioButtonFemale;
     RadioGroup radioGroupPurpose;
     RadioButton radioLoseWeight, radioMaintainWeight, radioGainWeight;
+
 
     @Nullable
     @Override
@@ -48,17 +51,15 @@ public class BmiFragment extends Fragment {
         radioLoseWeight = rootView.findViewById(R.id.radioLoseWeight);
         radioMaintainWeight = rootView.findViewById(R.id.radioMaintainWeight);
         radioGainWeight = rootView.findViewById(R.id.radioGainWeight);
-        Bundle bundle = getArguments();
-
-            int userId = bundle.getInt("UserId");
-
-            System.out.println(userId);
+        SharedId sharedId = SharedId.getInstance();
+        int receiveData = sharedId.getSharedData();
+        String data = Integer.toString(receiveData);
 
         calculateButton.setOnClickListener(new View.OnClickListener() {
             @SuppressLint("SetTextI18n")
             @Override
             public void onClick(View view) {
-
+                Toast.makeText(getActivity(),data,Toast.LENGTH_LONG).show();
                 String kg = edKg.getText().toString();
                 String cm = edCm.getText().toString();
                 String age = edAge.getText().toString();
@@ -79,7 +80,8 @@ public class BmiFragment extends Fragment {
                     }
                     //yaş sınırı koydum
                     if (ageYear < 0 || ageYear > 100) {
-                        Toast.makeText(getContext(), "Lütfen geçerli bir yaş girin.", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getContext(),data,Toast.LENGTH_LONG).show();
+                        //Toast.makeText(getContext(), "Lütfen geçerli bir yaş girin.", Toast.LENGTH_SHORT).show();
                         return;
                     }
                     //kilo sınır koydum
@@ -243,4 +245,5 @@ public class BmiFragment extends Fragment {
         });
         return rootView;
             }
+
 }
