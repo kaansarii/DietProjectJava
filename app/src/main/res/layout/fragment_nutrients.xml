@@ -177,6 +177,7 @@
 
             <!-- Besin eklemek için buton -->
             <Button
+                android:id="@+id/breakfastButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="+"
@@ -224,6 +225,7 @@
 
             <!-- Besin eklemek için buton -->
             <Button
+                android:id="@+id/lunchButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="+"
@@ -272,6 +274,7 @@
 
             <!-- Besin eklemek için buton -->
             <Button
+                android:id="@+id/dinnerButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="+"

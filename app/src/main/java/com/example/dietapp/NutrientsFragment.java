@@ -57,8 +57,8 @@ public class NutrientsFragment extends Fragment {
 
             }
         });
-        return inflater.inflate(R.layout.fragment_nutrients, container, false);
-
+        //return inflater.inflate(R.layout.fragment_nutrients, container, false);
+        return rootView;
 
     }
 }
