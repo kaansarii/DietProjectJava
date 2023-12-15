@@ -1,17 +1,17 @@
 package com.example.dietapp.dtos;
 
 public class UserInformationDto {
-    public double length;
-    public double weight;
-    public double targetWeight;
-    public double dailyCalorieRequirement;
-    public double dailyProteinRequirement;
-    public double dailyCarbonhydrateRequirement
+    private double length;
+    private double weight;
+    private double targetWeight;
+    private double dailyCalorieRequirement;
+    private double dailyProteinRequirement;
+    private double dailyCarbonhydrateRequirement
 ;
-    public double dailyFatRequirement;
-    public String gender;
-    public String age;
-    public int appUserId;
+    private double dailyFatRequirement;
+    private String gender;
+    private String age;
+    private int appUserId;
 
     public double getlength() {
         return length;

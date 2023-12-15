@@ -86,7 +86,7 @@ public class MainActivity extends AppCompatActivity {
                         } else {
                             // Başarısız cevap alındı, hata durumunu göster
                             String errorMessage = "Error: " + response.code() + " " + response.message();
-                            Toast.makeText(MainActivity.this, errorMessage, Toast.LENGTH_LONG).show();
+                            Toast.makeText(MainActivity.this, "Kullanıcı Adı veya Şifreniz Yanlış", Toast.LENGTH_LONG).show();
 
                             // Server tarafından dönen detaylı hata mesajını almak için:
                             try {

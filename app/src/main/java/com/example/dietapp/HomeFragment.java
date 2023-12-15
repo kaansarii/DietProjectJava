@@ -501,7 +501,7 @@ public class HomeFragment extends Fragment {
             @Override
             public void onResponse(Call<Void> call, Response<Void> response) {
               if(response.isSuccessful()){
-                  Toast.makeText(getContext(), "Kayıt Başarılı", Toast.LENGTH_LONG).show();
+                  Toast.makeText(getContext(), "Bilgileriniz Başarıyla Eklenmiştir", Toast.LENGTH_LONG).show();
               }else{
                   String errorMessage = "Error: " + response.code() + " " + response.message();
                   Toast.makeText(getContext(), errorMessage, Toast.LENGTH_LONG).show();

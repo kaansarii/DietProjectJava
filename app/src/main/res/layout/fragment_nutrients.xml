@@ -37,13 +37,14 @@
                 android:background="@drawable/backgroundcolorblue"
                 android:textStyle="bold"
                 android:textColor="#333333" />
+
             <TextView
+                android:id="@+id/tVCarbNutrients"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:hint="200gr"
-                android:textStyle="bold"
                 android:layout_marginTop="14dp"
-                android:textColor="#333333" />
+                android:textColor="#333333"
+                android:textStyle="bold" />
         </LinearLayout>
 
         <!-- Protein -->
@@ -64,13 +65,13 @@
                 android:textColor="#333333" />
 
             <TextView
+                android:id="@+id/tVProteinNutrients"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:hint="200gr"
-                android:textStyle="bold"
                 android:layout_marginTop="14dp"
 
-                android:textColor="#333333" />
+                android:textColor="#333333"
+                android:textStyle="bold" />
 
         </LinearLayout>
 
@@ -91,13 +92,13 @@
                 android:textColor="#333333" />
 
             <TextView
+                android:id="@+id/tVFatNutrients"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:hint="200gr"
-                android:textStyle="bold"
                 android:layout_marginTop="14dp"
 
-                android:textColor="#333333" />
+                android:textColor="#333333"
+                android:textStyle="bold" />
         </LinearLayout>
 
         <!-- Kalori -->
@@ -117,12 +118,12 @@
                 android:textColor="#333333" />
 
             <TextView
+                android:id="@+id/tVCalNutrients"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:hint="2500kcal"
-                android:textStyle="bold"
                 android:layout_marginTop="14dp"
-                android:textColor="#333333" />
+                android:textColor="#333333"
+                android:textStyle="bold" />
         </LinearLayout>
     </LinearLayout>
 
