@@ -52,16 +52,16 @@ public class NavigationDrawer extends AppCompatActivity implements NavigationVie
 
         // Seçilen öğeye göre fragment değiştirme işlemleri
         if (itemId == R.id.nav_home) {
-            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new HomeFragment()).commit();
+            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new HomeFragment()).addToBackStack(null).commit();
         }
         else if (itemId == R.id.nav_nutrients) {
-            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new NutrientsFragment()).commit();
+            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new NutrientsFragment()).addToBackStack(null).commit();
         }
         else if (itemId == R.id.nav_bmi) {
-            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new BmiFragment()).commit();
+            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new BmiFragment()).addToBackStack(null).commit();
         }
-        else if (itemId == R.id.nav_about) {
-            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new AboutFragment()).commit();
+        else if (itemId == R.id.nav_counter) {
+            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new CounterFragment()).addToBackStack(null).commit();
         }
 
 

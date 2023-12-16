@@ -23,8 +23,8 @@
             android:title="Bmi And Kcal Calculate"/>
 
         <item
-            android:id="@+id/nav_about"
-            android:icon="@drawable/nav_about"
+            android:id="@+id/nav_counter"
+            android:icon="@drawable/baseline_timer_24"
             android:title="About"
             />
 

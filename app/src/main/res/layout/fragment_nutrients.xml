@@ -8,12 +8,164 @@
     android:background="@drawable/backgroundcolorblue">
 
 
-
-
-    <!-- Üst kısımdaki dört ayrılmış tablo -->
     <LinearLayout
+        android:id="@+id/dailyRecommendationLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="10dp">
+
+        <!-- Günlük Alınması Gerekenler Başlık -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Günlük Almanız Gereken Besin Değerleri"
+            android:textStyle="bold"
+            android:textSize="18sp"
+            android:textColor="#333333"
+            android:layout_gravity="center"
+            android:layout_marginBottom="16dp"/>
+
+        <!-- Macronutrients Layout -->
+        <LinearLayout
+            android:id="@+id/daymacrosLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:orientation="horizontal"
+            android:padding="20dp"
+            android:background="#ffffff"
+            android:elevation="4dp">
+
+            <!-- Karbonhidrat -->
+            <LinearLayout
+                android:id="@+id/carbLayout"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:gravity="center_horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Karbonhidrat"
+                    android:background="@drawable/backgroundcolorblue"
+                    android:textStyle="bold"
+                    android:textColor="#333333" />
+
+                <TextView
+                    android:id="@+id/daytVCarbNutrients"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="14dp"
+                    android:textColor="#333333"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <!-- Protein -->
+            <LinearLayout
+                android:id="@+id/proteinLayout"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:gravity="center_horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Protein"
+                    android:background="@drawable/backgroundcolorblue"
+                    android:textStyle="bold"
+                    android:textColor="#333333" />
+
+                <TextView
+                    android:id="@+id/daytVProteinNutrients"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="14dp"
+                    android:textColor="#333333"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+
+            <!-- Yağ -->
+            <LinearLayout
+                android:id="@+id/fatLayout"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:gravity="center_horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Yağ"
+                    android:background="@drawable/backgroundcolorblue"
+                    android:textStyle="bold"
+                    android:textColor="#333333" />
+
+                <TextView
+                    android:id="@+id/daytVFatNutrients"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="14dp"
+                    android:textColor="#333333"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <!-- Kalori -->
+            <LinearLayout
+                android:id="@+id/calLayout"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:gravity="center_horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Kalori"
+                    android:textStyle="bold"
+                    android:background="@drawable/backgroundcolorblue"
+                    android:textColor="#333333" />
+
+                <TextView
+                    android:id="@+id/daytVCalNutrients"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="14dp"
+                    android:textColor="#333333"
+                    android:textStyle="bold" />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:layout_marginTop="10dp">
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="167dp"
+        android:text="Bugün Almış Olduğunuz Toplam Besin Değerleri"
+        android:textColor="#333333"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+
+</LinearLayout>
+    <LinearLayout
+
         android:id="@+id/macrosLayout"
-        android:layout_marginTop="45dp"
+        android:layout_marginTop="220dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
@@ -21,6 +173,8 @@
         android:padding="20dp"
         android:background="#ffffff"
         android:elevation="4dp">
+
+
 
         <!-- Karbonhidrat -->
         <LinearLayout
@@ -127,6 +281,7 @@
         </LinearLayout>
     </LinearLayout>
 
+
     <!-- Alt kısımdaki günün öğünleri ve toplam sonuçlar -->
     <LinearLayout
         android:id="@+id/mealsLayout"
@@ -137,7 +292,7 @@
         android:padding="16dp"
         android:background="#ffffff"
         android:elevation="4dp"
-        android:layout_marginTop="46dp">
+        android:layout_marginTop="50dp">
 
 
         <!-- Sabah Öğünü -->
