@@ -494,7 +494,7 @@ public class HomeFragment extends Fragment {
         }
     }
     private void requestUserInformations(double length, double weight, double targetWeight, double dailyCalorieRequirement, double dailyProteinRequirement, double dailyCarbRequirement, double dailyFatRequirement, String gender, String age, int appUserId){
-        UserInformationDto userInformationDto = new UserInformationDto(length,weight,targetWeight,dailyCalorieRequirement,dailyProteinRequirement,dailyCarbRequirement,dailyFatRequirement,gender,age,appUserId);
+        UserInformationDto userInformationDto = new UserInformationDto(length,weight,targetWeight,dailyCalorieRequirement,dailyProteinRequirement,dailyCarbRequirement, 0, dailyFatRequirement,gender,age,appUserId);
         IUserInformation iUserInformation = RetrofitClient.getRetrofitInstance().create(IUserInformation.class);
         Call<Void> call = iUserInformation.postUserInformations(userInformationDto);
         call.enqueue(new Callback<Void>() {

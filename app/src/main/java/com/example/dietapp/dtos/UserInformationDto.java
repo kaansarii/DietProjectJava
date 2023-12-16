@@ -6,8 +6,33 @@ public class UserInformationDto {
     private double targetWeight;
     private double dailyCalorieRequirement;
     private double dailyProteinRequirement;
-    private double dailyCarbonhydrateRequirement
-;
+
+    public double getLength() {
+        return length;
+    }
+
+    public void setLength(double length) {
+        this.length = length;
+    }
+
+    public double getDailyCarbonhydrateRequirement() {
+        return dailyCarbonhydrateRequirement;
+    }
+
+    public void setDailyCarbonhydrateRequirement(double dailyCarbonhydrateRequirement) {
+        this.dailyCarbonhydrateRequirement = dailyCarbonhydrateRequirement;
+    }
+
+    public int getDietDay() {
+        return dietDay;
+    }
+
+    public void setDietDay(int dietDay) {
+        this.dietDay = dietDay;
+    }
+
+    private double dailyCarbonhydrateRequirement;
+    private  int dietDay;
     private double dailyFatRequirement;
     private String gender;
     private String age;
@@ -100,7 +125,7 @@ public class UserInformationDto {
     }
 
     public UserInformationDto(double length, double weight, double targetWeight, double dailyCalorieRequirement, double dailyProteinRequirement, double dailyCarbonhydrateRequirement
-, double dailyFatRequirement, String gender, String age, int appUserId) {
+, int dietDay, double dailyFatRequirement, String gender, String age, int appUserId) {
         this.length = length;
         this.weight = weight;
         this.targetWeight = targetWeight;
@@ -109,6 +134,7 @@ public class UserInformationDto {
         this.dailyCarbonhydrateRequirement
  = dailyCarbonhydrateRequirement
 ;
+        this.dietDay = dietDay;
         this.dailyFatRequirement = dailyFatRequirement;
         this.gender = gender;
         this.age = age;
