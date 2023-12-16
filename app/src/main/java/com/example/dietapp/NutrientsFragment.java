@@ -13,7 +13,9 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.dietapp.dtos.GetFoodDto;
 import com.example.dietapp.dtos.GetUserInformationDto;
+import com.example.dietapp.interfaces.IFood;
 import com.example.dietapp.interfaces.IUserInformation;
 import com.example.dietapp.dtos.SharedId;
 import java.text.DecimalFormat;
@@ -76,6 +78,7 @@ public class NutrientsFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 ArrayAdapter<String> adapter = new ArrayAdapter<>(getContext(), android.R.layout.simple_list_item_1, foods);
+                getFoodWithType("Kahvaltı");
                 listBreakfast.setAdapter(adapter);
             }
         });
@@ -83,6 +86,7 @@ public class NutrientsFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 ArrayAdapter<String> adapter = new ArrayAdapter<>(getContext(), android.R.layout.simple_list_item_1, foods);
+                getFoodWithType("Öğle Yemeği");
                 listLunch.setAdapter(adapter);
             }
         });
@@ -90,10 +94,31 @@ public class NutrientsFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 ArrayAdapter<String> adapter = new ArrayAdapter<>(getContext(), android.R.layout.simple_list_item_1, foods);
+                getFoodWithType("Akşam Yemeği");
                 listDinner.setAdapter(adapter);
             }
         });
         return rootView;
 
+    }
+    private void getFoodWithType(String type){
+        IFood food = RetrofitClient.getRetrofitInstance().create(IFood.class);
+        Call<List<GetFoodDto>> call = food.getFoodWithType(type);
+        call.enqueue(new Callback<List<GetFoodDto>>() {
+            @Override
+            public void onResponse(Call<List<GetFoodDto>> call, Response<List<GetFoodDto>> response) {
+                if(response.isSuccessful()){
+                    Toast.makeText(getContext(),"Başarılı",Toast.LENGTH_LONG).show();
+                }else{
+                    Toast.makeText(getContext(),"Başarısız",Toast.LENGTH_LONG).show();
+                }
+
+            }
+
+            @Override
+            public void onFailure(Call<List<GetFoodDto>> call, Throwable t) {
+                Toast.makeText(getContext(), t.getMessage(), Toast.LENGTH_LONG).show();
+            }
+        });
     }
 }
