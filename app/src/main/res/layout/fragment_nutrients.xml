@@ -1,12 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<RelativeLayout
+<ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".NutrientsFragment"
     android:background="@drawable/backgroundcolorblue">
+
+<RelativeLayout
+
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".NutrientsFragment"
+    android:background="@drawable/backgroundcolorblue">
+
 
 
     <LinearLayout
@@ -293,8 +301,7 @@
         android:padding="16dp"
         android:background="#ffffff"
         android:elevation="4dp"
-        android:layout_marginTop="50dp"
-        android:scrollbars="vertical">
+        android:layout_marginTop="50dp">
 
 
         <!-- Sabah Öğünü -->
@@ -313,18 +320,23 @@
                 android:background="@drawable/backgroundcolorblue"
                 android:layout_marginBottom="8dp" />
 
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/macrosLayout"
+                android:layout_marginTop="50dp">
             <!-- Besinleri göstermek için bir liste -->
-
-            <!-- Toplam Sonuçlar -->
             <ListView
                 android:id="@+id/listBreakfast"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="16dp"
-                android:background="#ffffff"
                 android:divider="@android:color/darker_gray"
-                android:dividerHeight="1dp" />
+                android:dividerHeight="1dp"
+                android:background="#ffffff"
+                android:layout_marginBottom="16dp"/>
+            </ScrollView>
 
+            <!-- Toplam Sonuçlar -->
             <TextView
                 android:id="@+id/totalBreakfast"
                 android:layout_width="wrap_content"
@@ -362,6 +374,11 @@
                 android:background="@drawable/backgroundcolorblue"
                 android:layout_marginBottom="8dp" />
 
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/macrosLayout"
+                android:layout_marginTop="50dp">
             <!-- Besinleri göstermek için bir liste -->
             <ListView
                 android:id="@+id/listLunch"
@@ -372,6 +389,7 @@
                 android:background="#ffffff"
                 android:layout_marginBottom="16dp"/>
 
+            </ScrollView>
             <!-- Toplam Sonuçlar -->
             <TextView
                 android:id="@+id/totalLunch"
@@ -412,6 +430,11 @@
                 android:layout_marginBottom="8dp" />
 
             <!-- Besinleri göstermek için bir liste -->
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/macrosLayout"
+                android:layout_marginTop="50dp">
             <ListView
                 android:id="@+id/listDinner"
                 android:layout_width="match_parent"
@@ -420,6 +443,7 @@
                 android:dividerHeight="1dp"
                 android:background="#ffffff"
                 android:layout_marginBottom="16dp"/>
+            </ScrollView>
 
             <!-- Toplam Sonuçlar -->
             <TextView
@@ -444,4 +468,6 @@
                 />
         </LinearLayout>
     </LinearLayout>
+
 </RelativeLayout>
+    </ScrollView>
