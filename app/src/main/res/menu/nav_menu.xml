@@ -2,7 +2,8 @@
 <menu
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:showIn = "navigation_view">
+    tools:showIn="navigation_view"
+    android:background="@drawable/whitebackground">
 
     <group
         android:checkableBehavior="single">
@@ -10,41 +11,60 @@
         <item
             android:id="@+id/nav_home"
             android:icon="@drawable/nav_home"
-            android:title="Home"/>
+            android:title="Ana Sayfa" />
 
         <item
-        android:id="@+id/nav_nutrients"
-        android:icon="@drawable/baseline_food_bank_24"
-        android:title="Nutrients"/>
+            android:id="@+id/nav_nutrients"
+            android:icon="@drawable/baseline_food_bank_24"
+            android:title="Günlük Besin Kayıt" />
 
         <item
             android:id="@+id/nav_bmi"
             android:icon="@drawable/nav_calc"
-            android:title="Bmi And Kcal Calculate"/>
+            android:title="VKE Ve Kalori Hesaplama" />
 
         <item
             android:id="@+id/nav_counter"
-            android:icon="@drawable/baseline_timer_24"
-            android:title="About"
-            />
-
+            android:icon="@drawable/baseline_checklist_rtl_24"
+            android:title="Günlük Kalori Kaydı"
+            android:iconTint="@color/black" />
 
     </group>
 
-
     <item
-        android:title="">
+        android:title="Bize Ulaşın">
 
         <menu>
-            <item
 
-                android:id="@+id/nav_logout"
-                android:icon="@drawable/nav_logout"
-                android:title="Logout"/>
+            <item
+                android:id="@+id/nav_social_facebook"
+                android:icon="@drawable/facebook_icon"
+                android:title="Facebook" />
+
+            <item
+                android:id="@+id/nav_social_twitter"
+                android:icon="@drawable/x_icon"
+                android:title="X" />
+
+            <item
+                android:id="@+id/nav_social_instagram"
+                android:icon="@drawable/instagram_icon"
+                android:title="İnstagram" />
 
         </menu>
 
     </item>
 
+    <item
+        android:title="Çıkış İşlemleri">
+
+        <menu>
+            <item
+                android:id="@+id/nav_logout"
+                android:icon="@drawable/nav_logout"
+                android:title="Uygulamadan Çık" />
+        </menu>
+
+    </item>
 
 </menu>

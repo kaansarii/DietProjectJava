@@ -30,7 +30,8 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:background="@drawable/whitebackground">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -38,7 +39,7 @@
                     android:layout_gravity="center"
                     android:layout_marginTop="10dp"
                     android:background="@drawable/backgroundcolorblue"
-                    android:text="Age (Years)"
+                    android:text="Yaşınız (Yıl)"
                     android:textColor="@color/black"
                     android:textSize="16sp"
 
@@ -75,7 +76,8 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:background="@drawable/whitebackground">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -83,7 +85,7 @@
                     android:layout_gravity="center"
                     android:layout_marginTop="10dp"
                     android:background="@drawable/backgroundcolorblue"
-                    android:text="Gender"
+                    android:text="Cinsiyetiniz"
                     android:textColor="@color/black"
                     android:textSize="16sp"
                     android:textStyle="bold" />
@@ -154,7 +156,8 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:background="@drawable/whitebackground">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -162,7 +165,7 @@
                     android:layout_gravity="center"
                     android:layout_marginTop="10dp"
                     android:background="@drawable/backgroundcolorblue"
-                    android:text="Height"
+                    android:text="Boyunuz"
                     android:textColor="@color/black"
                     android:textSize="16sp"
                     android:textStyle="bold" />
@@ -198,7 +201,8 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:background="@drawable/whitebackground">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -206,7 +210,7 @@
                     android:layout_gravity="center"
                     android:layout_marginTop="10dp"
                     android:background="@drawable/backgroundcolorblue"
-                    android:text="Weight (Kg)"
+                    android:text="Kilonuz (Kg)"
                     android:textColor="@color/black"
                     android:textSize="16sp"
                     android:textStyle="bold" />
@@ -245,7 +249,8 @@
         <LinearLayout
             android:layout_width="310dp"
             android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:background="@drawable/whitebackground">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -253,7 +258,7 @@
                 android:layout_gravity="center"
                 android:layout_marginTop="10dp"
                 android:background="@drawable/backgroundcolorblue"
-                android:text="What is your purpose?"
+                android:text="Hedefinizi Seçiniz "
                 android:textColor="@color/black"
                 android:textSize="18sp"
                 android:textStyle="bold" />
@@ -279,7 +284,7 @@
                             android:layout_height="50dp"
                             android:layout_marginTop="7dp"
                             android:gravity="center"
-                            android:text="Lose weight"
+                            android:text="Kilo Verme"
                             android:textSize="18sp" />
 
                         <RadioButton
@@ -288,7 +293,7 @@
                             android:layout_height="50dp"
                             android:layout_marginTop="7dp"
                             android:gravity="center"
-                            android:text="Maintaining weight"
+                            android:text="Kilo Koruma"
                             android:textSize="18sp" />
 
                         <RadioButton
@@ -297,7 +302,7 @@
                             android:layout_height="50dp"
                             android:layout_marginTop="7dp"
                             android:gravity="center"
-                            android:text="Gaining weight"
+                            android:text="Kilo Alma"
                             android:textSize="18sp" />
                     </RadioGroup>
 
@@ -318,7 +323,8 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            >
 
             <TextView
                 android:layout_width="wrap_content"
@@ -326,7 +332,7 @@
                 android:layout_gravity="center"
                 android:layout_marginTop="10dp"
                 android:background="@color/lavender"
-                android:text="           BMI         |         Kcal            |      Macro's            "
+                android:text="           BMI         |         Kcal            |      Macrolar            "
                 android:textColor="@color/black"
                 android:textSize="18sp"
                 android:textStyle="bold" />
@@ -334,7 +340,8 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                >
 
                 <TextView
                     android:id="@+id/textBmi"
@@ -344,7 +351,8 @@
                     android:layout_weight="1"
                     android:textColor="#03A9F4"
                     android:textSize="18sp"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    android:background="@drawable/whitebackground"/>
                 <!-- BİRBİRLERİ ARASINDA BOŞLUK OLSUN DİYE YAPTIM-->
                 <View
                     android:layout_width="12dp"
@@ -359,7 +367,8 @@
                     android:layout_weight="1"
                     android:textColor="#03A9F4"
                     android:textSize="18sp"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    android:background="@drawable/whitebackground"/>
                 <!-- BİRBİRLERİ ARASINDA BOŞLUK OLSUN DİYE YAPTIM-->
                 <View
                     android:layout_width="12dp"
@@ -374,7 +383,8 @@
                     android:layout_weight="1"
                     android:textColor="#03A9F4"
                     android:textSize="18sp"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    android:background="@drawable/whitebackground"/>
 
             </LinearLayout>
         </LinearLayout>
@@ -396,7 +406,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="Calculate"
+            android:text="Hesapla"
             android:textColor="@color/black"
             android:textSize="22sp"
             android:textStyle="bold" />

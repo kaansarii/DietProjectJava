@@ -1,144 +1,135 @@
 package com.example.dietapp;
 
 
+import androidx.fragment.app.Fragment;
 
-import android.annotation.SuppressLint;
+
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Looper;
-import android.os.SystemClock;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
-import androidx.fragment.app.Fragment;
-import com.google.android.material.button.MaterialButton;
-import java.util.Locale;
+import android.widget.AdapterView;
+import android.widget.Button;
+import android.widget.DatePicker;
+import android.widget.EditText;
+import android.widget.ListView;
+import android.widget.Toast;
+
+
+import com.example.dietapp.interfaces.CalorieEntry;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class CounterFragment extends Fragment {
-    private TextView textViewDay, textViewHour, textViewMinute, textViewSecond, textViewMillisecond;
-    private MaterialButton reset, start, stop;
-    private int days, hours, minutes, seconds, milliSeconds;
-    private long millisecondTime, startTime, timeBuff, updateTime = 0L;
-    private Handler handler;
-    private boolean isCounterRunning = false;
 
-    private final Runnable runnable = new Runnable() {
-        @Override
-        public void run() {
-            if (isCounterRunning) {
-                millisecondTime = SystemClock.uptimeMillis() - startTime;
-                updateTime = timeBuff + millisecondTime;
-                days = (int) (updateTime / (1000 * 60 * 60 * 24));
-                hours = (int) ((updateTime / (1000 * 60 * 60)) % 24);
-                minutes = (int) ((updateTime / (1000 * 60)) % 60);
-                seconds = (int) ((updateTime / 1000) % 60);
-                milliSeconds = (int) (updateTime % 1000);
+    private DatePicker datePicker;
+    private EditText editTextBurnedCalories;
+    private EditText editTextConsumedCalories;
+    private CalorieEntryAdapter adapter;
+    private final List<CalorieEntry> calorieEntries = new ArrayList<>();
 
-                // Gün, saat, dakika, saniye ve salise bilgilerini ayrı TextView'lere yaz
-                textViewDay.setText(String.format(Locale.getDefault(), "%02d", days));
-                textViewHour.setText(String.format(Locale.getDefault(), "%02d", hours));
-                textViewMinute.setText(String.format(Locale.getDefault(), "%02d", minutes));
-                textViewSecond.setText(String.format(Locale.getDefault(), "%02d", seconds));
-                textViewMillisecond.setText(String.format(Locale.getDefault(), "%03d", milliSeconds));
-
-                handler.postDelayed(this, 0);
-            }
-        }
-    };
-
-    @SuppressLint("MissingInflatedId")
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_counter, container, false);
 
-        textViewDay = view.findViewById(R.id.textViewDay);
-        textViewHour = view.findViewById(R.id.textViewHour);
-        textViewMinute = view.findViewById(R.id.textViewMinute);
-        textViewSecond = view.findViewById(R.id.textViewSecond);
-        textViewMillisecond = view.findViewById(R.id.textViewMillisecond);
+        //fragment_counter.xml deki şeyler
+        datePicker = view.findViewById(R.id.datePicker);
+        editTextBurnedCalories = view.findViewById(R.id.editTextBurnedCalories);
+        editTextConsumedCalories = view.findViewById(R.id.editTextConsumedCalories);
+        Button saveButton = view.findViewById(R.id.saveButton);
+        ListView listView = view.findViewById(R.id.listView);
 
-        reset = view.findViewById(R.id.reset);
-        start = view.findViewById(R.id.start);
-        stop = view.findViewById(R.id.stop);
+        // CalorieEntryAdapter adlı bir adapter oluşturulup ve bu adapteri ListView ile ilişkilendirildi. Adapter, ListView'ın içeriğini yönetir ve veri değişikliklerini güncellemek için kullanılır.
+        adapter = new CalorieEntryAdapter(requireContext(), calorieEntries);
+        listView.setAdapter(adapter);
 
-        handler = new Handler(Looper.getMainLooper());
+
+        //ListView üzerinde bir öğeye uzun tıklandığında çağrılacak onItemLongClickAction metodu. Bu öğenin silinip silinmeyeceğini kullanıcıya sorar
+        listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+                onItemLongClickAction(position);
+                return true;
+            }
+        });
+
+
+        //Kaydet butonuna tıklandığında çağrılacak onSaveButtonClick metodu. Bu metod DatePicker, EditText alanlarından alınan verilerle yeni bir CalorieEntry oluşturur ve bu girişi calorieEntries listesine ekler.
+        saveButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onSaveButtonClick(v);
+            }
+        });
 
         return view;
     }
 
-    @Override
-    public void onViewCreated(View view, Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
+    public void onSaveButtonClick(View view) {
+        int day = datePicker.getDayOfMonth();
+        int month = datePicker.getMonth() + 1;
+        int year = datePicker.getYear();
 
-        start.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startTime = SystemClock.uptimeMillis();
-                isCounterRunning = true;
-                handler.postDelayed(runnable, 0);
-                reset.setEnabled(false);
-                stop.setEnabled(true);
-                start.setEnabled(false);
-            }
-        });
+        String date = day + "/" + month + "/" + year;
+        String burnedCaloriesStr = editTextBurnedCalories.getText().toString();
+        String consumedCaloriesStr = editTextConsumedCalories.getText().toString();
 
-        stop.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                isCounterRunning = false;
-                timeBuff += millisecondTime;
-                handler.removeCallbacks(runnable);
-                reset.setEnabled(true);
-                stop.setEnabled(false);
-                start.setEnabled(true);
-            }
-        });
+        if (TextUtils.isEmpty(burnedCaloriesStr) || TextUtils.isEmpty(consumedCaloriesStr)) {
+            Toast.makeText(requireContext(), "Lütfen tüm alanları doldurun.", Toast.LENGTH_SHORT).show();
+            return;
+        }
 
-        reset.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                isCounterRunning = false;
-                millisecondTime = 0L;
-                startTime = 0L;
-                timeBuff = 0L;
-                updateTime = 0L;
-                days = 0;
-                hours = 0;
-                minutes = 0;
-                seconds = 0;
-                milliSeconds = 0;
+        int burnedCalories = Integer.parseInt(burnedCaloriesStr);
+        int consumedCalories = Integer.parseInt(consumedCaloriesStr);
 
-                // Gün, saat, dakika, saniye ve salise bilgilerini sıfırla
-                textViewDay.setText("00");
-                textViewHour.setText("00");
-                textViewMinute.setText("00");
-                textViewSecond.setText("00");
-                textViewMillisecond.setText("000");
-            }
-        });
-
-        // Başlangıç değerlerini ayarla
-        textViewDay.setText("00");
-        textViewHour.setText("00");
-        textViewMinute.setText("00");
-        textViewSecond.setText("00");
-        textViewMillisecond.setText("000");
-    }
-
-    @Override
-    public void onPause() {
-        super.onPause();
-        // Fragment durduğunda sayaç işlemlerini durdur
-        handler.removeCallbacks(runnable);
-    }
-
-    @Override
-    public void onResume() {
-        super.onResume();
-        // Fragment tekrar aktifleştiğinde ve sayaç başlatılmışsa devam et
-        if (isCounterRunning) {
-            handler.postDelayed(runnable, 0);
+        if (isEntryExistsForDate(date)) {
+            Toast.makeText(requireContext(), "Bu tarihe zaten bir giriş yapılmış.", Toast.LENGTH_SHORT).show();
+        } else {
+            CalorieEntry entry = new CalorieEntry(date, burnedCalories, consumedCalories);
+            calorieEntries.add(entry);
+            adapter.notifyDataSetChanged();
         }
     }
+
+    //aynı tarih ve günde bir girişin zaten olup olmadığını kontrol eder.
+    private boolean isEntryExistsForDate(String date) {
+        for (CalorieEntry entry : calorieEntries) {
+            if (entry.getDate().equals(date)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    //kullanıcı basılı tutunca mesaj veririr ve listview'deki yer silinir
+    private void onItemLongClickAction(final int position) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(requireContext());
+        builder.setMessage("Bu girişi silmek istediğinizden emin misiniz?")
+                .setPositiveButton("Evet", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        deleteEntry(position);
+                    }
+                })
+                .setNegativeButton("Hayır", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        // Kullanıcı iletişim kutusunu iptal etti
+                    }
+                });
+        builder.create().show();
+    }
+
+    //listview'deki metni kaldırır, listview'i güncellerve mesaj gönderir
+    private void deleteEntry(int position) {
+        calorieEntries.remove(position);
+        adapter.notifyDataSetChanged();
+        Toast.makeText(requireContext(), "Giriş başarıyla silindi.", Toast.LENGTH_SHORT).show();
+    }
 }
+
+
+

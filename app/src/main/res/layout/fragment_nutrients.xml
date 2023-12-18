@@ -17,7 +17,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:layout_marginTop="10dp">
+            android:layout_marginTop="10dp"
+            >
 
             <TextView
                 android:layout_width="wrap_content"
@@ -37,7 +38,8 @@
                 android:orientation="horizontal"
                 android:padding="20dp"
                 android:background="#ffffff"
-                android:elevation="4dp">
+                android:elevation="4dp"
+                >
 
                 <!-- Karbonhidrat -->
                 <LinearLayout
@@ -157,7 +159,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginTop="167dp"
-            android:text="Bugün Almış Olduğunuz Toplam Besin Değerleri"
+             android:text="Bugün Almış Olduğunuz Toplam Besin Değerleri"
             android:textColor="#333333"
             android:textSize="18sp"
             android:textStyle="bold" />
@@ -288,9 +290,9 @@
         android:layout_below="@id/macrosLayout"
         android:orientation="vertical"
         android:padding="16dp"
-        android:background="#ffffff"
         android:elevation="4dp"
-        android:layout_marginTop="40dp">
+        android:layout_marginTop="40dp"
+        android:background="@drawable/whitebackground">
 
         <!-- Sabah Öğünü -->
         <LinearLayout

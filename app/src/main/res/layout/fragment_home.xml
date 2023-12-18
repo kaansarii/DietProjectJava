@@ -26,12 +26,14 @@
             app:cardCornerRadius="12dp"
             app:cardElevation="2dp"
             android:layout_margin="12dp"
-            android:layout_height="110dp">
+            android:layout_height="110dp"
+            >
 
             <LinearLayout
                 android:orientation="vertical"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                android:background="@drawable/whitebackground">
 
                 <TextView
                     android:textSize="16sp"
@@ -39,7 +41,7 @@
                     android:layout_marginTop="10dp"
                     android:textStyle="bold"
                     android:layout_width="wrap_content"
-                    android:text="Age (Years)"
+                    android:text="Yaşınız (Yıl)"
                     android:textColor="@color/black"
                     android:layout_height="wrap_content"
                     android:background="@drawable/backgroundcolorblue"
@@ -76,7 +78,8 @@
             <LinearLayout
                 android:orientation="vertical"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                android:background="@drawable/whitebackground">
 
                 <TextView
                     android:textSize="16sp"
@@ -84,7 +87,7 @@
                     android:layout_marginTop="10dp"
                     android:textStyle="bold"
                     android:layout_width="wrap_content"
-                    android:text="Gender"
+                    android:text="Cinsiyetiniz"
                     android:textColor="@color/black"
                     android:layout_height="wrap_content"
                     android:background="@drawable/backgroundcolorblue"
@@ -152,7 +155,8 @@
                 <LinearLayout
                     android:orientation="vertical"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                    android:layout_height="match_parent"
+                    android:background="@drawable/whitebackground">
 
                     <TextView
                         android:textSize="16sp"
@@ -160,7 +164,7 @@
                         android:layout_marginTop="10dp"
                         android:textStyle="bold"
                         android:layout_width="wrap_content"
-                        android:text="Height"
+                        android:text="Boyunuz"
                         android:textColor="@color/black"
                         android:layout_height="wrap_content"
                         android:background="@drawable/backgroundcolorblue"
@@ -196,7 +200,8 @@
                 <LinearLayout
                     android:orientation="vertical"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                    android:layout_height="match_parent"
+                    android:background="@drawable/whitebackground">
 
                     <TextView
                         android:textSize="16sp"
@@ -204,7 +209,7 @@
                         android:layout_marginTop="10dp"
                         android:textStyle="bold"
                         android:layout_width="wrap_content"
-                        android:text="Weight (Kg)"
+                        android:text="Kilonuz (Kg)"
                         android:textColor="@color/black"
                         android:layout_height="wrap_content"
                         android:background="@drawable/backgroundcolorblue"
@@ -240,7 +245,8 @@
                 <LinearLayout
                     android:orientation="vertical"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                    android:layout_height="match_parent"
+                    android:background="@drawable/whitebackground">
 
                     <TextView
                         android:textSize="16sp"
@@ -248,7 +254,7 @@
                         android:layout_marginTop="10dp"
                         android:textStyle="bold"
                         android:layout_width="wrap_content"
-                        android:text="Dest. Weight"
+                        android:text="Hedef Kilonuz"
                         android:textColor="@color/black"
                         android:layout_height="wrap_content"
                         android:background="@drawable/backgroundcolorblue"
@@ -290,7 +296,7 @@
         <TextView
             android:layout_gravity="center"
             android:layout_width="wrap_content"
-            android:text="Calculate"
+            android:text="Hesapla"
             android:textSize="22sp"
             android:textStyle="bold"
             android:textColor="@color/black"
@@ -312,13 +318,14 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:padding="16dp">
+            android:padding="16dp"
+            android:background="@drawable/whitebackground">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="100dp"
-                android:text="Daily Nutrition"
+                android:text="Günlük İhtiyaçlarınız"
                 android:background="@drawable/backgroundcolorblue"
                 android:textColor="@color/black"
                 android:textSize="20sp"
@@ -334,7 +341,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="12dp"
-                android:text="Calories: 0 kcal"
+                android:text="Kalori: 0 kcal"
                 android:textColor="@color/black"
                 android:textSize="18sp" />
 
@@ -352,7 +359,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="12dp"
-                android:text="Carbohydrate: 0 g"
+                android:text="Karbonhidrat: 0 g"
                 android:textColor="@color/black"
                 android:textSize="18sp" />
 
@@ -361,7 +368,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="12dp"
-                android:text="Fat: 0 g"
+                android:text="Yağ: 0 g"
                 android:textColor="@color/black"
                 android:textSize="18sp" />
 
