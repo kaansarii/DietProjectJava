@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -20,6 +21,7 @@ import com.example.dietapp.interfaces.IFood;
 import com.example.dietapp.interfaces.IUserInformation;
 import com.example.dietapp.dtos.SharedId;
 import java.text.DecimalFormat;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -37,6 +39,7 @@ public class NutrientsFragment extends Fragment {
     Button listBreakfastItems, listLunchItems, listDinnerItems;
     SharedId sharedId = SharedId.getInstance();
     int appUserId = sharedId.getSharedData();
+    List<GetFoodDto> data = new ArrayList<>();
     @SuppressLint("MissingInflatedId")
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -61,10 +64,10 @@ public class NutrientsFragment extends Fragment {
             public void onResponse(Call<GetUserInformationDto> call, Response<GetUserInformationDto> response) {
                 if(response.isSuccessful()){
                     GetUserInformationDto model = response.body();
-                    carbonhydrate.setText(decimalFormat.format(model.getDailyCarbonhydrateRequirement()));
-                    fat.setText(decimalFormat.format(model.getDailyFatRequirement()));
-                    protein.setText(decimalFormat.format(model.getDailyProteinRequirement()));
-                    calorie.setText(decimalFormat.format(model.getDailyCalorieRequirement()));
+                    carbonhydrate.setText(decimalFormat.format(model.getDailyCarbonhydrateRequirement()) + " g");
+                    fat.setText(decimalFormat.format(model.getDailyFatRequirement()) + " g");
+                    protein.setText(decimalFormat.format(model.getDailyProteinRequirement()) + " g");
+                    calorie.setText(decimalFormat.format(model.getDailyCalorieRequirement()) + " kcal");
                 }else{
                     Toast.makeText(getContext(),"Merhaba",Toast.LENGTH_LONG).show();
                 }
@@ -78,37 +81,63 @@ public class NutrientsFragment extends Fragment {
         listBreakfastItems.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ArrayAdapter<String> adapter = new ArrayAdapter<>(getContext(), android.R.layout.simple_list_item_1, foods);
-                getFoodWithType("Kahvaltı");
+                data =  getFoodWithType("Kahvaltı");
+                List<GetFoodDto> foods = new ArrayList<>();
+                for(GetFoodDto foodDto : data){
+                    foods.add(foodDto); //Liste şeklinde gelen data'lar foods isimli değişkene atanıyor
+                }
+                List<String> names = new ArrayList<>();
+                for(GetFoodDto foodDto : foods){
+                    names.add(foodDto.getName());
+                }
+                ArrayAdapter<String> adapter = new ArrayAdapter<>(getContext(), android.R.layout.simple_list_item_1, names);
                 listBreakfast.setAdapter(adapter);
+
             }
         });
         listLunchItems.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-                ArrayAdapter<String> adapter = new ArrayAdapter<>(getContext(), android.R.layout.simple_list_item_1, foods);
-                getFoodWithType("Öğle Yemeği");
+            public void onClick(View view) {;
+                data = getFoodWithType("Öğle Yemeği");
+                List<GetFoodDto> foods = new ArrayList<>();
+                for(GetFoodDto foodDto : data){
+                    foods.add(foodDto); //Liste şeklinde gelen data'lar foods isimli değişkene atanıyor
+                }
+                List<String> names = new ArrayList<>();
+                for(GetFoodDto foodDto : foods){
+                    names.add(foodDto.getName());
+                }
+                ArrayAdapter<String> adapter = new ArrayAdapter<>(getContext(), android.R.layout.simple_list_item_1, names);
                 listLunch.setAdapter(adapter);
             }
         });
         listDinnerItems.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ArrayAdapter<String> adapter = new ArrayAdapter<>(getContext(), android.R.layout.simple_list_item_1, foods);
-                getFoodWithType("Akşam Yemeği");
+                data = getFoodWithType("Akşam Yemeği");
+                List<GetFoodDto> foods = new ArrayList<>();
+                for(GetFoodDto foodDto : data){
+                    foods.add(foodDto); //Liste şeklinde gelen data'lar foods isimli değişkene atanıyor
+                }
+                List<String> names = new ArrayList<>();
+                for(GetFoodDto foodDto : foods){
+                    names.add(foodDto.getName());
+                }
+                ArrayAdapter<String> adapter = new ArrayAdapter<>(getContext(), android.R.layout.simple_list_item_1, names);
                 listDinner.setAdapter(adapter);
             }
         });
         return rootView;
 
     }
-    private void getFoodWithType(String type){
+    private List<GetFoodDto> getFoodWithType(String type){
         IFood food = RetrofitClient.getRetrofitInstance().create(IFood.class);
         Call<List<GetFoodDto>> call = food.getFoodWithType(type);
         call.enqueue(new Callback<List<GetFoodDto>>() {
             @Override
             public void onResponse(Call<List<GetFoodDto>> call, Response<List<GetFoodDto>> response) {
                 if(response.isSuccessful()){
+                    data = response.body();
                     Toast.makeText(getContext(),"Başarılı",Toast.LENGTH_LONG).show();
                 }else{
                     Toast.makeText(getContext(),"Başarısız",Toast.LENGTH_LONG).show();
@@ -121,5 +150,6 @@ public class NutrientsFragment extends Fragment {
                 Toast.makeText(getContext(), t.getMessage(), Toast.LENGTH_LONG).show();
             }
         });
+        return data;
     }
 }

@@ -17,4 +17,7 @@ public interface IUserInformation {
     @Headers("Content-Type:application/json; charset=UTF-8")
     @GET("api/UserInformation/{id}")
     Call<GetUserInformationDto> getUserInformationWithDailyInformation(@Path("id") int id);
+    @Headers("Content-Type:application/json; charset=UTF-8")
+    @GET("api/UserInformation/{id}")
+    Call<UserInformationDto> getUserInformationAll(@Path("id") int id);
 }

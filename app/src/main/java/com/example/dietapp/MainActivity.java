@@ -62,47 +62,51 @@ public class MainActivity extends AppCompatActivity {
                 ILogin iLogin = RetrofitClient.getRetrofitInstance().create(ILogin.class);
                 LoginDto loginDto = new LoginDto(email,password);
                 Call<LoginResponse> call = iLogin.loginUser(loginDto);
-                call.enqueue(new Callback<LoginResponse>() {
-                    @Override
-                    public void onResponse(Call<LoginResponse> call, Response<LoginResponse> response) {
-                        if (response.isSuccessful()) {
-                            // Başarılı bir şekilde cevap alındı, başarı mesajını göster
-                            Toast.makeText(MainActivity.this, "Kayıt Başarılı", Toast.LENGTH_LONG).show();
-                            try {
+                if(email.contains("@")) //E postada @ işareti olup olmadığını kontrol ediyor
+                    call.enqueue(new Callback<LoginResponse>() {
+                        @Override
+                        public void onResponse(Call<LoginResponse> call, Response<LoginResponse> response) {
+                            if (response.isSuccessful()) {
+                                // Başarılı bir şekilde cevap alındı, başarı mesajını göster
+                                Toast.makeText(MainActivity.this, "Kayıt Başarılı", Toast.LENGTH_LONG).show();
+                                try {
 
-                                //İd verisini api'dan almak için ilgili veriyi LoginResponse Modeline attım
-                                LoginResponse loginResponse = response.body();
-                                int id = loginResponse.getUserId(); //ilgili veriyi id değişkenine attım
-                                SharedId sharedId = SharedId.getInstance();
-                                sharedId.setSharedData(id);
-                                Intent intent = new Intent(MainActivity.this,NavigationDrawer.class);
-                                startActivity(intent);
+                                    //İd verisini api'dan almak için ilgili veriyi LoginResponse Modeline attım
+                                    LoginResponse loginResponse = response.body();
+                                    int id = loginResponse.getUserId(); //ilgili veriyi id değişkenine attım
+                                    SharedId sharedId = SharedId.getInstance();
+                                    sharedId.setSharedData(id);
+                                    Intent intent = new Intent(MainActivity.this,NavigationDrawer.class);
+                                    startActivity(intent);
 
-                            }catch (Exception e){
-                                e.printStackTrace();
-                                Log.e("TAG", "Exception: " + e.getMessage());
-                            }
+                                }catch (Exception e){
+                                    e.printStackTrace();
+                                    Log.e("TAG", "Exception: " + e.getMessage());
+                                }
 
-                        } else {
-                            // Başarısız cevap alındı, hata durumunu göster
-                            String errorMessage = "Error: " + response.code() + " " + response.message();
-                            Toast.makeText(MainActivity.this, "Kullanıcı Adı veya Şifreniz Yanlış", Toast.LENGTH_LONG).show();
+                            } else {
+                                // Başarısız cevap alındı, hata durumunu göster
+                                String errorMessage = "Error: " + response.code() + " " + response.message();
+                                Toast.makeText(MainActivity.this, "Kullanıcı Adı veya Şifreniz Yanlış", Toast.LENGTH_LONG).show();
 
-                            // Server tarafından dönen detaylı hata mesajını almak için:
-                            try {
-                                String errorBody = response.errorBody().string();
-                                // errorBody içinde server tarafından dönen JSON formatında hata mesajını kullanabilirsiniz.
-                            } catch (IOException e) {
-                                e.printStackTrace();
+                                // Server tarafından dönen detaylı hata mesajını almak için:
+                                try {
+                                    String errorBody = response.errorBody().string();
+                                    // errorBody içinde server tarafından dönen JSON formatında hata mesajını kullanabilirsiniz.
+                                } catch (IOException e) {
+                                    e.printStackTrace();
+                                }
                             }
                         }
-                    }
 
-                    @Override
-                    public void onFailure(Call<LoginResponse> call, Throwable t) {
-                        Toast.makeText(MainActivity.this, t.getMessage(), Toast.LENGTH_LONG).show();
-                    }
-                });
+                        @Override
+                        public void onFailure(Call<LoginResponse> call, Throwable t) {
+                            Toast.makeText(MainActivity.this, t.getMessage(), Toast.LENGTH_LONG).show();
+                        }
+                    });
+                else
+                    Toast.makeText(MainActivity.this,"Lütfen Geçerlİ E Posta Adresi Giriniz",Toast.LENGTH_LONG).show();
+
 
             }
         });

@@ -1,8 +1,8 @@
 package com.example.dietapp.dtos;
 
 public class GetFoodDto {
-    public  String name, type;
-    public  double calorie, fat, carbonhydrate, protein;
+    private   String name, type;
+    private  double calorie, fat, carbonhydrate, protein;
 
     public GetFoodDto(String name, String type, double calorie, double fat, double carbonhydrate, double protein) {
         this.name = name;

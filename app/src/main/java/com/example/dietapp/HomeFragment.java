@@ -51,6 +51,34 @@ public class HomeFragment extends Fragment {
         radioGroupGender = rootView.findViewById(R.id.radioGroupGender);
         radioButtonMale = rootView.findViewById(R.id.radioButtonMale);
         radioButtonFemale = rootView.findViewById(R.id.radioButtonFemale);
+        DecimalFormat decimalFormat = new DecimalFormat("#.##");
+        IUserInformation userInformation = RetrofitClient.getRetrofitInstance().create(IUserInformation.class);
+        Call<UserInformationDto> call = userInformation.getUserInformationAll(appUserId);
+        call.enqueue(new Callback<UserInformationDto>() {
+            @Override
+            public void onResponse(Call<UserInformationDto> call, Response<UserInformationDto> response) {
+                if(response.isSuccessful()){
+                    if(response.body() != null){
+                        UserInformationDto model = response.body();
+                        edAge.setText(model.getAge());
+                        edCm.setText(decimalFormat.format(model.getlength()));
+                        edKg.setText(decimalFormat.format(model.getWeight()));
+                        edKgDest.setText(decimalFormat.format(model.getTargetWeight()));
+                        textCal.setText("Günlük Kalori: " + decimalFormat.format(model.getDailyCalorieRequirement()) + " kcal");
+                        textProtein.setText("Protein: " + decimalFormat.format(model.getDailyProteinRequirement()) + " g");
+                        textCarbohydrate.setText("Karbonhidrat: " + decimalFormat.format(model.getDailyCarbonhydrateRequirement()) + " g");
+                        textFat.setText("Yağ: " + decimalFormat.format(model.getDailyFatRequirement()) + " g");
+                    }
+                }else{
+
+                }
+            }
+
+            @Override
+            public void onFailure(Call<UserInformationDto> call, Throwable t) {
+
+            }
+        });
         calculateButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
