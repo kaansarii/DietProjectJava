@@ -1,10 +1,13 @@
 package com.example.dietapp.dtos;
 
 public class GetFoodDto {
-    private   String name, type;
+    private int id;
+
+    private  String name, type;
     private  double calorie, fat, carbonhydrate, protein;
 
-    public GetFoodDto(String name, String type, double calorie, double fat, double carbonhydrate, double protein) {
+    public GetFoodDto(int id, String name, String type, double calorie, double fat, double carbonhydrate, double protein) {
+        this.id = id;
         this.name = name;
         this.type = type;
         this.calorie = calorie;
@@ -12,7 +15,12 @@ public class GetFoodDto {
         this.carbonhydrate = carbonhydrate;
         this.protein = protein;
     }
-
+    public  int getId() {
+        return id;
+    }
+    public void  setId(int id){
+        this.id = id;
+    }
     public String getName() {
         return name;
     }

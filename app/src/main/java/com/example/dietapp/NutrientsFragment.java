@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListAdapter;
@@ -69,7 +70,7 @@ public class NutrientsFragment extends Fragment {
                     protein.setText(decimalFormat.format(model.getDailyProteinRequirement()) + " g");
                     calorie.setText(decimalFormat.format(model.getDailyCalorieRequirement()) + " kcal");
                 }else{
-                    Toast.makeText(getContext(),"Merhaba",Toast.LENGTH_LONG).show();
+                    Toast.makeText(getContext(),"İstek İşlenirken Bir Hata Meydana Geldi",Toast.LENGTH_LONG).show();
                 }
             }
 
@@ -83,8 +84,18 @@ public class NutrientsFragment extends Fragment {
             public void onClick(View view) {
                 data =  getFoodWithType("Kahvaltı");
                 List<GetFoodDto> foods = new ArrayList<>();
+                List<Integer> ids = new ArrayList<>();
+                List<Double> calories = new ArrayList<>();
+                List<Double> fats = new ArrayList<>();
+                List<Double> proteins = new ArrayList<>();
+                List<Double> carbohydrates = new ArrayList<>();
                 for(GetFoodDto foodDto : data){
                     foods.add(foodDto); //Liste şeklinde gelen data'lar foods isimli değişkene atanıyor
+                    ids.add(foodDto.getId());
+                    calories.add(foodDto.getCalorie());
+                    fats.add(foodDto.getFat());
+                    proteins.add(foodDto.getProtein());
+                    carbohydrates.add(foodDto.getCarbonhydrate());
                 }
                 List<String> names = new ArrayList<>();
                 for(GetFoodDto foodDto : foods){
@@ -92,7 +103,12 @@ public class NutrientsFragment extends Fragment {
                 }
                 ArrayAdapter<String> adapter = new ArrayAdapter<>(getContext(), android.R.layout.simple_list_item_1, names);
                 listBreakfast.setAdapter(adapter);
-
+                listBreakfast.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                        //Seçilen listview itemıyle ilgili işlemleri burda yapacaz
+                    }
+                });
             }
         });
         listLunchItems.setOnClickListener(new View.OnClickListener() {
@@ -100,8 +116,21 @@ public class NutrientsFragment extends Fragment {
             public void onClick(View view) {;
                 data = getFoodWithType("Öğle Yemeği");
                 List<GetFoodDto> foods = new ArrayList<>();
+                // Json verisi içindeki id, calori, fat, protein, carbohydrates bilgilerini tutabilmek e gerektiği zamanda çağırabilmek için arrayList oluşturduk
+                List<Integer> ids = new ArrayList<>();
+                List<Double> calories = new ArrayList<>();
+                List<Double> fats = new ArrayList<>();
+                List<Double> proteins = new ArrayList<>();
+                List<Double> carbohydrates = new ArrayList<>();
                 for(GetFoodDto foodDto : data){
-                    foods.add(foodDto); //Liste şeklinde gelen data'lar foods isimli değişkene atanıyor
+                    //Foreach döngüsü sayesinde data Listesinnin içindeki id vb elemanlar ilgili dizilere aktarılıyor. Bu sayede setOnItemClikListener
+                    //methodu çalıştığında tıknalınal listview elemanına ait verileri görüntüleyebileceğiz.
+                    foods.add(foodDto);
+                    ids.add(foodDto.getId());
+                    calories.add(foodDto.getCalorie());
+                    fats.add(foodDto.getFat());
+                    proteins.add(foodDto.getProtein());
+                    carbohydrates.add(foodDto.getCarbonhydrate());
                 }
                 List<String> names = new ArrayList<>();
                 for(GetFoodDto foodDto : foods){
@@ -109,6 +138,12 @@ public class NutrientsFragment extends Fragment {
                 }
                 ArrayAdapter<String> adapter = new ArrayAdapter<>(getContext(), android.R.layout.simple_list_item_1, names);
                 listLunch.setAdapter(adapter);
+                listLunch.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                        //Seçilen listview itemıyle ilgili işlemleri burda yapacaz
+                    }
+                });
             }
         });
         listDinnerItems.setOnClickListener(new View.OnClickListener() {
@@ -116,8 +151,21 @@ public class NutrientsFragment extends Fragment {
             public void onClick(View view) {
                 data = getFoodWithType("Akşam Yemeği");
                 List<GetFoodDto> foods = new ArrayList<>();
+                // Json verisi içindeki id, calori, fat, protein, carbohydrates bilgilerini tutabilmek e gerektiği zamanda çağırabilmek için arrayList oluşturduk
+                List<Integer> ids = new ArrayList<>();
+                List<Double> calories = new ArrayList<>();
+                List<Double> fats = new ArrayList<>();
+                List<Double> proteins = new ArrayList<>();
+                List<Double> carbohydrates = new ArrayList<>();
                 for(GetFoodDto foodDto : data){
-                    foods.add(foodDto); //Liste şeklinde gelen data'lar foods isimli değişkene atanıyor
+                    //Foreach döngüsü sayesinde data Listesinnin içindeki id vb elemanlar ilgili dizilere aktarılıyor. Bu sayede setOnItemClikListener
+                    //methodu çalıştığında tıknalınal listview elemanına ait verileri görüntüleyebileceğiz.
+                    foods.add(foodDto);
+                    ids.add(foodDto.getId());
+                    calories.add(foodDto.getCalorie());
+                    fats.add(foodDto.getFat());
+                    proteins.add(foodDto.getProtein());
+                    carbohydrates.add(foodDto.getCarbonhydrate());
                 }
                 List<String> names = new ArrayList<>();
                 for(GetFoodDto foodDto : foods){
@@ -125,11 +173,20 @@ public class NutrientsFragment extends Fragment {
                 }
                 ArrayAdapter<String> adapter = new ArrayAdapter<>(getContext(), android.R.layout.simple_list_item_1, names);
                 listDinner.setAdapter(adapter);
+                listDinner.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                        int selectedId = ids.get(i); // tıklanılan listViewdeki yiyeceğin id bilgisine ulaşıldı
+
+                    }
+                });
+                
             }
         });
         return rootView;
 
     }
+    // 43. satırda tanımlamış olduğumuz data'yı döndürüyoruz. Eğer methodumuz başarıyla çalışırsa json listesini geriye döndürecektir
     private List<GetFoodDto> getFoodWithType(String type){
         IFood food = RetrofitClient.getRetrofitInstance().create(IFood.class);
         Call<List<GetFoodDto>> call = food.getFoodWithType(type);
