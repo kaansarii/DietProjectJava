@@ -7,6 +7,8 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -67,10 +69,30 @@ public class NavigationDrawer extends AppCompatActivity implements NavigationVie
 
         // Eğer Çıkış yaparsa MainActivity'ye geçiş yap
         else if (itemId == R.id.nav_logout) {
-            Intent intent = new Intent(NavigationDrawer.this, MainActivity.class);
-            startActivity(intent);
-            finish();
-            Toast.makeText(this, "Logout", Toast.LENGTH_LONG).show();        }
+            // Çıkış işlemi için onay mesajı gösterir
+            new AlertDialog.Builder(this)
+                    .setTitle("Çıkış") //başlığın ismi
+                    .setMessage("Çıkış yapmak istediğinizden emin misiniz?") //kullanıcıya sorguyor
+                    //evet derse
+                    .setPositiveButton("Evet", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int which) {
+                            // Kullanıcı "Evet" dediğinde çıkış işlemini gerçekleştir
+                            Intent intent = new Intent(NavigationDrawer.this, MainActivity.class);
+                            startActivity(intent);
+                            finish();
+                            Toast.makeText(NavigationDrawer.this, "Çıkış yapıldı", Toast.LENGTH_LONG).show();
+                        }
+                    })
+                    //hayır derse
+                    .setNegativeButton("Hayır", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int which) {
+                            // Kullanıcı "Hayır" dediğinde hiçbir şey yapma veya isteğe bağlı olarak işlem yapabilirsin
+                        }
+                    })
+                    .setIcon(android.R.drawable.ic_dialog_alert)
+                    .show();
+        }
+
 
         // Navigation Drawer'ı kapat
         drawerLayout.closeDrawer(GravityCompat.START);

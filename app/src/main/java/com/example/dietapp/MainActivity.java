@@ -30,14 +30,11 @@ import retrofit2.Response;
 public class MainActivity extends AppCompatActivity {
 
     private EditText editTextEmail, editTextPassword;
-    private Button buttonLogin, buttonLoginRegister, buttonImageChange, geciciGiris;
+    private Button buttonLogin, buttonLoginRegister, geciciGiris, adminGiris;
     private TextView textViewEmail,textViewPassword;
     private ImageView profileImageView;
-    static final int SELECT_IMAGE=12; //görsel değişimi için yaptım
     BmiFragment bmiFragment;
-    Uri imageUri;
 
-    ActivityResultLauncher<String> galleryLauncher;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,8 +46,9 @@ public class MainActivity extends AppCompatActivity {
         TextView textViewEmail = (TextView) findViewById(R.id.textViewEmail);
         TextView textViewPassword = (TextView) findViewById(R.id.textViewPassword);
         ImageView profileImageView = findViewById(R.id.profileImageView);
-        Button buttonImageChange = (Button) findViewById(R.id.buttonImageChange);
+
         Button geciciGiris = (Button) findViewById(R.id.geciciGiris);
+        Button adminGiris = (Button) findViewById(R.id.adminGiris);
 
 
         Button buttonLogin = (Button) findViewById(R.id.buttonLogin);
@@ -110,6 +108,17 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+
+        adminGiris.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View vi) {
+                Intent intent = new Intent(MainActivity.this, AdminPanelActivity.class);
+                MainActivity.this.startActivity(intent);
+                MainActivity.this.finish();
+
+            }
+        });
+
         geciciGiris.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -118,6 +127,9 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+
+
         Button buttonLoginRegister = (Button) findViewById(R.id.buttonLoginRegister);
         buttonLoginRegister.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -129,27 +141,13 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        //galleryLauncher adında bir ActivityResultLauncher nesnesi oluşturulur ve registerForActivityResult metodu kullanılır. Bu, galeriden içerik alma işlemi sona erdiğinde çağrılacak olan bir callback fonksiyonu içerir.
-        //ActivityResultContracts.GetContent(): Bu, galeriden içerik alma işlemi için bir kontrakt (contract) tanımlar.
-        galleryLauncher=registerForActivityResult(new ActivityResultContracts.GetContent()
-                , new ActivityResultCallback<Uri>() {
-                    @Override
-                    public void onActivityResult(Uri uri) {
-                        profileImageView.setImageURI(uri);
-                        }
-                });
 
-        //. Bu buton tıklandığında galeriye gitmek için bir Intent oluşturulur ve galleryLauncher.launch("image/*") ile galeri başlatılır.
-        buttonImageChange.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //Intent.ACTION_GET_CONTENT: Bu, içerik almak için bir işlem talebi oluşturur. Genellikle galeri veya dosya tarayıcı gibi uygulamalara içerik alma talebi gönderir
-                Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
-                //galleryLauncher.launch("image/*"): Bu, galleryLauncher'ı başlatarak içerik alma işlemini başlatır. "image/*" parametresi, alınacak içeriğin türünü belirtir ve bu örnekte resim türünde içerik alınması sağlanır.
-                galleryLauncher.launch("image/*");
 
-            }
-        });
+
+
+
+
+
     }
 
     }

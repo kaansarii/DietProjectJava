@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -15,19 +16,10 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="24dp"
         android:contentDescription="@string/profile_image_description"
-        android:src="@drawable/facee" />
+        android:src="@drawable/logo" />
 
 
-    <Button
-        android:id="@+id/buttonImageChange"
-        android:layout_width="44dp"
-        android:layout_height="33dp"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginTop="100dp"
-        android:layout_marginEnd="62dp"
-        android:background="@android:drawable/ic_popup_sync"
-        android:tint="#000000" />
+
 
     <TextView
         android:id="@+id/textViewEmail"
@@ -105,6 +97,17 @@
         android:layout_marginStart="108dp"
         android:layout_marginBottom="66dp"
         android:text="Geçiçi Gir"/>
+
+    <Button
+        android:id="@+id/adminGiris"
+        android:layout_width="165dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="115dp"
+        android:layout_marginBottom="169dp"
+        android:text="admin Girişi" />
 
 </RelativeLayout>
 
