@@ -18,9 +18,13 @@ import android.widget.Toast;
 
 import com.example.dietapp.dtos.GetFoodDto;
 import com.example.dietapp.dtos.GetUserInformationDto;
+import com.example.dietapp.dtos.PostMealFoodDto;
 import com.example.dietapp.interfaces.IFood;
+import com.example.dietapp.interfaces.IMealFood;
 import com.example.dietapp.interfaces.IUserInformation;
 import com.example.dietapp.dtos.SharedId;
+
+import java.io.IOException;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -176,7 +180,8 @@ public class NutrientsFragment extends Fragment {
                 listDinner.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                     @Override
                     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                        int selectedId = ids.get(i); // tıklanılan listViewdeki yiyeceğin id bilgisine ulaşıldı
+                        int foodId= ids.get(i);
+                        postMealFood(appUserId,foodId);
 
                     }
                 });
@@ -208,5 +213,35 @@ public class NutrientsFragment extends Fragment {
             }
         });
         return data;
+    }
+    private void postMealFood(int appUserId, int foodId){
+        IMealFood iMealFood = RetrofitClient.getRetrofitInstance().create(IMealFood.class);
+        PostMealFoodDto postMealFoodDto = new PostMealFoodDto(appUserId,foodId);
+        Call<Void> call = iMealFood.postMealFood(postMealFoodDto);
+        call.enqueue(new Callback<Void>() {
+            @Override
+            public void onResponse(Call<Void> call, Response<Void> response) {
+                if(response.isSuccessful()){
+                    Toast.makeText(getContext(),"Öğününüz Başarıyla Kaydedilmiştir", Toast.LENGTH_LONG).show();
+                }else {
+                    // Başarısız cevap alındı, hata durumunu göster
+                    String errorMessage = "Error: " + response.code() + " " + response.message();
+                    Toast.makeText(getContext(), response.message(), Toast.LENGTH_LONG).show();
+
+                    // Server tarafından dönen detaylı hata mesajını almak için:
+                    try {
+                        String errorBody = response.errorBody().string();
+                        // errorBody içinde server tarafından dönen JSON formatında hata mesajını kullanabilirsiniz.
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Void> call, Throwable t) {
+                Toast.makeText(getContext(), t.getMessage(), Toast.LENGTH_LONG).show();
+            }
+        });
     }
 }
