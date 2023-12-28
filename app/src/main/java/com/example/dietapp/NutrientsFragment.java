@@ -1,6 +1,8 @@
 package com.example.dietapp;
 
 import android.annotation.SuppressLint;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
@@ -182,6 +184,19 @@ public class NutrientsFragment extends Fragment {
                     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                         int foodId= ids.get(i);
                         postMealFood(appUserId,foodId);
+
+
+                        // AlertDialog göster
+                        AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+                        builder.setTitle("Besine Tıklandı");
+                        builder.setMessage(names.get(i) + " isimli besine tıkladınız.");
+                        builder.setPositiveButton("Tamam", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                dialog.dismiss();
+                            }
+                        });
+                        AlertDialog alertDialog = builder.create();
+                        alertDialog.show();
 
                     }
                 });

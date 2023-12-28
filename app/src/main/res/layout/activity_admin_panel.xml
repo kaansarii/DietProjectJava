@@ -11,167 +11,165 @@
         android:layout_height="wrap_content"
         android:background="@drawable/backgroundcolorblue">
 
-    <!-- Yiyecek Adı -->
-    <TextView
-        android:id="@+id/textViewFoodName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Yiyecek Adı:"
-        android:textStyle="bold"
-        android:textSize="20dp"/>
+        <!-- Yiyecek Adı -->
+        <TextView
+            android:id="@+id/textViewFoodName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Yiyecek Adı:"
+            android:textStyle="bold"
+            android:textSize="20dp"/>
 
-    <!-- Kalori -->
-    <EditText
-        android:id="@+id/foodNameField"
-        android:layout_width="match_parent"
-        android:layout_height="57dp"
-        android:layout_below="@id/textViewFoodName"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="7dp"
-        android:hint="Besinin Adını Giriniz"
-        android:inputType="text"
-        android:background="@drawable/whitebackground"/>
+        <!-- Kalori -->
+        <EditText
+            android:id="@+id/foodNameField"
+            android:layout_width="match_parent"
+            android:layout_height="57dp"
+            android:layout_below="@id/textViewFoodName"
+            android:layout_alignParentStart="true"
+            android:layout_marginTop="7dp"
+            android:hint="Besinin Adını Giriniz"
+            android:inputType="text"
+            android:background="@drawable/whitebackground"/>
 
-    <TextView
-        android:id="@+id/textViewCalorie"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/foodNameField"
-        android:layout_marginTop="16dp"
-        android:text="Kalori:"
-        android:textStyle="bold"
-        android:textSize="20dp"/>
+        <!-- Kalori -->
+        <TextView
+            android:id="@+id/textViewCalorie"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/foodNameField"
+            android:layout_marginTop="16dp"
+            android:text="Kalori:"
+            android:textStyle="bold"
+            android:textSize="20dp"/>
 
-    <EditText
-        android:id="@+id/calorieField"
-        android:layout_width="match_parent"
-        android:layout_height="55dp"
-        android:layout_below="@id/textViewCalorie"
-        android:layout_marginTop="8dp"
-        android:hint="Kalori Değerini Giriniz"
-        android:inputType="number"
-        android:background="@drawable/whitebackground"/>
+        <EditText
+            android:id="@+id/calorieField"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:layout_below="@id/textViewCalorie"
+            android:layout_marginTop="8dp"
+            android:hint="Kalori Değerini Giriniz"
+            android:inputType="number"
+            android:background="@drawable/whitebackground"/>
 
-    <!-- Besin Değeri -->
-    <!-- Protein -->
-    <TextView
-        android:id="@+id/textViewProtein"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/calorieField"
-        android:layout_marginTop="16dp"
-        android:text="Protein:"
-        android:textStyle="bold"
-        android:textSize="20dp"/>
+        <!-- Besin Değeri -->
+        <!-- Protein -->
+        <TextView
+            android:id="@+id/textViewProtein"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/calorieField"
+            android:layout_marginTop="16dp"
+            android:text="Protein:"
+            android:textStyle="bold"
+            android:textSize="20dp"/>
 
-    <EditText
-        android:id="@+id/proteinField"
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:layout_below="@id/textViewProtein"
-        android:layout_marginTop="8dp"
-        android:hint="Protein Değeri Giriniz. (gr cinsinden) "
-        android:inputType="numberDecimal"
-        android:background="@drawable/whitebackground"/>
+        <EditText
+            android:id="@+id/proteinField"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_below="@id/textViewProtein"
+            android:layout_marginTop="8dp"
+            android:hint="Protein Değeri Giriniz. (gr cinsinden) "
+            android:inputType="numberDecimal"
+            android:background="@drawable/whitebackground"/>
 
-    <!-- Yağ -->
-    <TextView
-        android:id="@+id/textViewFat"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/proteinField"
-        android:layout_marginTop="16dp"
-        android:text="Yağ:"
-        android:textStyle="bold"
-        android:textSize="20dp"/>
+        <!-- Yağ -->
+        <TextView
+            android:id="@+id/textViewFat"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/proteinField"
+            android:layout_marginTop="16dp"
+            android:text="Yağ:"
+            android:textStyle="bold"
+            android:textSize="20dp"/>
 
-    <EditText
-        android:id="@+id/fatField"
-        android:layout_width="match_parent"
-        android:layout_height="57dp"
-        android:layout_below="@id/textViewFat"
-        android:layout_marginTop="8dp"
-        android:hint="Yağ Değeri Giriniz. (gr cinsinden)"
-        android:inputType="numberDecimal"
-        android:background="@drawable/whitebackground"/>
+        <EditText
+            android:id="@+id/fatField"
+            android:layout_width="match_parent"
+            android:layout_height="57dp"
+            android:layout_below="@id/textViewFat"
+            android:layout_marginTop="8dp"
+            android:hint="Yağ Değeri Giriniz. (gr cinsinden)"
+            android:inputType="numberDecimal"
+            android:background="@drawable/whitebackground"/>
 
-    <!-- Karbonhidrat -->
-    <TextView
-        android:id="@+id/textViewCarbohydrate"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/fatField"
-        android:layout_marginTop="16dp"
-        android:text="Karbonhidrat:"
-        android:textStyle="bold"
-        android:textSize="20dp"/>
+        <!-- Karbonhidrat -->
+        <TextView
+            android:id="@+id/textViewCarbohydrate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/fatField"
+            android:layout_marginTop="16dp"
+            android:text="Karbonhidrat:"
+            android:textStyle="bold"
+            android:textSize="20dp"/>
 
-    <EditText
-        android:id="@+id/carbohydrateField"
-        android:layout_width="match_parent"
-        android:layout_height="66dp"
-        android:layout_below="@id/textViewCarbohydrate"
-        android:layout_marginTop="8dp"
-        android:hint="Karbonhidrat Değeri Giriniz. (gr cinsinden)"
-        android:inputType="numberDecimal"
-        android:background="@drawable/whitebackground"/>
+        <EditText
+            android:id="@+id/carbohydrateField"
+            android:layout_width="match_parent"
+            android:layout_height="66dp"
+            android:layout_below="@id/textViewCarbohydrate"
+            android:layout_marginTop="8dp"
+            android:hint="Karbonhidrat Değeri Giriniz. (gr cinsinden)"
+            android:inputType="numberDecimal"
+            android:background="@drawable/whitebackground"/>
 
-    <!-- Türler -->
-    <TextView
-        android:id="@+id/textViewMeals"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/carbohydrateField"
-        android:layout_marginTop="16dp"
-        android:text="Günün Hangi Öğünü"
-        android:textStyle="bold"
-        android:textSize="20dp"/>
+        <!-- Türler -->
+        <TextView
+            android:id="@+id/textViewMeals"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/carbohydrateField"
+            android:layout_marginTop="16dp"
+            android:text="Günün Hangi Öğünü"
+            android:textStyle="bold"
+            android:textSize="20dp"/>
 
-    <CheckBox
-        android:id="@+id/breakfastCheckbox"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/textViewMeals"
-        android:layout_marginTop="16dp"
-        android:text="Kahvaltı" />
+        <CheckBox
+            android:id="@+id/breakfastCheckbox"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/textViewMeals"
+            android:layout_marginTop="16dp"
+            android:text="Kahvaltı" />
 
-    <CheckBox
-        android:id="@+id/lunchCheckbox"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/breakfastCheckbox"
-        android:layout_marginTop="8dp"
-        android:text="Öğle Yemeği" />
+        <CheckBox
+            android:id="@+id/lunchCheckbox"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/breakfastCheckbox"
+            android:layout_marginTop="8dp"
+            android:text="Öğle Yemeği" />
 
-    <CheckBox
-        android:id="@+id/dinnerCheckbox"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/lunchCheckbox"
-        android:layout_marginTop="8dp"
-        android:text="Akşam Yemeği" />
+        <CheckBox
+            android:id="@+id/dinnerCheckbox"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/lunchCheckbox"
+            android:layout_marginTop="8dp"
+            android:text="Akşam Yemeği" />
 
-    <!-- Ekle Butonu -->
-
+        <!-- Ekle Butonu -->
         <Button
             android:id="@+id/addButton"
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_below="@id/dinnerCheckbox"
-            android:layout_alignParentStart="true"
-            android:layout_marginStart="50dp"
-            android:layout_marginTop="7dp"
+            android:layout_marginTop="16dp"
+            android:layout_centerHorizontal="true"
             android:text="Yiyecek Ekle" />
 
         <Button
             android:id="@+id/outButton"
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_below="@id/dinnerCheckbox"
-            android:layout_alignParentEnd="true"
-            android:layout_marginEnd="50dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/addButton"
+            android:layout_marginTop="16dp"
+            android:layout_centerHorizontal="true"
             android:text="Çıkış" />
-
 
     </RelativeLayout>
 </ScrollView>
