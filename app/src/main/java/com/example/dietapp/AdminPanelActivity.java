@@ -13,8 +13,16 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.dietapp.dtos.AddFoodDto;
+import com.example.dietapp.interfaces.IFood;
+
 import java.util.ArrayList;
 import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class AdminPanelActivity extends AppCompatActivity {
 
@@ -23,6 +31,7 @@ public class AdminPanelActivity extends AppCompatActivity {
     private Button addButton, outButton;
     private TextView foodListArea;
     private List<String> foodList;
+    private String meal = " ";
 
     @SuppressLint("MissingInflatedId")
     @Override
@@ -70,12 +79,22 @@ public class AdminPanelActivity extends AppCompatActivity {
         String protein = proteinField.getText().toString();
         String fat = fatField.getText().toString();
         String carbohydrate = carbohydrateField.getText().toString();
+        double doubleCalorie = Double.parseDouble(calorie);
+        double doubleProtein = Double.parseDouble(protein);
+        double doubleFat = Double.parseDouble(fat);
+        double doubleCarbohydrate = Double.parseDouble(carbohydrate);
 
         // hangi öğün  kontrol et
         boolean isBreakfast = breakfastCheckbox.isChecked();
         boolean isLunch = lunchCheckbox.isChecked();
         boolean isDinner = dinnerCheckbox.isChecked();
-
+        if(isBreakfast){
+            meal = "Kahvaltı";
+        } else if (isLunch) {
+            meal = "Öğle Yemeği";
+        } else if (isDinner) {
+            meal = "Akşam Yemeği";
+        }
         // Gerekli bilgileri kontrol et
         if (foodName.isEmpty() || calorie.isEmpty() || protein.isEmpty() || fat.isEmpty() || carbohydrate.isEmpty()) {
             // Eğer gerekli bilgiler eksikse, kullanıcıyı uyar
@@ -104,7 +123,26 @@ public class AdminPanelActivity extends AppCompatActivity {
             public void onClick(DialogInterface dialog, int which) {
                 // Kullanıcı "Ekle" dediğinde
                 foodList.add(foodInfo);
+                IFood iFood = RetrofitClient.getRetrofitInstance().create(IFood.class);
+                AddFoodDto addFoodDto = new AddFoodDto(foodName,meal,doubleCalorie,doubleFat,doubleCarbohydrate,doubleProtein);
+                Call<Void> call = iFood.addFood(addFoodDto);
+                call.enqueue(new Callback<Void>() {
+                    @Override
+                    public void onResponse(Call<Void> call, Response<Void> response) {
+                        if(response.isSuccessful()){
+                            Toast.makeText(AdminPanelActivity.this, "Veri Başarıyla Eklendi", Toast.LENGTH_LONG).show();
+                        }else{
+                            // Başarısız cevap alındı, hata durumunu göster
+                            String errorMessage = "Error: " + response.code() + " " + response.message();
+                            Toast.makeText(AdminPanelActivity.this, "Veri Eklenemedi", Toast.LENGTH_LONG).show();
+                        }
+                    }
 
+                    @Override
+                    public void onFailure(Call<Void> call, Throwable t) {
+
+                    }
+                });
                  //temizle
                 clearFields();
 

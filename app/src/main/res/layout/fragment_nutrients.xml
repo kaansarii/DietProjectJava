@@ -59,7 +59,7 @@
                         android:textColor="#333333" />
 
                     <TextView
-                        android:id="@+id/daytVCarbNutrients"
+                        android:id="@+id/dailytVCarbNutrients"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="14dp"
@@ -85,7 +85,7 @@
                         android:textColor="#333333" />
 
                     <TextView
-                        android:id="@+id/daytVProteinNutrients"
+                        android:id="@+id/dailytVProteinNutrients"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="14dp"
@@ -111,7 +111,7 @@
                         android:textColor="#333333" />
 
                     <TextView
-                        android:id="@+id/daytVFatNutrients"
+                        android:id="@+id/dailytVFatNutrients"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="14dp"
@@ -137,7 +137,7 @@
                         android:textColor="#333333" />
 
                     <TextView
-                        android:id="@+id/daytVCalNutrients"
+                        android:id="@+id/dailytVCalNutrients"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="14dp"
@@ -195,7 +195,7 @@
                     android:textColor="#333333" />
 
                 <TextView
-                    android:id="@+id/tVCarbNutrients"
+                    android:id="@+id/todaytVCarbNutrients"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="14dp"
@@ -220,7 +220,7 @@
                     android:textColor="#333333" />
 
                 <TextView
-                    android:id="@+id/tVProteinNutrients"
+                    android:id="@+id/todaytVProteinNutrients"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="14dp"
@@ -246,7 +246,7 @@
                     android:textColor="#333333" />
 
                 <TextView
-                    android:id="@+id/tVFatNutrients"
+                    android:id="@+id/todaytVFatNutrients"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="14dp"
@@ -271,7 +271,7 @@
                     android:textColor="#333333" />
 
                 <TextView
-                    android:id="@+id/tVCalNutrients"
+                    android:id="@+id/todaytVCalNutrients"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="14dp"

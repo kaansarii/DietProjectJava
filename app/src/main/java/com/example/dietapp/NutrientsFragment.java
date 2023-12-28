@@ -5,7 +5,6 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,7 +12,6 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -42,28 +40,39 @@ public class NutrientsFragment extends Fragment {
     TextView fat;
     TextView protein;
     TextView calorie;
+    TextView dayFat, dayProtein, dayCalorie, dayCarbonhydrate;
+    TextView tVTotalBrekakfastCalorie, tvTotalLuncCalorie, tvTotalDinnerCalorie;
     ListView listBreakfast, listLunch, listDinner;
     Button listBreakfastItems, listLunchItems, listDinnerItems;
     SharedId sharedId = SharedId.getInstance();
     int appUserId = sharedId.getSharedData();
+    double todayFat, todayProtein, todayCalorie, todayCarbonhydrate = 0;
+    double totalBrekakfastCalorie, totalLuncCalorie, totalDinnerCalorie = 0;
+    DecimalFormat decimalFormat = new DecimalFormat("#.##");
     List<GetFoodDto> data = new ArrayList<>();
     @SuppressLint("MissingInflatedId")
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_nutrients,container,false);
-        carbonhydrate = rootView.findViewById(R.id.daytVCarbNutrients);
-        fat = rootView.findViewById(R.id.daytVFatNutrients);
-        protein = rootView.findViewById(R.id.daytVProteinNutrients);
-        calorie = rootView.findViewById(R.id.daytVCalNutrients);
+        carbonhydrate = rootView.findViewById(R.id.dailytVCarbNutrients);
+        fat = rootView.findViewById(R.id.dailytVFatNutrients);
+        protein = rootView.findViewById(R.id.dailytVProteinNutrients);
+        calorie = rootView.findViewById(R.id.dailytVCalNutrients);
+        dayCarbonhydrate = rootView.findViewById(R.id.todaytVCarbNutrients);
+        dayCalorie  = rootView.findViewById(R.id.todaytVCalNutrients);
+        dayFat = rootView.findViewById(R.id.todaytVFatNutrients);
+        dayProtein = rootView.findViewById(R.id.todaytVProteinNutrients);
         listBreakfast = (ListView) rootView.findViewById(R.id.listBreakfast);
         listBreakfastItems = (Button) rootView.findViewById(R.id.breakfastButton);
         listLunchItems = (Button) rootView.findViewById(R.id.lunchButton);
         listLunch = (ListView) rootView.findViewById(R.id.listLunch);
         listDinnerItems = (Button) rootView.findViewById(R.id.dinnerButton);
         listDinner = (ListView) rootView.findViewById(R.id.listDinner);
-        List<String> foods = Arrays.asList("Kebap", "Pide", "Lahmacun");
-        DecimalFormat decimalFormat = new DecimalFormat("#.##");
+        tVTotalBrekakfastCalorie = rootView.findViewById(R.id.totalBreakfast);
+        tvTotalLuncCalorie = rootView.findViewById(R.id.totalLunch);
+        tvTotalDinnerCalorie = rootView.findViewById(R.id.totalDinner);
+
         IUserInformation userInformation = RetrofitClient.getRetrofitInstance().create(IUserInformation.class);
         Call<GetUserInformationDto> call = userInformation.getUserInformationWithDailyInformation(appUserId);
         call.enqueue(new Callback<GetUserInformationDto>() {
@@ -75,6 +84,10 @@ public class NutrientsFragment extends Fragment {
                     fat.setText(decimalFormat.format(model.getDailyFatRequirement()) + " g");
                     protein.setText(decimalFormat.format(model.getDailyProteinRequirement()) + " g");
                     calorie.setText(decimalFormat.format(model.getDailyCalorieRequirement()) + " kcal");
+                    dayCarbonhydrate.setText(decimalFormat.format(todayCarbonhydrate) + " g");
+                    dayFat.setText(decimalFormat.format(todayFat) + " g");
+                    dayProtein.setText(decimalFormat.format(todayProtein) + " g");
+                    dayCalorie.setText(decimalFormat.format(todayCalorie) + " kcal");
                 }else{
                     Toast.makeText(getContext(),"İstek İşlenirken Bir Hata Meydana Geldi",Toast.LENGTH_LONG).show();
                 }
@@ -91,6 +104,7 @@ public class NutrientsFragment extends Fragment {
                 data =  getFoodWithType("Kahvaltı");
                 List<GetFoodDto> foods = new ArrayList<>();
                 List<Integer> ids = new ArrayList<>();
+                List<String> foodNames = new ArrayList<>();
                 List<Double> calories = new ArrayList<>();
                 List<Double> fats = new ArrayList<>();
                 List<Double> proteins = new ArrayList<>();
@@ -98,6 +112,7 @@ public class NutrientsFragment extends Fragment {
                 for(GetFoodDto foodDto : data){
                     foods.add(foodDto); //Liste şeklinde gelen data'lar foods isimli değişkene atanıyor
                     ids.add(foodDto.getId());
+                    foodNames.add((foodDto.getName()));
                     calories.add(foodDto.getCalorie());
                     fats.add(foodDto.getFat());
                     proteins.add(foodDto.getProtein());
@@ -112,7 +127,40 @@ public class NutrientsFragment extends Fragment {
                 listBreakfast.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                     @Override
                     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                        //Seçilen listview itemıyle ilgili işlemleri burda yapacaz
+                        int foodId= ids.get(i);
+
+                        // AlertDialog göster
+                        AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+                        builder.setTitle("Öğüne Tıklandı");
+                        String foodInfo = "\nYiyecek Adı: " + foodNames.get(i) +
+                                "\nKalori: " + calories.get(i) + " gr" +
+                                "\nProtein: " + proteins.get(i) + " gr" +
+                                "\nYağ: " + fats.get(i) + " gr" +
+                                "\nKarbonhidrat: " + carbohydrates.get(i) +" kcal";
+                        builder.setMessage(names.get(i) + " isimli besine tıkladınız. " +foodInfo);
+                        builder.setPositiveButton("Ekle", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                postMealFood(appUserId,foodId);
+                                todayFat += fats.get(i);
+                                todayProtein  += proteins.get(i);
+                                todayCalorie  += calories.get(i);
+                                todayCarbonhydrate += carbohydrates.get(i);
+                                updateTodayMacros(todayFat, todayProtein, todayCalorie, todayCarbonhydrate);
+                                totalBrekakfastCalorie += calories.get(i);
+                                tVTotalBrekakfastCalorie.setText("Toplam : " + totalBrekakfastCalorie +" Kalori");
+                                Toast.makeText(getContext(), "Öğün başarıyla eklendi.", Toast.LENGTH_SHORT).show();
+                                dialog.dismiss();
+                            }
+                        });
+                        builder.setNegativeButton("İptal", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int i) {
+                                dialog.dismiss();
+                            }
+                        });
+                        AlertDialog alertDialog = builder.create();
+                        alertDialog.show();
+
                     }
                 });
             }
@@ -124,6 +172,7 @@ public class NutrientsFragment extends Fragment {
                 List<GetFoodDto> foods = new ArrayList<>();
                 // Json verisi içindeki id, calori, fat, protein, carbohydrates bilgilerini tutabilmek e gerektiği zamanda çağırabilmek için arrayList oluşturduk
                 List<Integer> ids = new ArrayList<>();
+                List<String> foodNames = new ArrayList<>();
                 List<Double> calories = new ArrayList<>();
                 List<Double> fats = new ArrayList<>();
                 List<Double> proteins = new ArrayList<>();
@@ -132,6 +181,7 @@ public class NutrientsFragment extends Fragment {
                     //Foreach döngüsü sayesinde data Listesinnin içindeki id vb elemanlar ilgili dizilere aktarılıyor. Bu sayede setOnItemClikListener
                     //methodu çalıştığında tıknalınal listview elemanına ait verileri görüntüleyebileceğiz.
                     foods.add(foodDto);
+                    foodNames.add((foodDto.getName()));
                     ids.add(foodDto.getId());
                     calories.add(foodDto.getCalorie());
                     fats.add(foodDto.getFat());
@@ -147,7 +197,40 @@ public class NutrientsFragment extends Fragment {
                 listLunch.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                     @Override
                     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                        //Seçilen listview itemıyle ilgili işlemleri burda yapacaz
+                        int foodId= ids.get(i);
+
+                        // AlertDialog göster
+                        AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+                        builder.setTitle("Öğüne Tıklandı");
+                        String foodInfo = "\nYiyecek Adı: " + foodNames.get(i) +
+                                "\nKalori: " + calories.get(i) + " gr" +
+                                "\nProtein: " + proteins.get(i) + " gr" +
+                                "\nYağ: " + fats.get(i) + " gr" +
+                                "\nKarbonhidrat: " + carbohydrates.get(i) +" kcal";
+                        builder.setMessage(names.get(i) + " isimli besine tıkladınız.\n " +foodInfo);
+                        builder.setPositiveButton("Ekle", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                postMealFood(appUserId,foodId);
+                                todayFat += fats.get(i);
+                                todayProtein  += proteins.get(i);
+                                todayCalorie  += calories.get(i);
+                                todayCarbonhydrate += carbohydrates.get(i);
+                                updateTodayMacros(todayFat, todayProtein, todayCalorie, todayCarbonhydrate);
+                                totalLuncCalorie += calories.get(i);
+                                tvTotalLuncCalorie.setText("Toplam: " + totalLuncCalorie + " Kalori");
+                                Toast.makeText(getContext(), "Öğün başarıyla eklendi.", Toast.LENGTH_SHORT).show();
+                                dialog.dismiss();
+                            }
+                        });
+                        builder.setNegativeButton("İptal", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int i) {
+                                dialog.dismiss();
+                            }
+                        });
+                        AlertDialog alertDialog = builder.create();
+                        alertDialog.show();
+
                     }
                 });
             }
@@ -159,6 +242,7 @@ public class NutrientsFragment extends Fragment {
                 List<GetFoodDto> foods = new ArrayList<>();
                 // Json verisi içindeki id, calori, fat, protein, carbohydrates bilgilerini tutabilmek e gerektiği zamanda çağırabilmek için arrayList oluşturduk
                 List<Integer> ids = new ArrayList<>();
+                List<String> foodNames = new ArrayList<>();
                 List<Double> calories = new ArrayList<>();
                 List<Double> fats = new ArrayList<>();
                 List<Double> proteins = new ArrayList<>();
@@ -167,6 +251,7 @@ public class NutrientsFragment extends Fragment {
                     //Foreach döngüsü sayesinde data Listesinnin içindeki id vb elemanlar ilgili dizilere aktarılıyor. Bu sayede setOnItemClikListener
                     //methodu çalıştığında tıknalınal listview elemanına ait verileri görüntüleyebileceğiz.
                     foods.add(foodDto);
+                    foodNames.add((foodDto.getName()));
                     ids.add(foodDto.getId());
                     calories.add(foodDto.getCalorie());
                     fats.add(foodDto.getFat());
@@ -183,15 +268,33 @@ public class NutrientsFragment extends Fragment {
                     @Override
                     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                         int foodId= ids.get(i);
-                        postMealFood(appUserId,foodId);
-
 
                         // AlertDialog göster
                         AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
-                        builder.setTitle("Besine Tıklandı");
-                        builder.setMessage(names.get(i) + " isimli besine tıkladınız.");
-                        builder.setPositiveButton("Tamam", new DialogInterface.OnClickListener() {
+                        builder.setTitle("Öğüne Tıklandı");
+                        String foodInfo = "\nYiyecek Adı: " + foodNames.get(i) +
+                                "\nKalori: " + calories.get(i) + " gr" +
+                                "\nProtein: " + proteins.get(i) + " gr" +
+                                "\nYağ: " + fats.get(i) + " gr" +
+                                "\nKarbonhidrat: " + carbohydrates.get(i) +" kcal";
+                        builder.setMessage(names.get(i) + " isimli besine tıkladınız. \n" +foodInfo);
+                        builder.setPositiveButton("Ekle", new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int id) {
+                                postMealFood(appUserId,foodId);
+                                todayFat += fats.get(i);
+                                todayProtein  += proteins.get(i);
+                                todayCalorie  += calories.get(i);
+                                todayCarbonhydrate += carbohydrates.get(i);
+                                updateTodayMacros(todayFat, todayProtein, todayCalorie, todayCarbonhydrate);
+                                totalDinnerCalorie += calories.get(i);
+                                tvTotalDinnerCalorie.setText("Toplam: " +totalDinnerCalorie + " Kalori");
+                                Toast.makeText(getContext(), "Öğün başarıyla eklendi.", Toast.LENGTH_SHORT).show();
+                                dialog.dismiss();
+                            }
+                        });
+                        builder.setNegativeButton("İptal", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int i) {
                                 dialog.dismiss();
                             }
                         });
@@ -258,5 +361,11 @@ public class NutrientsFragment extends Fragment {
                 Toast.makeText(getContext(), t.getMessage(), Toast.LENGTH_LONG).show();
             }
         });
+    }
+    private void updateTodayMacros(double todayFat, double todayProtein, double todayCalorie, double todayCarbonhydrate  ){
+        dayCarbonhydrate.setText(decimalFormat.format(todayCarbonhydrate) + " g");
+        dayFat.setText(decimalFormat.format(todayFat) + " g");
+        dayProtein.setText(decimalFormat.format(todayProtein) + " g");
+        dayCalorie.setText(decimalFormat.format(todayCalorie) + " kcal");
     }
 }
