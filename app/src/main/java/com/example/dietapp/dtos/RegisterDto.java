@@ -1,12 +1,13 @@
 package com.example.dietapp.dtos;
 
 public class RegisterDto {
-    public RegisterDto(String name, String surname, String userName, String email, String password) {
+    public RegisterDto(String name, String surname, String userName, String email, String password, String role) {
         this.name = name;
         this.surname = surname;
         this.userName = userName;
         this.email = email;
         this.password = password;
+        this.role = role;
     }
 
     public String getName() {
@@ -49,7 +50,13 @@ public class RegisterDto {
         this.password = password;
     }
 
-    public  String name, surname, userName, email, password;
+    private   String name, surname, userName, email, password, role;
 
+    public String getRole() {
+        return role;
+    }
 
+    public void setRole(String role) {
+        this.role = role;
+    }
 }

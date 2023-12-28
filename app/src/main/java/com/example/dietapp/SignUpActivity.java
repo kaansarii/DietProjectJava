@@ -47,13 +47,14 @@ public class SignUpActivity extends AppCompatActivity {
                 String email = editTextEmail.getText().toString();
                 String password = editTextPassword.getText().toString();
                 String repeatPassword = editTextRepeatPassword.getText().toString();
+                String role = "User";
 
                 if (!password.equals(repeatPassword)) {
                     Toast.makeText(SignUpActivity.this, "Şifreler eşleşmiyor", Toast.LENGTH_SHORT).show();
                     return;
                 }
                 IRegister iRegister = RetrofitClient.getRetrofitInstance().create(IRegister.class);
-                RegisterDto registerDto = new RegisterDto(firstName,lastName,userName,email,password);
+                RegisterDto registerDto = new RegisterDto(firstName,lastName,userName,email,password,role);
                 Call<Void> call = iRegister.registerUser(registerDto);
                 call.enqueue(new Callback<Void>() {
                     @Override

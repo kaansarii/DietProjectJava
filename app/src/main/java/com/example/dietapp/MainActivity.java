@@ -72,10 +72,19 @@ public class MainActivity extends AppCompatActivity {
                                     //İd verisini api'dan almak için ilgili veriyi LoginResponse Modeline attım
                                     LoginResponse loginResponse = response.body();
                                     int id = loginResponse.getUserId(); //ilgili veriyi id değişkenine attım
+                                    String role = loginResponse.getRole(); //Rol Bilgisini atadım
                                     SharedId sharedId = SharedId.getInstance();
                                     sharedId.setSharedData(id);
-                                    Intent intent = new Intent(MainActivity.this,NavigationDrawer.class);
-                                    startActivity(intent);
+                                    //Role bilgisinde user varsa Navigation Drawer'a yönlendirecek, admin varsa admin panaline yönlendirecek
+                                    if(role.contains("User")){
+                                        Intent intent = new Intent(MainActivity.this,NavigationDrawer.class);
+                                        startActivity(intent);
+                                    }else{
+                                        Intent intent = new Intent(MainActivity.this,AdminPanelActivity.class);
+                                        startActivity(intent);
+                                    }
+
+
 
                                 }catch (Exception e){
                                     e.printStackTrace();

@@ -11,10 +11,21 @@ public class LoginResponse {
         this.userId = userId;
     }
 
-    public LoginResponse(int userId) {
+    public LoginResponse(int userId, String role) {
         this.userId = userId;
+        this.role = role;
     }
 
     @SerializedName("UserId")
-    public int userId;
+    private int userId;
+    @SerializedName("Role")
+    private String role;
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
+    }
 }
