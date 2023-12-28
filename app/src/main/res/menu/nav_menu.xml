@@ -21,7 +21,7 @@
         <item
             android:id="@+id/nav_bmi"
             android:icon="@drawable/nav_calc"
-            android:title="VKE Ve Kalori Hesaplama" />
+            android:title="VKE ve Kalori Hesaplama" />
 
         <item
             android:id="@+id/nav_counter"
