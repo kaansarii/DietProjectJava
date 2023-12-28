@@ -9,7 +9,8 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/backgroundcolorblue">
+        android:background="@drawable/backgroundcolorblue"
+        android:padding="16dp">
 
         <!-- Yiyecek Adı -->
         <TextView
@@ -20,17 +21,16 @@
             android:textStyle="bold"
             android:textSize="20dp"/>
 
-        <!-- Kalori -->
         <EditText
             android:id="@+id/foodNameField"
             android:layout_width="match_parent"
             android:layout_height="57dp"
             android:layout_below="@id/textViewFoodName"
-            android:layout_alignParentStart="true"
             android:layout_marginTop="7dp"
             android:hint="Besinin Adını Giriniz"
             android:inputType="text"
-            android:background="@drawable/whitebackground"/>
+            android:background="@drawable/whitebackground"
+            android:layout_marginBottom="16dp"/>
 
         <!-- Kalori -->
         <TextView
@@ -51,7 +51,8 @@
             android:layout_marginTop="8dp"
             android:hint="Kalori Değerini Giriniz"
             android:inputType="number"
-            android:background="@drawable/whitebackground"/>
+            android:background="@drawable/whitebackground"
+            android:layout_marginBottom="16dp"/>
 
         <!-- Besin Değeri -->
         <!-- Protein -->
@@ -126,6 +127,7 @@
             android:layout_marginTop="16dp"
             android:text="Günün Hangi Öğünü"
             android:textStyle="bold"
+            android:textAlignment="center"
             android:textSize="20dp"/>
 
         <CheckBox
