@@ -10,8 +10,13 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
 import android.widget.Toast;
 import com.google.android.material.navigation.NavigationView;
 
@@ -64,6 +69,43 @@ public class NavigationDrawer extends AppCompatActivity implements NavigationVie
         }
         else if (itemId == R.id.nav_counter) {
             getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new CounterFragment()).addToBackStack(null).commit();
+        }
+        else if (itemId == R.id.nav_social_facebook){
+            // Doğrudan twitter sayfasını bir URI kullanarak aç
+            Uri facebookUri = Uri.parse("https://www.facebook.com/ahievranedutr/?locale=tr_TR");
+
+            // Tarayıcıyı açmak için bir Intent oluştur
+            Intent browserIntent = new Intent(Intent.ACTION_VIEW, facebookUri);
+            startActivity(browserIntent);
+
+
+            //ekrana bir toast mesajı göster
+            Toast.makeText(NavigationDrawer.this, "Facebook Sayfasına Yönlendiriliyor", Toast.LENGTH_LONG).show();
+        }
+
+        else if (itemId == R.id.nav_social_twitter){
+            // Doğrudan twitter sayfasını bir URI kullanarak aç
+            Uri twitterUri = Uri.parse("https://twitter.com/ahievranedutr?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor");
+
+            // Tarayıcıyı açmak için bir Intent oluştur
+            Intent browserIntent = new Intent(Intent.ACTION_VIEW, twitterUri);
+            startActivity(browserIntent);
+
+            //ekrana bir toast mesajı göster
+            Toast.makeText(NavigationDrawer.this, "Twitter Sayfasına Yönlendiriliyor", Toast.LENGTH_LONG).show();
+        }
+
+        else if (itemId == R.id.nav_social_instagram) {
+            // Doğrudan Instagram sayfasını bir URI kullanarak aç
+            Uri instagramUri = Uri.parse("https://www.instagram.com/ahievran.kampus/");
+
+            // Tarayıcıyı açmak için bir Intent oluştur
+            Intent browserIntent = new Intent(Intent.ACTION_VIEW, instagramUri);
+            startActivity(browserIntent);
+
+
+            //ekrana bir toast mesajı göster
+            Toast.makeText(NavigationDrawer.this, "Instagram Sayfasına Yönlendiriliyor", Toast.LENGTH_LONG).show();
         }
 
 

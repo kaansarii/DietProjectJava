@@ -41,6 +41,7 @@
         <activity android:name=".AdminPanelActivity"
             android:exported="true"/>
 
+
     </application>
 
 </manifest>
