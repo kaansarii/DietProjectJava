@@ -53,6 +53,10 @@ public class SignUpActivity extends AppCompatActivity {
                     Toast.makeText(SignUpActivity.this, "Şifreler eşleşmiyor", Toast.LENGTH_SHORT).show();
                     return;
                 }
+                if(!email.contains("@")){
+                    Toast.makeText(SignUpActivity.this, "E Posta Adresinizi Doğru Giriniz", Toast.LENGTH_SHORT).show();
+                    return;
+                }
                 IRegister iRegister = RetrofitClient.getRetrofitInstance().create(IRegister.class);
                 RegisterDto registerDto = new RegisterDto(firstName,lastName,userName,email,password,role);
                 Call<Void> call = iRegister.registerUser(registerDto);
