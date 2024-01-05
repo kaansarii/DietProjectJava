@@ -8,7 +8,7 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="900dp"
         android:background="@drawable/backgroundcolorblue"
         android:padding="16dp">
 
@@ -130,37 +130,40 @@
             android:textAlignment="center"
             android:textSize="20dp"/>
 
-        <CheckBox
-            android:id="@+id/breakfastCheckbox"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/textViewMeals"
-            android:layout_marginTop="16dp"
-            android:text="Kahvaltı" />
-
-        <CheckBox
-            android:id="@+id/lunchCheckbox"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/breakfastCheckbox"
-            android:layout_marginTop="8dp"
-            android:text="Öğle Yemeği" />
-
-        <CheckBox
-            android:id="@+id/dinnerCheckbox"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/lunchCheckbox"
-            android:layout_marginTop="8dp"
-            android:text="Akşam Yemeği" />
 
         <!-- Ekle Butonu -->
+
+        <RadioGroup
+            android:id="@+id/radioGroupFood"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/textViewMeals">
+
+            <RadioButton
+                android:id="@+id/breakfastRadioButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Kahvaltı" />
+
+            <RadioButton
+                android:id="@+id/lunchRadioButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Öğle Yemeği" />
+
+            <RadioButton
+                android:id="@+id/dinnerRadioButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Akşam Yemeği" />
+        </RadioGroup>
+
         <Button
             android:id="@+id/addButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/dinnerCheckbox"
-            android:layout_marginTop="16dp"
+            android:layout_below="@+id/radioGroupFood"
+            android:layout_marginTop="15dp"
             android:layout_centerHorizontal="true"
             android:text="Yiyecek Ekle" />
 
@@ -169,7 +172,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/addButton"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="11dp"
             android:layout_centerHorizontal="true"
             android:text="Çıkış" />
 

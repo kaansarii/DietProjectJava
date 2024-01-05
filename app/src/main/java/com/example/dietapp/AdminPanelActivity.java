@@ -9,6 +9,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -27,7 +29,9 @@ import retrofit2.Response;
 public class AdminPanelActivity extends AppCompatActivity {
 
     private EditText foodNameField, calorieField, proteinField, fatField, carbohydrateField;
-    private CheckBox breakfastCheckbox, lunchCheckbox, dinnerCheckbox;
+    private RadioButton breakfastRadioButton, lunchRadioButton, dinnerRadioButton;
+
+    private RadioGroup radioGroupFood;
     private Button addButton, outButton;
     private TextView foodListArea;
     private List<String> foodList;
@@ -44,11 +48,13 @@ public class AdminPanelActivity extends AppCompatActivity {
         proteinField = findViewById(R.id.proteinField);
         fatField = findViewById(R.id.fatField);
         carbohydrateField = findViewById(R.id.carbohydrateField);
-        breakfastCheckbox = findViewById(R.id.breakfastCheckbox);
-        lunchCheckbox = findViewById(R.id.lunchCheckbox);
-        dinnerCheckbox = findViewById(R.id.dinnerCheckbox);
+        breakfastRadioButton = findViewById(R.id.breakfastRadioButton);
+        lunchRadioButton = findViewById(R.id.lunchRadioButton);
+        dinnerRadioButton = findViewById(R.id.dinnerRadioButton);
         addButton = findViewById(R.id.addButton);
         outButton = findViewById(R.id.outButton);
+
+        radioGroupFood = findViewById(R.id.radioGroupFood);
 
         foodList = new ArrayList<>(); //eklenen besinler bu list'de yer alacak
 
@@ -85,9 +91,9 @@ public class AdminPanelActivity extends AppCompatActivity {
         double doubleCarbohydrate = Double.parseDouble(carbohydrate);
 
         // hangi öğün  kontrol et
-        boolean isBreakfast = breakfastCheckbox.isChecked();
-        boolean isLunch = lunchCheckbox.isChecked();
-        boolean isDinner = dinnerCheckbox.isChecked();
+        boolean isBreakfast = breakfastRadioButton.isChecked();
+        boolean isLunch = lunchRadioButton.isChecked();
+        boolean isDinner = dinnerRadioButton.isChecked();
         if(isBreakfast){
             meal = "Kahvaltı";
         } else if (isLunch) {
@@ -172,9 +178,9 @@ public class AdminPanelActivity extends AppCompatActivity {
         proteinField.setText("");
         fatField.setText("");
         carbohydrateField.setText("");
-        breakfastCheckbox.setChecked(false);
-        lunchCheckbox.setChecked(false);
-        dinnerCheckbox.setChecked(false);
+        breakfastRadioButton.setChecked(false);
+        lunchRadioButton.setChecked(false);
+        dinnerRadioButton.setChecked(false);
     }
 
 

@@ -30,7 +30,7 @@ import retrofit2.Response;
 public class MainActivity extends AppCompatActivity {
 
     private EditText editTextEmail, editTextPassword;
-    private Button buttonLogin, buttonLoginRegister, geciciGiris, adminGiris;
+    private Button buttonLogin, buttonLoginRegister;
     private TextView textViewEmail,textViewPassword;
     private ImageView profileImageView;
     BmiFragment bmiFragment;
@@ -47,8 +47,7 @@ public class MainActivity extends AppCompatActivity {
         TextView textViewPassword = (TextView) findViewById(R.id.textViewPassword);
         ImageView profileImageView = findViewById(R.id.profileImageView);
 
-        Button geciciGiris = (Button) findViewById(R.id.geciciGiris);
-        Button adminGiris = (Button) findViewById(R.id.adminGiris);
+
 
 
         Button buttonLogin = (Button) findViewById(R.id.buttonLogin);
@@ -76,6 +75,7 @@ public class MainActivity extends AppCompatActivity {
                                     SharedId sharedId = SharedId.getInstance();
                                     sharedId.setSharedData(id);
                                     //Role bilgisinde user varsa Navigation Drawer'a yönlendirecek, admin varsa admin panaline yönlendirecek
+
                                     if(role.contains("User")){
                                         Intent intent = new Intent(MainActivity.this,NavigationDrawer.class);
                                         startActivity(intent);
@@ -118,24 +118,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        adminGiris.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View vi) {
-                Intent intent = new Intent(MainActivity.this, AdminPanelActivity.class);
-                MainActivity.this.startActivity(intent);
-                MainActivity.this.finish();
 
-            }
-        });
-
-        geciciGiris.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this,NavigationDrawer.class);
-                intent.putExtra("userId",1);
-                startActivity(intent);
-            }
-        });
 
 
 

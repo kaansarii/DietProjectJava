@@ -11,8 +11,8 @@
 
     <ImageView
         android:id="@+id/profileImageView"
-        android:layout_width="156dp"
-        android:layout_height="115dp"
+        android:layout_width="247dp"
+        android:layout_height="187dp"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="24dp"
         android:contentDescription="@string/profile_image_description"
@@ -29,7 +29,7 @@
         android:textSize="18sp"
         android:textColor="#000000"
         android:layout_below="@id/profileImageView"
-        android:layout_marginTop="20dp"/>
+        android:layout_marginTop="30dp"/>
 
     <EditText
         android:id="@+id/editTextEmail"
@@ -37,6 +37,8 @@
         android:layout_height="57dp"
         android:layout_below="@id/textViewEmail"
         android:hint="E-Posta Adresinizi Giriniz"
+        android:layout_alignParentStart="true"
+        android:layout_centerVertical="true"
         android:inputType="textEmailAddress"
         android:background="@drawable/whitebackground"/>
 
@@ -70,7 +72,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/editTextPassword"
         android:layout_alignParentStart="true"
-        android:layout_marginTop="70dp"
+        android:layout_marginTop="50dp"
         android:background="@drawable/buttonbackground"
         android:backgroundTint="#000000"
         android:text="GİRİŞ YAP"
@@ -82,32 +84,13 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/editTextPassword"
         android:layout_alignParentEnd="true"
-        android:layout_marginTop="70dp"
+        android:layout_marginTop="50dp"
         android:background="@drawable/buttonbackground"
         android:backgroundTint="#000000"
         android:text="KAYIT OL"
         android:textColor="#000000" />
 
-    <Button
-        android:id="@+id/geciciGiris"
-        android:layout_width="165dp"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginStart="108dp"
-        android:layout_marginBottom="66dp"
-        android:text="Geçiçi Gir"/>
 
-    <Button
-        android:id="@+id/adminGiris"
-        android:layout_width="165dp"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginStart="115dp"
-        android:layout_marginBottom="169dp"
-        android:text="admin Girişi" />
 
 </RelativeLayout>
 
