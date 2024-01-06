@@ -1,5 +1,7 @@
 package com.example.dietapp.dtos;
 
+import com.google.gson.annotations.SerializedName;
+
 public class RegisterDto {
     public RegisterDto(String name, String surname, String userName, String email, String password, String userRole) {
         this.name = name;
@@ -49,8 +51,18 @@ public class RegisterDto {
     public void setPassword(String password) {
         this.password = password;
     }
-
-    private   String name, surname, userName, email, password, userRole;
+    @SerializedName("name")
+    private String name;
+    @SerializedName("surname")
+    private   String surname;
+    @SerializedName("userName")
+    private   String userName;
+    @SerializedName("email")
+    private   String email;
+    @SerializedName("password")
+    private   String password;
+    @SerializedName("role")
+    private   String userRole;
 
     public String getUserRole() {
         return userRole;

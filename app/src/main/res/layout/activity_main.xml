@@ -14,7 +14,7 @@
         android:layout_width="247dp"
         android:layout_height="187dp"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="74dp"
         android:contentDescription="@string/profile_image_description"
         android:src="@drawable/logo" />
 

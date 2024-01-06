@@ -16,7 +16,8 @@
         android:text="AD"
         android:textSize="18sp"
         android:textColor="#000000"
-        android:layout_marginTop="16dp"/>
+        android:layout_marginTop="16dp"
+        />
 
     <EditText
         android:id="@+id/editTextFirstName"
@@ -25,7 +26,7 @@
         android:layout_below="@id/textViewFirstName"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="5dp"
-        android:background="@drawable/edittextbackground"
+        android:background="@drawable/whitebackground"
         android:hint="Adınızı Giriniz" />
 
     <TextView
@@ -44,7 +45,7 @@
         android:layout_height="57dp"
         android:layout_below="@+id/editTextFirstName"
         android:layout_marginTop="54dp"
-        android:background="@drawable/edittextbackground"
+        android:background="@drawable/whitebackground"
         android:hint="Soyadınızı Giriniz" />
 
 
@@ -67,7 +68,7 @@
         android:layout_below="@+id/editTextSurname"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="54dp"
-        android:background="@drawable/edittextbackground"
+        android:background="@drawable/whitebackground"
         android:hint="Kullanıcı Adınızı Giriniz" />
 
     <TextView
@@ -88,7 +89,7 @@
         android:layout_below="@+id/editTextUserName"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="54dp"
-        android:background="@drawable/edittextbackground"
+        android:background="@drawable/whitebackground"
         android:hint="E-Posta Adresinizi Giriniz"
         android:inputType="textEmailAddress" />
 
@@ -110,7 +111,7 @@
         android:layout_below="@+id/editTextEmail"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="54dp"
-        android:background="@drawable/edittextbackground"
+        android:background="@drawable/whitebackground"
         android:hint="Şifrenizi Giriniz"
         android:inputType="textPassword" />
 
@@ -132,7 +133,7 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
         android:layout_marginTop="54dp"
-        android:background="@drawable/edittextbackground"
+        android:background="@drawable/whitebackground"
         android:hint="Şifrenizi Tekrar Giriniz"
         android:inputType="textPassword" />
 
