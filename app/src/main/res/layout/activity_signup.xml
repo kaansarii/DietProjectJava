@@ -157,7 +157,6 @@
         android:layout_alignParentEnd="true"
         android:layout_marginTop="50dp"
         android:background="@drawable/buttonbackground"
-        android:backgroundTint="#000000"
         android:text="GİRİŞ EKRANINA DÖN"
         android:textColor="#000000" />
 </RelativeLayout>

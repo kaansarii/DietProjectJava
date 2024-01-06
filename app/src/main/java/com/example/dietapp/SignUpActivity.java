@@ -36,6 +36,19 @@ public class SignUpActivity extends AppCompatActivity {
         EditText editTextUserName = (EditText) findViewById(R.id.editTextUserName);
         Button buttonRegister = (Button) findViewById(R.id.buttonRegister);
         Button buttonComeBack = (Button) findViewById(R.id.buttonComeBack);
+
+
+
+        buttonComeBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Giriş ekranına geri dön
+                Intent intent = new Intent(SignUpActivity.this, MainActivity.class);
+                SignUpActivity.this.startActivity(intent);
+                SignUpActivity.this.finish();
+            }
+        });
+
         buttonRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -46,6 +59,9 @@ public class SignUpActivity extends AppCompatActivity {
                 String password = editTextPassword.getText().toString();
                 String repeatPassword = editTextRepeatPassword.getText().toString();
                 String role = "User";
+
+
+
 
                 if (!password.equals(repeatPassword)) {
                     Toast.makeText(SignUpActivity.this, "Şifreler eşleşmiyor", Toast.LENGTH_SHORT).show();
@@ -58,6 +74,9 @@ public class SignUpActivity extends AppCompatActivity {
                 IRegister iRegister = RetrofitClient.getRetrofitInstance().create(IRegister.class);
                 RegisterDto registerDto = new RegisterDto(firstName,lastName,userName,email,password,role);
                 Call<Void> call = iRegister.registerUser(registerDto);
+
+
+
                 call.enqueue(new Callback<Void>() {
                     @Override
                     public void onResponse(Call<Void> call, Response<Void> response) {
@@ -88,18 +107,12 @@ public class SignUpActivity extends AppCompatActivity {
                         Toast.makeText(SignUpActivity.this, t.getMessage() , Toast.LENGTH_LONG).show();
                     }
                 });
-                
 
-                buttonComeBack.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        // Giriş ekranına geri dön
-                        Intent intent = new Intent(SignUpActivity.this, MainActivity.class);
-                        SignUpActivity.this.startActivity(intent);
-                        SignUpActivity.this.finish();
-                    }
-                });
+
+
             };
+
+
         });
     }
 }
