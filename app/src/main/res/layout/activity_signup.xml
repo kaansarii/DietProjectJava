@@ -39,7 +39,7 @@
         android:layout_marginTop="30dp"/>
 
     <EditText
-        android:id="@+id/editTextUserName"
+        android:id="@+id/editTextSurname"
         android:layout_width="381dp"
         android:layout_height="57dp"
         android:layout_below="@+id/editTextFirstName"
@@ -52,7 +52,7 @@
         android:id="@+id/textViewUserName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/editTextUserName"
+        android:layout_below="@+id/editTextSurname"
         android:layout_alignParentStart="true"
         android:layout_marginTop="30dp"
         android:text="KULLANICI ADI"
@@ -61,10 +61,10 @@
         android:textSize="18sp" />
 
     <EditText
-        android:id="@+id/editTextLastName"
+        android:id="@+id/editTextUserName"
         android:layout_width="381dp"
         android:layout_height="57dp"
-        android:layout_below="@+id/editTextUserName"
+        android:layout_below="@+id/editTextSurname"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="54dp"
         android:background="@drawable/edittextbackground"
@@ -74,7 +74,7 @@
         android:id="@+id/textViewEmail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/editTextLastName"
+        android:layout_below="@+id/editTextUserName"
         android:layout_alignParentStart="true"
         android:layout_marginTop="30dp"
         android:text="E-POSTA ADRESİ"
@@ -85,7 +85,7 @@
         android:id="@+id/editTextEmail"
         android:layout_width="382dp"
         android:layout_height="58dp"
-        android:layout_below="@+id/editTextLastName"
+        android:layout_below="@+id/editTextUserName"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="54dp"
         android:background="@drawable/edittextbackground"

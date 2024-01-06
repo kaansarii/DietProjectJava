@@ -65,7 +65,7 @@ public class MainActivity extends AppCompatActivity {
                         public void onResponse(Call<LoginResponse> call, Response<LoginResponse> response) {
                             if (response.isSuccessful()) {
                                 // Başarılı bir şekilde cevap alındı, başarı mesajını göster
-                                Toast.makeText(MainActivity.this, "Kayıt Başarılı", Toast.LENGTH_LONG).show();
+                                Toast.makeText(MainActivity.this, "Giriş Başarılı", Toast.LENGTH_LONG).show();
                                 try {
 
                                     //İd verisini api'dan almak için ilgili veriyi LoginResponse Modeline attım

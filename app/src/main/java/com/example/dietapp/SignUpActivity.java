@@ -17,8 +17,6 @@ import java.io.IOException;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
 
 public class SignUpActivity extends AppCompatActivity {
 
@@ -31,7 +29,7 @@ public class SignUpActivity extends AppCompatActivity {
         setContentView(R.layout.activity_signup);
 
         EditText editTextFirstName =(EditText) findViewById(R.id.editTextFirstName);
-        EditText editTextLastName = (EditText) findViewById(R.id.editTextLastName);
+        EditText editTextLastName = (EditText) findViewById(R.id.editTextSurname);
         EditText editTextEmail = (EditText) findViewById(R.id.editTextEmail);
         EditText editTextPassword = (EditText) findViewById(R.id.editTextPassword);
         EditText editTextRepeatPassword = (EditText) findViewById(R.id.editTextRepeatPassword);
