@@ -28,14 +28,14 @@ public class SignUpActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signup);
 
-        EditText editTextFirstName =(EditText) findViewById(R.id.editTextFirstName);
-        EditText editTextLastName = (EditText) findViewById(R.id.editTextSurname);
-        EditText editTextEmail = (EditText) findViewById(R.id.editTextEmail);
-        EditText editTextPassword = (EditText) findViewById(R.id.editTextPassword);
-        EditText editTextRepeatPassword = (EditText) findViewById(R.id.editTextRepeatPassword);
-        EditText editTextUserName = (EditText) findViewById(R.id.editTextUserName);
-        Button buttonRegister = (Button) findViewById(R.id.buttonRegister);
-        Button buttonComeBack = (Button) findViewById(R.id.buttonComeBack);
+        editTextFirstName =(EditText) findViewById(R.id.editTextFirstName);
+        editTextLastName = (EditText) findViewById(R.id.editTextSurname);
+        editTextEmail = (EditText) findViewById(R.id.editTextEmail);
+        editTextPassword = (EditText) findViewById(R.id.editTextPassword);
+        editTextRepeatPassword = (EditText) findViewById(R.id.editTextRepeatPassword);
+        editTextUserName = (EditText) findViewById(R.id.editTextUserName);
+        buttonRegister = (Button) findViewById(R.id.buttonRegister);
+        buttonComeBack = (Button) findViewById(R.id.buttonComeBack);
 
 
 
@@ -49,7 +49,7 @@ public class SignUpActivity extends AppCompatActivity {
             }
         });
 
-        //kayıtol butonu gerekli bilgiler girince kayıtola basıp kaydoluyoruz
+        //kayıt ol butonu gerekli bilgiler girince kayıtola basıp kaydoluyoruz
         buttonRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -64,7 +64,11 @@ public class SignUpActivity extends AppCompatActivity {
 
 
                 //aşağıda sifre kontrolü ve eposta kontölü yapılıyor
-
+                if(firstName.isEmpty() || lastName.isEmpty() || userName.isEmpty() || email.isEmpty() || password.isEmpty()
+                || repeatPassword.isEmpty()){
+                    Toast.makeText(SignUpActivity.this, "Lütfen Tüm Bilgilerinizi Eksiksiz Doldurunuz", Toast.LENGTH_SHORT).show();
+                    return;
+                }
                 if (!password.equals(repeatPassword)) {
                     Toast.makeText(SignUpActivity.this, "Şifreler eşleşmiyor", Toast.LENGTH_SHORT).show();
                     return;
@@ -73,8 +77,8 @@ public class SignUpActivity extends AppCompatActivity {
                     Toast.makeText(SignUpActivity.this, "E Posta Adresinizi Doğru Giriniz", Toast.LENGTH_SHORT).show();
                     return;
                 }
-                IRegister iRegister = RetrofitClient.getRetrofitInstance().create(IRegister.class);
-                RegisterDto registerDto = new RegisterDto(firstName,lastName,userName,email,password,userRole);
+                IRegister iRegister = RetrofitClient.getRetrofitInstance().create(IRegister.class); //Retrofit client sınıfından static getRetrofitInstance fonksiyonunu çağırıyor.
+                RegisterDto registerDto = new RegisterDto(firstName,lastName,userName,email,password,userRole); //register dto'ya kayıt olmak için ihtiyacımız olan nesneleri tanımlıyoruz
                 Call<Void> call = iRegister.registerUser(registerDto);
 
 

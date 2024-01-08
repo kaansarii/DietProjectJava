@@ -48,10 +48,11 @@ public class NutrientsFragment extends Fragment {
     int appUserId = sharedId.getSharedData();
     double todayFat, todayProtein, todayCalorie, todayCarbonhydrate = 0;
     double totalBrekakfastCalorie, totalLuncCalorie, totalDinnerCalorie = 0;
-    DecimalFormat decimalFormat = new DecimalFormat("#.##");
+    DecimalFormat decimalFormat = new DecimalFormat("#.##"); // 2.12 örneğindeki gibi görüntüleyebilmek için eklenmiştir
     List<GetFoodDto> data = new ArrayList<>();
     @SuppressLint("MissingInflatedId")
     @Override
+    //fragment çalıştığında yapılacak işlemler
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_nutrients,container,false);
@@ -113,6 +114,8 @@ public class NutrientsFragment extends Fragment {
                 List<Double> fats = new ArrayList<>();
                 List<Double> proteins = new ArrayList<>();
                 List<Double> carbohydrates = new ArrayList<>();
+                //Foreach döngüsü sayesinde data Listesinnin içindeki id vb elemanlar ilgili dizilere aktarılıyor. Bu sayede setOnItemClikListener
+                //methodu çalıştığında tıknalınal listview elemanına ait verileri görüntüleyebileceğiz.
                 for(GetFoodDto foodDto : data){
                     foods.add(foodDto); //Liste şeklinde gelen data'lar foods isimli değişkene atanıyor
                     ids.add(foodDto.getId());
@@ -266,8 +269,8 @@ public class NutrientsFragment extends Fragment {
                 for(GetFoodDto foodDto : foods){
                     names.add(foodDto.getName());
                 }
-                ArrayAdapter<String> adapter = new ArrayAdapter<>(getContext(), android.R.layout.simple_list_item_1, names);
-                listDinner.setAdapter(adapter);
+                ArrayAdapter<String> adapter = new ArrayAdapter<>(getContext(), android.R.layout.simple_list_item_1, names); //yiyecek isimlerini simple_list_item_1 görünümüne dönüştürür
+                listDinner.setAdapter(adapter); //list view'a adapter implemente edilir
                 listDinner.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                     @Override
                     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
@@ -313,7 +316,7 @@ public class NutrientsFragment extends Fragment {
         return rootView;
 
     }
-    // 43. satırda tanımlamış olduğumuz data'yı döndürüyoruz. Eğer methodumuz başarıyla çalışırsa json listesini geriye döndürecektir
+    // 52. satırda tanımlamış olduğumuz data'yı döndürüyoruz. Eğer methodumuz başarıyla çalışırsa json listesini geriye döndürecektir
     private List<GetFoodDto> getFoodWithType(String type){
         IFood food = RetrofitClient.getRetrofitInstance().create(IFood.class);
         Call<List<GetFoodDto>> call = food.getFoodWithType(type);
@@ -336,6 +339,7 @@ public class NutrientsFragment extends Fragment {
         });
         return data;
     }
+    // id'si verilen yiyeceği, giriş yapmış kullanıcının öğününe eklenmesi için istek gönderir
     private void postMealFood(int appUserId, int foodId){
         IMealFood iMealFood = RetrofitClient.getRetrofitInstance().create(IMealFood.class);
         PostMealFoodDto postMealFoodDto = new PostMealFoodDto(appUserId,foodId);
@@ -366,6 +370,7 @@ public class NutrientsFragment extends Fragment {
             }
         });
     }
+    // Alert Dialog'da tamam'a tıklanıldığında tasarımda bugün almış olduğunuz toplam besin değerleri bölümü güncellenmektedir.
     private void updateTodayMacros(double todayFat, double todayProtein, double todayCalorie, double todayCarbonhydrate  ){
         dayCarbonhydrate.setText(decimalFormat.format(todayCarbonhydrate) + " g");
         dayFat.setText(decimalFormat.format(todayFat) + " g");

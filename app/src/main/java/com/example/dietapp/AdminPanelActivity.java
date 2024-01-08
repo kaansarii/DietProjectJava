@@ -62,7 +62,14 @@ public class AdminPanelActivity extends AppCompatActivity {
         addButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                addFood();
+                if(foodNameField.getText().toString().isEmpty() || calorieField.getText().toString().isEmpty() ||
+                proteinField.getText().toString().isEmpty() || fatField.getText().toString().isEmpty()
+                || carbohydrateField.getText().toString().isEmpty()){
+                    Toast.makeText(getApplicationContext(),"Lütfen Tüm Alanları Doldurunuz",Toast.LENGTH_LONG).show();
+                }else{
+                    addFood();
+                }
+
             }
         });
 

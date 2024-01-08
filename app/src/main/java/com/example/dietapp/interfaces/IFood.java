@@ -15,8 +15,9 @@ import retrofit2.http.Path;
 
 public interface IFood {
     @Headers("Content-Type:application/json; charset=UTF-8")
-    @GET("api/Food/getFoodWithType/{type}")
+    @GET("api/Food/getFoodWithType/{type}") //tipine göre yiyecek listesini geri döndürüyor
     Call<List<GetFoodDto>> getFoodWithType(@Path("type") String type);
+
 
     @Headers("Content-Type:application/json; charset=UTF-8")
     @POST("api/Food")

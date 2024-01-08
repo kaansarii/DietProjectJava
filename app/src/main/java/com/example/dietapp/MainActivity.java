@@ -29,9 +29,6 @@ public class MainActivity extends AppCompatActivity {
 
     private EditText editTextEmail, editTextPassword;
     private Button buttonLogin, buttonLoginRegister;
-    private TextView textViewEmail,textViewPassword;
-    private ImageView profileImageView;
-    BmiFragment bmiFragment;
 
 
     @Override
@@ -39,21 +36,22 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        EditText editTextEmail = (EditText) findViewById(R.id.editTextEmail);
-        EditText editTextPassword = (EditText) findViewById(R.id.editTextPassword);
-        TextView textViewEmail = (TextView) findViewById(R.id.textViewEmail);
-        TextView textViewPassword = (TextView) findViewById(R.id.textViewPassword);
-        ImageView profileImageView = findViewById(R.id.profileImageView);
+        editTextEmail = (EditText) findViewById(R.id.editTextEmail);
+        editTextPassword = (EditText) findViewById(R.id.editTextPassword);
 
 
 
 
-        Button buttonLogin = (Button) findViewById(R.id.buttonLogin);
+        buttonLogin = (Button) findViewById(R.id.buttonLogin);
         buttonLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String email = editTextEmail.getText().toString();
                 String password = editTextPassword.getText().toString();
+                if(email.isEmpty() || password.isEmpty()){
+                    Toast.makeText(MainActivity.this, "Lütfen Tüm Bilgilerinizi Eksiksiz Doldurunuz",Toast.LENGTH_LONG).show();
+                    return;
+                }
                 ILogin iLogin = RetrofitClient.getRetrofitInstance().create(ILogin.class);
                 LoginDto loginDto = new LoginDto(email,password);
                 Call<LoginResponse> call = iLogin.loginUser(loginDto);
@@ -74,14 +72,13 @@ public class MainActivity extends AppCompatActivity {
                                     sharedId.setSharedData(id);
                                     //Role bilgisinde user varsa Navigation Drawer'a yönlendirecek, admin varsa admin panaline yönlendirecek
 
+                                    Intent intent;
                                     if(role.contains("User")){
-                                        Intent intent = new Intent(MainActivity.this,NavigationDrawer.class);
-                                        startActivity(intent);
+                                        intent = new Intent(MainActivity.this, NavigationDrawer.class);
                                     }else{
-                                        Intent intent = new Intent(MainActivity.this,AdminPanelActivity.class);
-                                        startActivity(intent);
+                                        intent = new Intent(MainActivity.this, AdminPanelActivity.class);
                                     }
-
+                                    startActivity(intent);
 
 
                                 }catch (Exception e){
@@ -120,7 +117,7 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-        Button buttonLoginRegister = (Button) findViewById(R.id.buttonLoginRegister);
+        buttonLoginRegister = (Button) findViewById(R.id.buttonLoginRegister);
         buttonLoginRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

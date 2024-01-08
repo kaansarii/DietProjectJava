@@ -143,12 +143,14 @@
                 android:id="@+id/breakfastRadioButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:checked="true"
                 android:text="Kahvaltı" />
 
             <RadioButton
                 android:id="@+id/lunchRadioButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:checked="false"
                 android:text="Öğle Yemeği" />
 
             <RadioButton
