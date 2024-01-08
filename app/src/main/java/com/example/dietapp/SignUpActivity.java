@@ -58,7 +58,7 @@ public class SignUpActivity extends AppCompatActivity {
                 String email = editTextEmail.getText().toString();
                 String password = editTextPassword.getText().toString();
                 String repeatPassword = editTextRepeatPassword.getText().toString();
-                String role = "User";
+                String userRole = "User";
 
 
 
@@ -72,7 +72,7 @@ public class SignUpActivity extends AppCompatActivity {
                     return;
                 }
                 IRegister iRegister = RetrofitClient.getRetrofitInstance().create(IRegister.class);
-                RegisterDto registerDto = new RegisterDto(firstName,lastName,userName,email,password,role);
+                RegisterDto registerDto = new RegisterDto(firstName,lastName,userName,email,password,userRole);
                 Call<Void> call = iRegister.registerUser(registerDto);
 
 

@@ -80,14 +80,18 @@ public class NutrientsFragment extends Fragment {
             public void onResponse(Call<GetUserInformationDto> call, Response<GetUserInformationDto> response) {
                 if(response.isSuccessful()){
                     GetUserInformationDto model = response.body();
-                    carbonhydrate.setText(decimalFormat.format(model.getDailyCarbonhydrateRequirement()) + " g");
-                    fat.setText(decimalFormat.format(model.getDailyFatRequirement()) + " g");
-                    protein.setText(decimalFormat.format(model.getDailyProteinRequirement()) + " g");
-                    calorie.setText(decimalFormat.format(model.getDailyCalorieRequirement()) + " kcal");
-                    dayCarbonhydrate.setText(decimalFormat.format(todayCarbonhydrate) + " g");
-                    dayFat.setText(decimalFormat.format(todayFat) + " g");
-                    dayProtein.setText(decimalFormat.format(todayProtein) + " g");
-                    dayCalorie.setText(decimalFormat.format(todayCalorie) + " kcal");
+                    // ilgili kullanıcının userInfformation tablosunda bilgisi varsa if bloğunun içine girecek
+                    if(model != null){
+                        carbonhydrate.setText(decimalFormat.format(model.getDailyCarbonhydrateRequirement()) + " g");
+                        fat.setText(decimalFormat.format(model.getDailyFatRequirement()) + " g");
+                        protein.setText(decimalFormat.format(model.getDailyProteinRequirement()) + " g");
+                        calorie.setText(decimalFormat.format(model.getDailyCalorieRequirement()) + " kcal");
+                        dayCarbonhydrate.setText(decimalFormat.format(todayCarbonhydrate) + " g");
+                        dayFat.setText(decimalFormat.format(todayFat) + " g");
+                        dayProtein.setText(decimalFormat.format(todayProtein) + " g");
+                        dayCalorie.setText(decimalFormat.format(todayCalorie) + " kcal");
+                    }
+
                 }else{
                     Toast.makeText(getContext(),"İstek İşlenirken Bir Hata Meydana Geldi",Toast.LENGTH_LONG).show();
                 }

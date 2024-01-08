@@ -61,7 +61,7 @@ public class RegisterDto {
     private   String email;
     @SerializedName("password")
     private   String password;
-    @SerializedName("role")
+    @SerializedName("userRole")
     private   String userRole;
 
     public String getUserRole() {
