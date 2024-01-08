@@ -7,11 +7,11 @@ import androidx.fragment.app.Fragment;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
-import android.text.TextUtils;
-import android.view.LayoutInflater;
+import android.text.TextUtils; //Bu sınıf, metinle ilgili çeşitli işlemleri kolaylaştırmak ve kontrol etmek için statik metotlar içerir.
+import android.view.LayoutInflater; //Android uygulamalarında XML tabanlı layout dosyalarını (*.xml) Java kodunda kullanılabilir View nesnelerine dönüştürmek için kullanılan bir sınıftır
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
+import android.widget.AdapterView; //kullanıcının öğeler arasında gezinmesine ve bir öğe seçmesine izin veren listview için
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
@@ -70,6 +70,7 @@ public class CounterFragment extends Fragment {
         return view;
     }
 
+    //kullanıcıdan verileri alıyor,
     public void onSaveButtonClick(View view) {
         int day = datePicker.getDayOfMonth();
         int month = datePicker.getMonth() + 1;
@@ -87,6 +88,7 @@ public class CounterFragment extends Fragment {
         int burnedCalories = Integer.parseInt(burnedCaloriesStr);
         int consumedCalories = Integer.parseInt(consumedCaloriesStr);
 
+        //aynı tarihte tek veri girişini sağlar
         if (isEntryExistsForDate(date)) {
             Toast.makeText(requireContext(), "Bu tarihe zaten bir giriş yapılmış.", Toast.LENGTH_SHORT).show();
         } else {

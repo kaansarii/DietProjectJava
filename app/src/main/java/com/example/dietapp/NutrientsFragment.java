@@ -1,6 +1,6 @@
 package com.example.dietapp;
 
-import android.annotation.SuppressLint;
+import android.annotation.SuppressLint; //kod bloğu, metot veya sınıf üzerinde  (Statik Analiz) uyarılarını devre dışı bırakmak veya özelleştirmek için kullanılır.
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.os.Bundle;

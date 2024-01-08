@@ -1,8 +1,8 @@
 package com.example.dietapp;
 
-import android.annotation.SuppressLint;
-import android.os.Bundle;
-import android.view.LayoutInflater;
+import android.annotation.SuppressLint;  //belirli uyarıları devre dışı bırakmak için kullanılır.
+import android.os.Bundle;  // iki bileşen arasında veri taşımak ve saklamak için kullanılan bir veri yapısıdır
+import android.view.LayoutInflater;  //XML dosyalarındaki layout tanımlamalarını Java nesnelerine dönüştürmek için kullanılır
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
@@ -10,16 +10,16 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.cardview.widget.CardView;
+import androidx.annotation.NonNull;  // Bir parametre, dönüş değeri veya alanın null olamayacağını belirtir.
+import androidx.annotation.Nullable; //Bir parametre, dönüş değeri veya alanın null olabileceğini belirtir
+import androidx.cardview.widget.CardView;  // bir dizi öğeyi gruplamak ve düzenlemek için yaygın olarak kullanılır.
 import androidx.fragment.app.Fragment;
 
 import com.example.dietapp.dtos.SharedId;
 import com.example.dietapp.dtos.UserInformationDto;
 import com.example.dietapp.interfaces.IUserInformation;
 
-import java.text.DecimalFormat;
+import java.text.DecimalFormat; //sayıları decimal formatta kullanmak içn
 
 import retrofit2.Call;
 import retrofit2.Callback;

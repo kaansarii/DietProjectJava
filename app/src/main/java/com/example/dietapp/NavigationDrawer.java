@@ -1,11 +1,11 @@
 package com.example.dietapp;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.ActionBarDrawerToggle;
+import androidx.annotation.NonNull; // Bir parametre, dönüş değeri veya alanın null olamayacağını belirtir.
+import androidx.appcompat.app.ActionBarDrawerToggle; //navigation drawer) ile ActionBar'ın entegrasyonunu kolaylaştırmak için kullanılır
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-import androidx.core.view.GravityCompat;
-import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.core.view.GravityCompat; //navigation drawer gibi kullanıcı arayüzü öğeleriyle birlikte kullanılan işlemleri kolaylaştırmak için tasarlanmıştır.
+import androidx.drawerlayout.widget.DrawerLayout; //(navigation drawer'ın   uygulama ekranının kenarından açılmasını ve kapanmasını sağlamak için kullanılır
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
@@ -20,6 +20,7 @@ import android.widget.ListView;
 import android.widget.Toast;
 import com.google.android.material.navigation.NavigationView;
 
+//impleme etmemizin sebebi navdrawer'da tıklandığında buraya geliyor
 public class NavigationDrawer extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     private DrawerLayout drawerLayout;

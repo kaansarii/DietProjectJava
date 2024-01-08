@@ -1,20 +1,20 @@
 package com.example.dietapp;
 
 
-import android.annotation.SuppressLint;
-import android.os.Bundle;
-import android.view.LayoutInflater;
+import android.annotation.SuppressLint;  //kod bloğu, metot veya sınıf üzerinde  (Statik Analiz) uyarılarını devre dışı bırakmak veya özelleştirmek için kullanılır.
+import android.os.Bundle; // aktiviteler arasında veya bileşenler arasında veri taşımak için kullanılır.
+import android.view.LayoutInflater; //XML dosyalarındaki layout tanımlamalarını Java nesnelerine dönüştürmek için kullanılır
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
-import android.widget.Toast;
+import android.widget.Toast; //toast kullanmak için
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.cardview.widget.CardView;
+import androidx.annotation.NonNull; // Bir parametre, dönüş değeri veya alanın null olamayacağını belirtir.
+import androidx.annotation.Nullable; //Bir parametre, dönüş değeri veya alanın null olabileceğini belirtir
+import androidx.cardview.widget.CardView; // bir dizi öğeyi gruplamak ve düzenlemek için yaygın olarak kullanılır.
 import androidx.fragment.app.Fragment;
 
 import com.example.dietapp.dtos.SharedId;
@@ -34,8 +34,9 @@ public class BmiFragment extends Fragment {
 
     @Nullable
     @Override
+    //alttaki parantez içerindeki değerler 0 aolamaz
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.fragment_bmi, container, false);
+        View rootView = inflater.inflate(R.layout.fragment_bmi, container, false); //Oluşturulan görünüm, View türünde olan rootView değişkenine atanır container'a hemen eklenmez
 
         edCm = rootView.findViewById(R.id.edCm);
         edKg = rootView.findViewById(R.id.edKg);
@@ -51,10 +52,13 @@ public class BmiFragment extends Fragment {
         radioLoseWeight = rootView.findViewById(R.id.radioLoseWeight);
         radioMaintainWeight = rootView.findViewById(R.id.radioMaintainWeight);
         radioGainWeight = rootView.findViewById(R.id.radioGainWeight);
+
         SharedId sharedId = SharedId.getInstance();
         int receiveData = sharedId.getSharedData();
         String data = Integer.toString(receiveData);
+        //YUKARDAKİ Bu kod parçası, SharedId adlı sınıfın bir örneğini oluşturarak, bu örnek üzerinden paylaşılan bir veriyi alır ve bu veriyi bir String türüne dönüştürerek kullanır. Kısacası, bir paylaşılan veri kaynağından bilgi çekip, bu bilgiyi String türüne çevirir.
 
+        //hesaplama işlemi
         calculateButton.setOnClickListener(new View.OnClickListener() {
             @SuppressLint("SetTextI18n")
             @Override
@@ -90,7 +94,7 @@ public class BmiFragment extends Fragment {
                         return;
                     }
 
-                    //virgülden sonra en fazla iki rakam olsun diye yaptım
+                    //virgülden sonra en fazla iki rakam olsun diye yaptım böylece karmaşa olmayaxak
                     DecimalFormat df2 = new DecimalFormat("#.##");
                     String endBmiIndex = df2.format(bmiIndex);
 
@@ -198,6 +202,7 @@ public class BmiFragment extends Fragment {
                     String endBmrMale = df.format(bmrMale);
 
 
+                    //hedeflere göre değişiyor
                     if (selectedPurposeId == radioLoseWeight.getId()) {
                         //Kilo verme durumu
                         //cinsiyet durumuna göre alınması gereken kcal değişiyor

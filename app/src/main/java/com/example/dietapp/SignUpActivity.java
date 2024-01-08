@@ -1,7 +1,7 @@
 package com.example.dietapp;
 
 import android.content.Intent;
-import android.os.Bundle;
+import android.os.Bundle;  // aktiviteler arasında veya bileşenler arasında veri taşımak için kullanılır.
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -49,6 +49,7 @@ public class SignUpActivity extends AppCompatActivity {
             }
         });
 
+        //kayıtol butonu gerekli bilgiler girince kayıtola basıp kaydoluyoruz
         buttonRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -62,6 +63,7 @@ public class SignUpActivity extends AppCompatActivity {
 
 
 
+                //aşağıda sifre kontrolü ve eposta kontölü yapılıyor
 
                 if (!password.equals(repeatPassword)) {
                     Toast.makeText(SignUpActivity.this, "Şifreler eşleşmiyor", Toast.LENGTH_SHORT).show();

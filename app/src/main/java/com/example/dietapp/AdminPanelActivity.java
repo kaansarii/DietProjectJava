@@ -1,10 +1,10 @@
 package com.example.dietapp;
 
-import android.annotation.SuppressLint;
-import android.app.AlertDialog;
-import android.content.DialogInterface;
-import android.content.Intent;
-import android.os.Bundle;
+import android.annotation.SuppressLint; //belirli uyarıları devre dışı bırakmak için kullanılır.
+import android.app.AlertDialog; //alertdialog'u kullanmak için
+import android.content.DialogInterface; //dialog pencereleriyle etkileşimde bulunmak için
+import android.content.Intent; //intent kullanmak için
+import android.os.Bundle; // iki bileşen arasında veri taşımak ve saklamak için kullanılan bir veri yapısıdır
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -12,9 +12,9 @@ import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
-import android.widget.Toast;
+import android.widget.Toast; //toast mesajı kullanabilmek için
 
-import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity; //eski ve yeni Android sürümleri arasında uyumlu bir deneyim sağlamaktır
 
 import com.example.dietapp.dtos.AddFoodDto;
 import com.example.dietapp.interfaces.IFood;
@@ -34,10 +34,10 @@ public class AdminPanelActivity extends AppCompatActivity {
     private RadioGroup radioGroupFood;
     private Button addButton, outButton;
     private TextView foodListArea;
-    private List<String> foodList;
+    private List<String> foodList; //foodlist adında list
     private String meal = " ";
 
-    @SuppressLint("MissingInflatedId")
+    @SuppressLint("MissingInflatedId") //bazı hataları vb şeyleri görmezden gelmemizi sağlıyro
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -90,7 +90,7 @@ public class AdminPanelActivity extends AppCompatActivity {
         double doubleFat = Double.parseDouble(fat);
         double doubleCarbohydrate = Double.parseDouble(carbohydrate);
 
-        // hangi öğün  kontrol et
+        // hangi öğün  kontrol et radio buttondan seçiyorz
         boolean isBreakfast = breakfastRadioButton.isChecked();
         boolean isLunch = lunchRadioButton.isChecked();
         boolean isDinner = dinnerRadioButton.isChecked();
@@ -101,7 +101,7 @@ public class AdminPanelActivity extends AppCompatActivity {
         } else if (isDinner) {
             meal = "Akşam Yemeği";
         }
-        // Gerekli bilgileri kontrol et
+        // Gerekli bilgileri kontrol et boşluk var mı bak
         if (foodName.isEmpty() || calorie.isEmpty() || protein.isEmpty() || fat.isEmpty() || carbohydrate.isEmpty()) {
             // Eğer gerekli bilgiler eksikse, kullanıcıyı uyar
             Toast.makeText(this, "Lütfen tüm bilgileri doldurun.", Toast.LENGTH_SHORT).show();
@@ -118,12 +118,12 @@ public class AdminPanelActivity extends AppCompatActivity {
                 (isLunch ? "Öğle Yemeği " : "") +
                 (isDinner ? "Akşam Yemeği" : "");
 
-        // Alert Dialog oluşturuldu kullanıcya soracak ekleyeyim mi iptal mi edeyim diye
+        // Alert Dialog oluşturuldu kullanıcya soracak ekleyeyim mi iptal mi edeyim diye kullanıcıc etkileşimli
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle("Besin Ekleniyor"); //başlığı
         builder.setMessage("Aşağıdaki besine ait bilgileri eklemek istiyor musunuz?\n\n" + foodInfo);
 
-        //ekledderse
+        //ekled derse
         builder.setPositiveButton("Ekle", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
@@ -152,7 +152,7 @@ public class AdminPanelActivity extends AppCompatActivity {
                  //temizle
                 clearFields();
 
-                // Kullanıcıya başarı mesajını göster
+                // Kullanıcıya başarı mesajını gösteriyor eklendiğinde
                 Toast.makeText(AdminPanelActivity.this, "Besin başarıyla eklendi.", Toast.LENGTH_SHORT).show();
             }
         });

@@ -1,19 +1,17 @@
 package com.example.dietapp;
 
-import android.content.Intent;
+import android.content.Intent; //intent kullanmak için
 import android.net.Uri;
-import android.os.Bundle;
-import android.util.Log;
+import android.os.Bundle; // iki bileşen arasında veri taşımak ve saklamak için kullanılan bir veri yapısıdır
+import android.util.Log; //log kullanmka için
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
+import android.widget.Toast; //toast kullanmka için
 
-import androidx.activity.result.ActivityResultCallback;
-import androidx.activity.result.ActivityResultLauncher;
-import androidx.activity.result.contract.ActivityResultContracts;
+
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.dietapp.dtos.SharedId;
@@ -132,13 +130,6 @@ public class MainActivity extends AppCompatActivity {
                 MainActivity.this.finish();
             }
         });
-
-
-
-
-
-
-
 
     }
 
