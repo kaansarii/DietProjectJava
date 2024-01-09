@@ -325,7 +325,7 @@ public class NutrientsFragment extends Fragment {
             public void onResponse(Call<List<GetFoodDto>> call, Response<List<GetFoodDto>> response) {
                 if(response.isSuccessful()){
                     data = response.body();
-                    Toast.makeText(getContext(),"Başarılı",Toast.LENGTH_LONG).show();
+
                 }else{
                     Toast.makeText(getContext(),"Başarısız",Toast.LENGTH_LONG).show();
                 }

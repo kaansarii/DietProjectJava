@@ -49,7 +49,7 @@ public class CalorieEntryAdapter extends ArrayAdapter<CalorieEntry> {
 
         if (entry != null) {
             textViewDate.setText(entry.getDate()); //tarihi alır ve gösterir
-            textViewCalorieDifference.setText("Calorie Difference: " + entry.getCalorieDifference()); //kalori farkı bilgisin alır ve gösteriri
+            textViewCalorieDifference.setText("Kalori Farkı: " + entry.getCalorieDifference()); //kalori farkı bilgisin alır ve gösteriri
         }
 
         return convertView;

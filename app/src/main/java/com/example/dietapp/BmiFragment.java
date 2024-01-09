@@ -53,9 +53,7 @@ public class BmiFragment extends Fragment {
         radioMaintainWeight = rootView.findViewById(R.id.radioMaintainWeight);
         radioGainWeight = rootView.findViewById(R.id.radioGainWeight);
 
-        SharedId sharedId = SharedId.getInstance();
-        int receiveData = sharedId.getSharedData();
-        String data = Integer.toString(receiveData);
+
         //YUKARDAKİ Bu kod parçası, SharedId adlı sınıfın bir örneğini oluşturarak, bu örnek üzerinden paylaşılan bir veriyi alır ve bu veriyi bir String türüne dönüştürerek kullanır. Kısacası, bir paylaşılan veri kaynağından bilgi çekip, bu bilgiyi String türüne çevirir.
 
         //hesaplama işlemi
@@ -63,7 +61,6 @@ public class BmiFragment extends Fragment {
             @SuppressLint("SetTextI18n")
             @Override
             public void onClick(View view) {
-                Toast.makeText(getActivity(),data,Toast.LENGTH_LONG).show();
                 String kg = edKg.getText().toString();
                 String cm = edCm.getText().toString();
                 String age = edAge.getText().toString();
@@ -84,7 +81,7 @@ public class BmiFragment extends Fragment {
                     }
                     //yaş sınırı koydum
                     if (ageYear < 0 || ageYear > 100) {
-                        Toast.makeText(getContext(),data,Toast.LENGTH_LONG).show();
+                        Toast.makeText(getContext(),"Lütfen Yaşınızı Doğru Giriniz",Toast.LENGTH_LONG).show();
                         //Toast.makeText(getContext(), "Lütfen geçerli bir yaş girin.", Toast.LENGTH_SHORT).show();
                         return;
                     }
@@ -101,11 +98,11 @@ public class BmiFragment extends Fragment {
 
                     //bmi oranına göre sonuç verecek
                     if (bmiIndex > 24) {
-                        textBmi.setText("Overweight : " + endBmiIndex);
+                        textBmi.setText("Kilolu : " + endBmiIndex);
                     } else if (bmiIndex > 18) {
-                        textBmi.setText("Normal weight : " + endBmiIndex);
+                        textBmi.setText("Normal  : " + endBmiIndex);
                     } else {
-                        textBmi.setText("Underweight : " + endBmiIndex);
+                        textBmi.setText("Zayıf : " + endBmiIndex);
                     }
 
                     //burda hedef seçiyoruz; kilo al,koru,ver
@@ -207,12 +204,12 @@ public class BmiFragment extends Fragment {
                         //Kilo verme durumu
                         //cinsiyet durumuna göre alınması gereken kcal değişiyor
                         if (selectedGenderId == radioButtonMale.getId()) {
-                            textCal.setText("Calorie's\n " + endBmrMale);
-                            textMakro.setText("Carb: " + endCarbohydrateMaleLose + "\nProtein: " + endProteinMaleLose + "\nFat: " + endFatMaleLose);
+                            textCal.setText("Kalori\n " + endBmrMale);
+                            textMakro.setText("Karb: " + endCarbohydrateMaleLose + "\nProtein: " + endProteinMaleLose + "\nYağ: " + endFatMaleLose);
                         }
                      else if (selectedGenderId == radioButtonFemale.getId()) {
-                        textCal.setText("Calorie's " + endBmrFemale);
-                        textMakro.setText("Carb: " + endCarbohydrateFemaleLose + "\nProtein: " + endProteinFemaleLose + "\nFat: " + endFatFemaleLose);
+                        textCal.setText("Kalori " + endBmrFemale);
+                        textMakro.setText("Karb: " + endCarbohydrateFemaleLose + "\nProtein: " + endProteinFemaleLose + "\nYağ: " + endFatFemaleLose);
                     }
 
 
@@ -220,11 +217,11 @@ public class BmiFragment extends Fragment {
                         // Kilo alma durumu
                         //cinsiyet durumuna göre alınması gereken kcal değişiyor
                         if (selectedGenderId == radioButtonMale.getId()) {
-                            textCal.setText("Calorie's\n " + endBmrMale);
-                            textMakro.setText("Carb: " + endCarbohydrateMaleGain + "\nProtein: " + endProteinMaleGain + "\nFat: " + endFatMaleGain);
+                            textCal.setText("Kalori\n " + endBmrMale);
+                            textMakro.setText("Karb: " + endCarbohydrateMaleGain + "\nProtein: " + endProteinMaleGain + "\nYağ: " + endFatMaleGain);
                         } else if (selectedGenderId == radioButtonFemale.getId()) {
-                            textCal.setText("Calorie's " + endBmrFemale);
-                            textMakro.setText("Carb: " + endCarbohydrateFemaleGain + "\nProtein: " + endProteinFemaleGain + "\nFat: " + endFatFemaleGain);
+                            textCal.setText("Kalori " + endBmrFemale);
+                            textMakro.setText("Karb: " + endCarbohydrateFemaleGain + "\nProtein: " + endProteinFemaleGain + "\nYağ: " + endFatFemaleGain);
                         }
 
 
@@ -232,17 +229,17 @@ public class BmiFragment extends Fragment {
                         // Kilo koruma durumu
                         //cinsiyet durumuna göre alınması gereken kcal değişiyor
                         if (selectedGenderId == radioButtonMale.getId()) {
-                            textCal.setText("Calorie's\n " + endBmrMale);
-                            textMakro.setText("Carb: " + endCarbohydrateMaleMain + "\nProtein: " + endProteinMaleMain + "\nFat: " + endFatMaleMain);
+                            textCal.setText("Kalori\n " + endBmrMale);
+                            textMakro.setText("Karb: " + endCarbohydrateMaleMain + "\nProtein: " + endProteinMaleMain + "\nYağ: " + endFatMaleMain);
                         } else if (selectedGenderId == radioButtonFemale.getId()) {
-                            textCal.setText("Calorie's " + endBmrFemale);
-                            textMakro.setText("Carb: " + endCarbohydrateFemaleMain + "\nProtein: " + endProteinFemaleMain + "\nFat: " + endFatFemaleMain);
+                            textCal.setText("Kalori " + endBmrFemale);
+                            textMakro.setText("Karb: " + endCarbohydrateFemaleMain + "\nProtein: " + endProteinFemaleMain + "\nYağ: " + endFatFemaleMain);
                         }
                     }
 
 
                 } else {
-                    textBmi.setText("Please Input All Box");
+                    textBmi.setText("Lütfen Tüm Bilgileri Eksiksiz Doldurunuz");
                 }
 
             }

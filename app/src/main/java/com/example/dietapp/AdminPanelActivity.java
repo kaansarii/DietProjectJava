@@ -108,12 +108,6 @@ public class AdminPanelActivity extends AppCompatActivity {
         } else if (isDinner) {
             meal = "Akşam Yemeği";
         }
-        // Gerekli bilgileri kontrol et boşluk var mı bak
-        if (foodName.isEmpty() || calorie.isEmpty() || protein.isEmpty() || fat.isEmpty() || carbohydrate.isEmpty()) {
-            // Eğer gerekli bilgiler eksikse, kullanıcıyı uyar
-            Toast.makeText(this, "Lütfen tüm bilgileri doldurun.", Toast.LENGTH_SHORT).show();
-            return;
-        }
 
         // Yiyecek bilgilerini yukardaki tanımlanmş  listeye ekleniyr
         String foodInfo = "Yiyecek Adı: " + foodName +
@@ -130,7 +124,7 @@ public class AdminPanelActivity extends AppCompatActivity {
         builder.setTitle("Besin Ekleniyor"); //başlığı
         builder.setMessage("Aşağıdaki besine ait bilgileri eklemek istiyor musunuz?\n\n" + foodInfo);
 
-        //ekled derse
+        //ekle derse
         builder.setPositiveButton("Ekle", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
@@ -160,7 +154,7 @@ public class AdminPanelActivity extends AppCompatActivity {
                 clearFields();
 
                 // Kullanıcıya başarı mesajını gösteriyor eklendiğinde
-                Toast.makeText(AdminPanelActivity.this, "Besin başarıyla eklendi.", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(AdminPanelActivity.this, "Besin başarıyla eklendi.", Toast.LENGTH_SHORT).show();
             }
         });
         //iptal derse
